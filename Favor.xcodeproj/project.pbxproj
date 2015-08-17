@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19A035DA1B8281FC0062251C /* Favor.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A035D91B8281FC0062251C /* Favor.m */; };
+		19A035DE1B8284020062251C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A035DD1B8284020062251C /* User.m */; };
 		19AC32B91B825E4E00F38A47 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC32B81B825E4E00F38A47 /* main.m */; };
 		19AC32BC1B825E4E00F38A47 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC32BB1B825E4E00F38A47 /* AppDelegate.m */; };
 		19AC32BF1B825E4E00F38A47 /* FavorFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC32BE1B825E4E00F38A47 /* FavorFeedViewController.m */; };
@@ -29,6 +31,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		19A035D81B8281FC0062251C /* Favor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favor.h; sourceTree = "<group>"; };
+		19A035D91B8281FC0062251C /* Favor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favor.m; sourceTree = "<group>"; };
+		19A035DC1B8284020062251C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		19A035DD1B8284020062251C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		19AC32B31B825E4E00F38A47 /* Favor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Favor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19AC32B71B825E4E00F38A47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19AC32B81B825E4E00F38A47 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -70,6 +76,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19A035D71B826C5A0062251C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				19AC32BD1B825E4E00F38A47 /* FavorFeedViewController.h */,
+				19AC32BE1B825E4E00F38A47 /* FavorFeedViewController.m */,
+				19A035DB1B8282030062251C /* Model */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		19A035DB1B8282030062251C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				19A035D81B8281FC0062251C /* Favor.h */,
+				19A035D91B8281FC0062251C /* Favor.m */,
+				19A035DC1B8284020062251C /* User.h */,
+				19A035DD1B8284020062251C /* User.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		19AC32AA1B825E4E00F38A47 = {
 			isa = PBXGroup;
 			children = (
@@ -95,8 +122,7 @@
 			children = (
 				19AC32BA1B825E4E00F38A47 /* AppDelegate.h */,
 				19AC32BB1B825E4E00F38A47 /* AppDelegate.m */,
-				19AC32BD1B825E4E00F38A47 /* FavorFeedViewController.h */,
-				19AC32BE1B825E4E00F38A47 /* FavorFeedViewController.m */,
+				19A035D71B826C5A0062251C /* Controllers */,
 				19AC32C01B825E4E00F38A47 /* Main.storyboard */,
 				19AC32C31B825E4E00F38A47 /* Images.xcassets */,
 				19AC32C51B825E4E00F38A47 /* LaunchScreen.xib */,
@@ -318,6 +344,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19A035DE1B8284020062251C /* User.m in Sources */,
+				19A035DA1B8281FC0062251C /* Favor.m in Sources */,
 				19AC32BF1B825E4E00F38A47 /* FavorFeedViewController.m in Sources */,
 				19AC32BC1B825E4E00F38A47 /* AppDelegate.m in Sources */,
 				19AC32B91B825E4E00F38A47 /* main.m in Sources */,
