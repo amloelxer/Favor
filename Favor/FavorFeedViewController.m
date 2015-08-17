@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 Alex Moller. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "FavorFeedViewController.h"
 
-@interface ViewController ()
+@interface FavorFeedViewController ()
 
 @end
 
-@implementation ViewController
+@implementation FavorFeedViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

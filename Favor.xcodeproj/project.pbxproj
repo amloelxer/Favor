@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		19AC32B91B825E4E00F38A47 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC32B81B825E4E00F38A47 /* main.m */; };
 		19AC32BC1B825E4E00F38A47 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC32BB1B825E4E00F38A47 /* AppDelegate.m */; };
-		19AC32BF1B825E4E00F38A47 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC32BE1B825E4E00F38A47 /* ViewController.m */; };
+		19AC32BF1B825E4E00F38A47 /* FavorFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC32BE1B825E4E00F38A47 /* FavorFeedViewController.m */; };
 		19AC32C21B825E4E00F38A47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19AC32C01B825E4E00F38A47 /* Main.storyboard */; };
 		19AC32C41B825E4E00F38A47 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19AC32C31B825E4E00F38A47 /* Images.xcassets */; };
 		19AC32C71B825E4E00F38A47 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19AC32C51B825E4E00F38A47 /* LaunchScreen.xib */; };
 		19AC32D31B825E4F00F38A47 /* FavorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC32D21B825E4F00F38A47 /* FavorTests.m */; };
+		4A00F09B0C304F259232D8A9 /* libPods-Favor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD6DEF3AFC654F6D7EFE8C4 /* libPods-Favor.a */; };
+		DBC3B31956D2BED7A8284DCE /* libPods-FavorTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D09AF03509A7622B685A85AB /* libPods-FavorTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +34,20 @@
 		19AC32B81B825E4E00F38A47 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		19AC32BA1B825E4E00F38A47 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		19AC32BB1B825E4E00F38A47 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		19AC32BD1B825E4E00F38A47 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		19AC32BE1B825E4E00F38A47 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		19AC32BD1B825E4E00F38A47 /* FavorFeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavorFeedViewController.h; sourceTree = "<group>"; };
+		19AC32BE1B825E4E00F38A47 /* FavorFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavorFeedViewController.m; sourceTree = "<group>"; };
 		19AC32C11B825E4E00F38A47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		19AC32C31B825E4E00F38A47 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		19AC32C61B825E4E00F38A47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		19AC32CC1B825E4F00F38A47 /* FavorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FavorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19AC32D11B825E4F00F38A47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19AC32D21B825E4F00F38A47 /* FavorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavorTests.m; sourceTree = "<group>"; };
+		29005DB7C27826C790BDC074 /* Pods-FavorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FavorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FavorTests/Pods-FavorTests.release.xcconfig"; sourceTree = "<group>"; };
+		8BF7A1A9F96E8BF44B91BAFA /* Pods-FavorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FavorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FavorTests/Pods-FavorTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BAD6DEF3AFC654F6D7EFE8C4 /* libPods-Favor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Favor.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD5FFA3CDD1D9EA184C5C345 /* Pods-Favor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Favor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Favor/Pods-Favor.release.xcconfig"; sourceTree = "<group>"; };
+		D09AF03509A7622B685A85AB /* libPods-FavorTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FavorTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2AAE06BCAEEC91959B683A5 /* Pods-Favor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Favor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Favor/Pods-Favor.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A00F09B0C304F259232D8A9 /* libPods-Favor.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBC3B31956D2BED7A8284DCE /* libPods-FavorTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +76,8 @@
 				19AC32B51B825E4E00F38A47 /* Favor */,
 				19AC32CF1B825E4F00F38A47 /* FavorTests */,
 				19AC32B41B825E4E00F38A47 /* Products */,
+				97098A8EF2A3F5C5C019A735 /* Pods */,
+				C237CBE8237D489AC76603CE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,8 +95,8 @@
 			children = (
 				19AC32BA1B825E4E00F38A47 /* AppDelegate.h */,
 				19AC32BB1B825E4E00F38A47 /* AppDelegate.m */,
-				19AC32BD1B825E4E00F38A47 /* ViewController.h */,
-				19AC32BE1B825E4E00F38A47 /* ViewController.m */,
+				19AC32BD1B825E4E00F38A47 /* FavorFeedViewController.h */,
+				19AC32BE1B825E4E00F38A47 /* FavorFeedViewController.m */,
 				19AC32C01B825E4E00F38A47 /* Main.storyboard */,
 				19AC32C31B825E4E00F38A47 /* Images.xcassets */,
 				19AC32C51B825E4E00F38A47 /* LaunchScreen.xib */,
@@ -119,6 +131,26 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		97098A8EF2A3F5C5C019A735 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E2AAE06BCAEEC91959B683A5 /* Pods-Favor.debug.xcconfig */,
+				CD5FFA3CDD1D9EA184C5C345 /* Pods-Favor.release.xcconfig */,
+				8BF7A1A9F96E8BF44B91BAFA /* Pods-FavorTests.debug.xcconfig */,
+				29005DB7C27826C790BDC074 /* Pods-FavorTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C237CBE8237D489AC76603CE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BAD6DEF3AFC654F6D7EFE8C4 /* libPods-Favor.a */,
+				D09AF03509A7622B685A85AB /* libPods-FavorTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,9 +158,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 19AC32D61B825E4F00F38A47 /* Build configuration list for PBXNativeTarget "Favor" */;
 			buildPhases = (
+				6BA7F57C837AE3A73EF4AC57 /* Check Pods Manifest.lock */,
 				19AC32AF1B825E4E00F38A47 /* Sources */,
 				19AC32B01B825E4E00F38A47 /* Frameworks */,
 				19AC32B11B825E4E00F38A47 /* Resources */,
+				A2F5BDC2554E6A14EEF61A32 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -143,9 +177,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 19AC32D91B825E4F00F38A47 /* Build configuration list for PBXNativeTarget "FavorTests" */;
 			buildPhases = (
+				D6B7B6FFEC425E6B4D5A0D06 /* Check Pods Manifest.lock */,
 				19AC32C81B825E4F00F38A47 /* Sources */,
 				19AC32C91B825E4F00F38A47 /* Frameworks */,
 				19AC32CA1B825E4F00F38A47 /* Resources */,
+				63A9931229F0442D13B6AF37 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -214,12 +250,75 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		63A9931229F0442D13B6AF37 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FavorTests/Pods-FavorTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6BA7F57C837AE3A73EF4AC57 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A2F5BDC2554E6A14EEF61A32 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Favor/Pods-Favor-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6B7B6FFEC425E6B4D5A0D06 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		19AC32AF1B825E4E00F38A47 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19AC32BF1B825E4E00F38A47 /* ViewController.m in Sources */,
+				19AC32BF1B825E4E00F38A47 /* FavorFeedViewController.m in Sources */,
 				19AC32BC1B825E4E00F38A47 /* AppDelegate.m in Sources */,
 				19AC32B91B825E4E00F38A47 /* main.m in Sources */,
 			);
@@ -345,6 +444,7 @@
 		};
 		19AC32D71B825E4F00F38A47 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2AAE06BCAEEC91959B683A5 /* Pods-Favor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Favor/Info.plist;
@@ -355,6 +455,7 @@
 		};
 		19AC32D81B825E4F00F38A47 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD5FFA3CDD1D9EA184C5C345 /* Pods-Favor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Favor/Info.plist;
@@ -365,6 +466,7 @@
 		};
 		19AC32DA1B825E4F00F38A47 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BF7A1A9F96E8BF44B91BAFA /* Pods-FavorTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -384,6 +486,7 @@
 		};
 		19AC32DB1B825E4F00F38A47 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29005DB7C27826C790BDC074 /* Pods-FavorTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -416,6 +519,7 @@
 				19AC32D81B825E4F00F38A47 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		19AC32D91B825E4F00F38A47 /* Build configuration list for PBXNativeTarget "FavorTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +528,7 @@
 				19AC32DB1B825E4F00F38A47 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
