@@ -25,9 +25,12 @@
     [super viewDidLoad];
     self.facebookLoginOperations = [[FacebookLoginModel alloc]init];
     
+    NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
+    
+    NSLog(bundleIdentifier);
+    
+    
     self.facebookLoginOperations.delegate = self;
-    
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -36,14 +39,11 @@
     {
         [self performSegueWithIdentifier:@"loginSuccessful" sender:self];
     }
-
 }
 
 - (IBAction)onLoginWithFacebookButtonPressed:(UIButton *)sender
 {
-    
     [self.facebookLoginOperations loginWithFacebook];
-    
 }
 
 
