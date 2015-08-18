@@ -10,6 +10,8 @@
 #import <Parse.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+//#import <PFFacebookUtils.h>
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 
 @interface AppDelegate ()
 
@@ -31,8 +33,13 @@
     
     [Parse setApplicationId:@"nIoXGfRHkMlGkWdCDbQpjTd7sbtuEMdgrH5PVJMs"
                   clientKey:@"gu3HUJ6Av4NjbSYKvbyN0Xzn7UR74mBFmYhKfwuc"];
-
-
+    
+//    [PFFacebookUtils initializeFacebook];
+    
+    [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
+    
+    
+    
     //
     // If you are using Facebook, uncomment and add your FacebookAppID to your bundle's plist as
     // described here: https://developers.facebook.com/docs/getting-started/facebook-sdk-for-ios/
@@ -82,6 +89,9 @@
                                                          UIRemoteNotificationTypeSound)];
     }
     
+//    return [[FBSDKApplicationDelegate sharedInstance] application:application
+//                                    didFinishLaunchingWithOptions:launchOptions];
+    
     return YES;
 }
 
@@ -111,6 +121,8 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    [FBSDKAppEvents activateApp];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

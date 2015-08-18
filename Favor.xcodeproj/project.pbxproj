@@ -16,6 +16,7 @@
 		19AC32C41B825E4E00F38A47 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19AC32C31B825E4E00F38A47 /* Images.xcassets */; };
 		19AC32C71B825E4E00F38A47 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19AC32C51B825E4E00F38A47 /* LaunchScreen.xib */; };
 		19AC32D31B825E4F00F38A47 /* FavorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC32D21B825E4F00F38A47 /* FavorTests.m */; };
+		19F59BA71B82B0770057BC6D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F59BA61B82B0770057BC6D /* LoginViewController.m */; };
 		4A00F09B0C304F259232D8A9 /* libPods-Favor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD6DEF3AFC654F6D7EFE8C4 /* libPods-Favor.a */; };
 		DBC3B31956D2BED7A8284DCE /* libPods-FavorTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D09AF03509A7622B685A85AB /* libPods-FavorTests.a */; };
 /* End PBXBuildFile section */
@@ -48,6 +49,8 @@
 		19AC32CC1B825E4F00F38A47 /* FavorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FavorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19AC32D11B825E4F00F38A47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19AC32D21B825E4F00F38A47 /* FavorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavorTests.m; sourceTree = "<group>"; };
+		19F59BA51B82B0770057BC6D /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		19F59BA61B82B0770057BC6D /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		29005DB7C27826C790BDC074 /* Pods-FavorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FavorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FavorTests/Pods-FavorTests.release.xcconfig"; sourceTree = "<group>"; };
 		8BF7A1A9F96E8BF44B91BAFA /* Pods-FavorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FavorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FavorTests/Pods-FavorTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BAD6DEF3AFC654F6D7EFE8C4 /* libPods-Favor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Favor.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,7 +84,8 @@
 			children = (
 				19AC32BD1B825E4E00F38A47 /* FavorFeedViewController.h */,
 				19AC32BE1B825E4E00F38A47 /* FavorFeedViewController.m */,
-				19A035DB1B8282030062251C /* Model */,
+				19F59BA51B82B0770057BC6D /* LoginViewController.h */,
+				19F59BA61B82B0770057BC6D /* LoginViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -122,6 +126,7 @@
 			children = (
 				19AC32BA1B825E4E00F38A47 /* AppDelegate.h */,
 				19AC32BB1B825E4E00F38A47 /* AppDelegate.m */,
+				19A035DB1B8282030062251C /* Model */,
 				19A035D71B826C5A0062251C /* Controllers */,
 				19AC32C01B825E4E00F38A47 /* Main.storyboard */,
 				19AC32C31B825E4E00F38A47 /* Images.xcassets */,
@@ -348,6 +353,7 @@
 				19A035DA1B8281FC0062251C /* Favor.m in Sources */,
 				19AC32BF1B825E4E00F38A47 /* FavorFeedViewController.m in Sources */,
 				19AC32BC1B825E4E00F38A47 /* AppDelegate.m in Sources */,
+				19F59BA71B82B0770057BC6D /* LoginViewController.m in Sources */,
 				19AC32B91B825E4E00F38A47 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,35 +18,13 @@
 
 @implementation FavorFeedViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    
-//    User *someUser = [User object];
-//    
-//    someUser.phoneNumber = @"867-5309";
-//    
-//    [someUser setObject:someUser.phoneNumber forKey:@"phoneNumber"];
-//    
-//    someUser.username = @"testUser3";
-//    someUser.password = @"passWord3";
-//    someUser.email = @"testuser3@gmail.com";
-//    
-//    [someUser signUpInBackground];
-    
-    if ([FBSDKAccessToken currentAccessToken]) {
-        NSLog(@"Already logged in with facebook");
-    }
-    
-    
-    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-    loginButton.center = self.view.center;
-    [self.view addSubview:loginButton];
-
-    
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
