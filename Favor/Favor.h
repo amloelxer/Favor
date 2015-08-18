@@ -17,7 +17,6 @@
 @property NSString *text;
 @property NSMutableArray *arrayOfResponses;
 
-
 + (NSString *)parseClassName;
 
 @end
