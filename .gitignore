@@ -1,5 +1,8 @@
 # Created by https://www.gitignore.io/api/xcode
 
+
+.DS_Store
+
 ### Xcode ###
 # Xcode
 #
@@ -25,3 +28,7 @@ xcuserdata
 *.moved-aside
 *.xcuserstate
 
+#Pods
+Podfile.lock
+Pods/
+Favor.xcworkspace/
