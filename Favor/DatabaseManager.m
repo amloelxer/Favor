@@ -29,6 +29,8 @@
   
   PFQuery *postQueryForUser = [PFQuery queryWithClassName:@"Favor"];
   
+  [postQueryForUser includeKey:@"User"];
+  
   [postQueryForUser whereKey:@"askOrOffer" equalTo:@(NO)];
   
       [postQueryForUser findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -79,34 +81,37 @@
 - (void)getFavorsFromParseDataBase:(User *)passedUser asksOrOffer:(NSInteger)asksOrOffers
 {
   
-    NSMutableArray *queryResults = [[NSMutableArray alloc]init];
+  NSMutableArray *queryResults = [[NSMutableArray alloc]init];
   
-    PFQuery *postQueryForUser = [PFQuery queryWithClassName:@"Favor"];
+  PFQuery *postQueryForUser = [PFQuery queryWithClassName:@"Favor"];
   
-    if(passedUser!= nil)
-    {
-      [postQueryForUser whereKey:@"CreatedBy" equalTo:passedUser];
-      
-      
-    }
+  [postQueryForUser includeKey:@"CreatedBy"];
   
-    else if(asksOrOffers == 0)
-    {
-      //query for asks
-      [postQueryForUser whereKey:@"askOrOffer" equalTo:@(NO)];
-    }
   
-    else
-    {
-      //query for offers
-      [postQueryForUser whereKey:@"askOrOffer" equalTo:@(YES)];
-    }
-            
-            
-    [postQueryForUser addDescendingOrder:@"updatedAt"];
+  if(passedUser!= nil)
+  {
+    [postQueryForUser whereKey:@"CreatedBy" equalTo:passedUser];
+    
+  }
   
-
+  else if(asksOrOffers == 0)
+  {
+    //query for asks
+    [postQueryForUser whereKey:@"askOrOffer" equalTo:@(NO)];
+  }
+  
+  else
+  {
+    //query for offers
+    [postQueryForUser whereKey:@"askOrOffer" equalTo:@(YES)];
+  }
+  
+  
+  [postQueryForUser addDescendingOrder:@"updatedAt"];
+  
+  
   [postQueryForUser findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    
     if(!error)
     {
       for(PFObject *favor in objects)
@@ -122,50 +127,36 @@
         
         tempFavor.timePosted = stringFavorWasPosted;
         
-       
+        PFObject *user = [favor objectForKey:@"CreatedBy"];
         
-        if(passedUser!= nil)
-        {
-          tempFavor.posterName = passedUser[@"name"];
-          PFFile *profPictureFile = passedUser[@"ProfilePicture"];
-          tempFavor.imageFile = profPictureFile;
-        }
+          if(passedUser!= nil)
+          {
+            tempFavor.posterName = passedUser[@"name"];
+            PFFile *profPictureFile = passedUser[@"ProfilePicture"];
+            tempFavor.imageFile = profPictureFile;
+          }
         
-        else
-        {
-           tempFavor.posterName = [favor objectForKey:@"name"];
-            PFUser *favorToUserRelation= [favor objectForKey:@"CreatedBy"];
-          
-            PFQuery *postQueryForUser = [PFQuery queryWithClassName:@"User"];
-          
-          
-          
-//            PFQuery *query = [favorToUserRelation query];
-          
-          
-//            NSArray *imageObjects = [query findObjects];
-          
-//              for (PFObject *object in imageObjects)
-//              {
-//                PFFile *profPictureFile = [object objectForKey:@"ProfilePicture"];
-//                tempFavor.imageFile = profPictureFile;
-//                
-//              }
-        
-        }
+          else
+          {
+            tempFavor.posterName = [user objectForKey:@"name"];
+            PFFile *imageFile = [user objectForKey:@"ProfilePicture"];
+            tempFavor.imageFile = imageFile;
+          }
         
         [queryResults addObject:tempFavor];
         
-      }
+       }
       
       [self.delegate reloadTableWithQueryResults:queryResults];
       
     }
+    
   }];
+  
 
-  
-  
 }
+
+
 
 
 @end

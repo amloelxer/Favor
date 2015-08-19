@@ -49,7 +49,7 @@
   
   self.parseDataManager.delegate = self;
   
-  [self.parseDataManager getFavorsFromParseDataBase:nil asksOrOffer:offers];
+  [self.parseDataManager getFavorsFromParseDataBase:nil asksOrOffer:asks];
   
   
   UIColor *favorRedColor = [UIColor colorWithRed:251.0f/255.0f
@@ -84,11 +84,13 @@
   
   [firstFavor setObject:@"Test Post with text and stuff. Doesn't it look pretty?" forKey:@"text"];
   
-  [firstFavor setObject:@(YES) forKey:@"askOrOffer"];
+  [firstFavor setObject:@(NO) forKey:@"askOrOffer"];
   
-  PFRelation *relation = [firstFavor relationForKey:@"CreatedBy"];
+//  PFRelation *relation = [firstFavor relationForKey:@"CreatedBy"];
   
-  [relation addObject:self.currentUser];
+//  [relation addObject:self.currentUser];
+  
+  firstFavor[@"CreatedBy"] = self.currentUser;
   
   [firstFavor saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
     
