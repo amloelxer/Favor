@@ -37,7 +37,20 @@
           
           tempFavor.posterName = passedUser[@"name"];
           
+          PFFile *profPictureFile = passedUser[@"ProfilePicture"];
+          
+          
+          tempFavor.imageFile = profPictureFile;
+//          [profPictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+//            if (!error) {
+//              UIImage *image = [UIImage imageWithData:data];
+//              tempFavor.userImage = image;
+          
+//            }
+//          }];
+          
           [queryResults addObject:tempFavor];
+          
           
         }
         

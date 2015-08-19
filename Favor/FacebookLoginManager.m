@@ -40,7 +40,7 @@
                      NSString *idNumber = [result objectForKey:@"id"];
                      //set a string with the path to the image
                      NSString *name = [result objectForKey:@"name"];
-                     NSString *userImageURL = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large", idNumber];
+                     NSString *userImageURL = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=small", idNumber];
                      //sets the image from the path
                      UIImage *userImage = [UIImage imageWithData: [NSData dataWithContentsOfURL:[NSURL URLWithString:userImageURL]]];
                      //convert the image into data

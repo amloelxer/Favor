@@ -32,6 +32,8 @@ typedef NS_ENUM(NSInteger, FavorType) {
 
 @property NSString *posterName;
 
+@property PFFile *imageFile;
+
 + (NSString *)parseClassName;
 
 @end

@@ -120,14 +120,15 @@
   
   cell.posterName.text = favorAtIndexPath.posterName;
   
+  UIImage *profImage = [UIImage imageWithData:[favorAtIndexPath.imageFile getData]];
+  
+  cell.profilePictureImageView.image = profImage;
+  
 //  UIImageView *imageView = [[UIImageView alloc]init];
   
 //  imageView.layer.cornerRadius
   
 //  cell.profilePictureImageView
-  
-  
-  
   
 //  cell.detailTextLabel.text = favorAtIndexPath.text;
   
