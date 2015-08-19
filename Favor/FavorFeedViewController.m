@@ -33,7 +33,7 @@
 
  //constants for Favor Feed declared here
  NSInteger const asks = 0;
- NSInteger const offer = 1;
+ NSInteger const offers = 1;
  NSString *const cellResuseIdentifier = @"CellID";
 
 - (void)viewDidLoad
@@ -49,7 +49,8 @@
   
   self.parseDataManager.delegate = self;
   
-  [self.parseDataManager getMyFavors:self.currentUser];
+  [self.parseDataManager getFavorsFromParseDataBase:nil asksOrOffer:offers];
+  
   
   UIColor *favorRedColor = [UIColor colorWithRed:251.0f/255.0f
                                            green:67.0f/255.0f
@@ -122,7 +123,7 @@
     NSLog(@"asks");
   }
   
-  else if(self.favorSegmentedControl.selectedSegmentIndex == offer)
+  else if(self.favorSegmentedControl.selectedSegmentIndex == offers)
   {
     NSLog(@"Offers");
   }
@@ -139,17 +140,20 @@
   
   if(sender.selectedSegmentIndex == asks)
   {
-    [self callMethodForSegment];
+    NSLog(@"asks");
+    [self.parseDataManager getFavorsFromParseDataBase:nil asksOrOffer:asks];
   }
   
-  else if(sender.selectedSegmentIndex == offer)
+  else if(sender.selectedSegmentIndex == offers)
   {
-    [self callMethodForSegment];
+    [self.parseDataManager getFavorsFromParseDataBase:nil asksOrOffer:offers];
+    NSLog(@"Offers");
   }
   
   else
   {
-    [self callMethodForSegment];
+    [self.parseDataManager getFavorsFromParseDataBase:self.currentUser asksOrOffer:nil];
+     NSLog(@"My Favors");
   }
   
 }
@@ -169,14 +173,6 @@
   cell.profilePictureImageView.image = profImage;
   
   cell.timePassedSinceFavorWasPosted.text = favorAtIndexPath.timePosted;
-  
-//  UIImageView *imageView = [[UIImageView alloc]init];
-  
-//  imageView.layer.cornerRadius
-  
-//  cell.profilePictureImageView
-  
-//  cell.detailTextLabel.text = favorAtIndexPath.text;
   
   return cell;
 }

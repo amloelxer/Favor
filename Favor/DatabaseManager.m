@@ -25,6 +25,46 @@
 
 - (void)getAskedFavors
 {
+  NSMutableArray *queryResults = [[NSMutableArray alloc]init];
+  
+  PFQuery *postQueryForUser = [PFQuery queryWithClassName:@"Favor"];
+  
+  [postQueryForUser whereKey:@"askOrOffer" equalTo:@(NO)];
+  
+      [postQueryForUser findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(!error)
+        {
+          for(PFObject *favor in objects)
+          {
+  
+            Favor *tempFavor = [[Favor alloc]init];
+  
+            tempFavor.text = [favor objectForKey:@"text"];
+  
+            NSDate *favorTimeUpdatedAt = favor.updatedAt;
+  
+            NSString *stringFavorWasPosted = [self dateConverter:favorTimeUpdatedAt];
+  
+            tempFavor.timePosted = stringFavorWasPosted;
+  
+            tempFavor.posterName = [favor objectForKey:@"name"];
+            
+            PFFile *profPictureFile = [favor objectForKey:@"ProfilePicture"];
+  
+            tempFavor.imageFile = profPictureFile;
+  
+            [queryResults addObject:tempFavor];
+  
+  
+          }
+          
+          [self.delegate reloadTableWithQueryResults:queryResults];
+          
+        }
+      }];
+  
+  
+  
   
   
 }
@@ -36,53 +76,95 @@
 
 
 
-- (void)getMyFavors:(User *)passedUser
+- (void)getFavorsFromParseDataBase:(User *)passedUser asksOrOffer:(NSInteger)asksOrOffers
 {
   
     NSMutableArray *queryResults = [[NSMutableArray alloc]init];
   
     PFQuery *postQueryForUser = [PFQuery queryWithClassName:@"Favor"];
   
-    [postQueryForUser whereKey:@"CreatedBy" equalTo:passedUser];
+    if(passedUser!= nil)
+    {
+      [postQueryForUser whereKey:@"CreatedBy" equalTo:passedUser];
+      
+      
+    }
   
-    [postQueryForUser findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-      if(!error)
-      {
-        for(PFObject *o in objects)
-        {
-        
-          Favor *tempFavor = [[Favor alloc]init];
-          
-          tempFavor.text = [o objectForKey:@"text"];
-          
-          NSDate *favorTimeUpdatedAt = o.updatedAt;
-          
-          NSString *stringFavorWasPosted = [self dateConverter:favorTimeUpdatedAt];
-        
-          tempFavor.timePosted = stringFavorWasPosted;
+    else if(asksOrOffers == 0)
+    {
+      //query for asks
+      [postQueryForUser whereKey:@"askOrOffer" equalTo:@(NO)];
+    }
+  
+    else
+    {
+      //query for offers
+      [postQueryForUser whereKey:@"askOrOffer" equalTo:@(YES)];
+    }
+            
+            
+    [postQueryForUser addDescendingOrder:@"updatedAt"];
+  
 
+  [postQueryForUser findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    if(!error)
+    {
+      for(PFObject *favor in objects)
+      {
+        
+        Favor *tempFavor = [[Favor alloc]init];
+        
+        tempFavor.text = [favor objectForKey:@"text"];
+        
+        NSDate *favorTimeUpdatedAt = favor.updatedAt;
+        
+        NSString *stringFavorWasPosted = [self dateConverter:favorTimeUpdatedAt];
+        
+        tempFavor.timePosted = stringFavorWasPosted;
+        
+       
+        
+        if(passedUser!= nil)
+        {
           tempFavor.posterName = passedUser[@"name"];
-          
           PFFile *profPictureFile = passedUser[@"ProfilePicture"];
-          
           tempFavor.imageFile = profPictureFile;
-//          [profPictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-//            if (!error) {
-//              UIImage *image = [UIImage imageWithData:data];
-//              tempFavor.userImage = image;
-          
-//            }
-//          }];
-          
-          [queryResults addObject:tempFavor];
-          
-          
         }
         
-        [self.delegate reloadTableWithQueryResults:queryResults];
+        else
+        {
+           tempFavor.posterName = [favor objectForKey:@"name"];
+            PFUser *favorToUserRelation= [favor objectForKey:@"CreatedBy"];
+          
+            PFQuery *postQueryForUser = [PFQuery queryWithClassName:@"User"];
+          
+          
+          
+//            PFQuery *query = [favorToUserRelation query];
+          
+          
+//            NSArray *imageObjects = [query findObjects];
+          
+//              for (PFObject *object in imageObjects)
+//              {
+//                PFFile *profPictureFile = [object objectForKey:@"ProfilePicture"];
+//                tempFavor.imageFile = profPictureFile;
+//                
+//              }
+        
+        }
+        
+        [queryResults addObject:tempFavor];
         
       }
-    }];
+      
+      [self.delegate reloadTableWithQueryResults:queryResults];
+      
+    }
+  }];
+
+  
+  
 }
 
 

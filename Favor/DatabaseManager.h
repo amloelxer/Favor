@@ -24,7 +24,7 @@
 
 @property (nonatomic, weak) id <DatabaseManagerDelegate> delegate;
 
-- (void)getMyFavors:(User *)passedUser;
+- (void)getFavorsFromParseDataBase:(User *)passedUser asksOrOffer:(NSInteger)asksOrOffers;
 
 - (void)getOfferedFavors;
 
