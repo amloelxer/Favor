@@ -26,9 +26,6 @@
 
 - (void)getFavorsFromParseDataBase:(User *)passedUser asksOrOffer:(NSInteger)asksOrOffers;
 
-- (void)getOfferedFavors;
-
-- (void)getAskedFavors;
 
 
 

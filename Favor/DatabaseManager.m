@@ -13,69 +13,41 @@
 
 -(NSString *)dateConverter:(NSDate *)passedDate
 {
-  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-  [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+//  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//  [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+//  
+//  NSString *stringFromDate = [formatter stringFromDate:passedDate];
+//  
+//  
+//  return stringFromDate;
   
-  NSString *stringFromDate = [formatter stringFromDate:passedDate];
+  NSTimeInterval timeInterval = fabs([passedDate timeIntervalSinceNow]);
   
+  int minutes = timeInterval / 60;
+  int hours = minutes / 60;
+  int days = hours / 24;
   
-  return stringFromDate;
+  if(minutes < 1)
+  {
+    return @"now";
+  }
   
-}
-
-- (void)getAskedFavors
-{
-  NSMutableArray *queryResults = [[NSMutableArray alloc]init];
+  else if (hours <1 )
+  {
+    return [NSString stringWithFormat:@"%im ago", minutes];
+  }
   
-  PFQuery *postQueryForUser = [PFQuery queryWithClassName:@"Favor"];
+  else if (days <1 )
+  {
+    return [NSString stringWithFormat:@"%ih ago", hours];
+  }
   
-  [postQueryForUser includeKey:@"User"];
-  
-  [postQueryForUser whereKey:@"askOrOffer" equalTo:@(NO)];
-  
-      [postQueryForUser findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if(!error)
-        {
-          for(PFObject *favor in objects)
-          {
-  
-            Favor *tempFavor = [[Favor alloc]init];
-  
-            tempFavor.text = [favor objectForKey:@"text"];
-  
-            NSDate *favorTimeUpdatedAt = favor.updatedAt;
-  
-            NSString *stringFavorWasPosted = [self dateConverter:favorTimeUpdatedAt];
-  
-            tempFavor.timePosted = stringFavorWasPosted;
-  
-            tempFavor.posterName = [favor objectForKey:@"name"];
-            
-            PFFile *profPictureFile = [favor objectForKey:@"ProfilePicture"];
-  
-            tempFavor.imageFile = profPictureFile;
-  
-            [queryResults addObject:tempFavor];
-  
-  
-          }
-          
-          [self.delegate reloadTableWithQueryResults:queryResults];
-          
-        }
-      }];
-  
-  
-  
-  
+  else
+  {
+    return [NSString stringWithFormat:@"%id ago", days];
+  }
   
 }
-
-- (void)getOfferedFavors
-{
-  
-}
-
 
 
 - (void)getFavorsFromParseDataBase:(User *)passedUser asksOrOffer:(NSInteger)asksOrOffers
