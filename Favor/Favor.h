@@ -11,7 +11,16 @@
 #import "User.h"
 
 
+
+
 @interface Favor : PFObject<PFSubclassing>
+
+typedef NS_ENUM(NSInteger, FavorType) {
+  FavorTypeOffer = 0,
+  FavorTypeAsk,
+};
+
+@property FavorType favorType;
 
 
 @property NSString *text;

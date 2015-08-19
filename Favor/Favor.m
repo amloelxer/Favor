@@ -10,10 +10,9 @@
 
 @implementation Favor
 
+@dynamic favorType;
 @dynamic text;
 @dynamic arrayOfResponses;
-
-
 + (void)load {
     [self registerSubclass];
 }

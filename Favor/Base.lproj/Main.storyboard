@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E26a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fgB-iG-LAb">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -37,7 +38,7 @@
             </objects>
             <point key="canvasLocation" x="28" y="316"/>
         </scene>
-        <!--Feed View Controller-->
+        <!--Favors-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="FavorFeedViewController" sceneMemberID="viewController">
@@ -48,9 +49,54 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fIG-Tu-yn9">
+                                <rect key="frame" x="191" y="92" width="233" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="218" id="5mR-01-61d"/>
+                                    <constraint firstAttribute="height" constant="28" id="CxY-kH-kb6"/>
+                                    <constraint firstAttribute="width" constant="233" id="IUI-u1-3tM"/>
+                                    <constraint firstAttribute="height" constant="28" id="pfa-aL-T26"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Asks"/>
+                                    <segment title="Offers"/>
+                                    <segment title="My Favors"/>
+                                </segments>
+                                <color key="tintColor" red="0.98431372549019602" green="0.2627450980392157" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5mR-01-61d"/>
+                                        <exclude reference="pfa-aL-T26"/>
+                                    </mask>
+                                </variation>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="fIG-Tu-yn9" secondAttribute="centerX" constant="-7.5" id="6qU-BX-m89"/>
+                            <constraint firstItem="fIG-Tu-yn9" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="28" id="M5o-cT-OrN"/>
+                            <constraint firstAttribute="centerY" secondItem="fIG-Tu-yn9" secondAttribute="centerY" constant="194" id="PYm-PW-3h8"/>
+                            <constraint firstItem="fIG-Tu-yn9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="175" id="t2T-xe-rhK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fIG-Tu-yn9" secondAttribute="trailing" constant="160" id="wmE-XI-xpw"/>
+                            <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="fIG-Tu-yn9" secondAttribute="trailing" constant="160" id="zKK-uR-eNX"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="PYm-PW-3h8"/>
+                                <exclude reference="t2T-xe-rhK"/>
+                                <exclude reference="wmE-XI-xpw"/>
+                                <exclude reference="zKK-uR-eNX"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Feed View Controller" id="Ld8-Fg-Oy7"/>
+                    <navigationItem key="navigationItem" title="Favors" id="Ld8-Fg-Oy7">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="sGt-DO-d4N">
+                            <connections>
+                                <action selector="addFavorPressed:" destination="vXZ-lx-hvc" id="LsW-e6-MCY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

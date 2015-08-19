@@ -19,30 +19,27 @@
 @implementation LoginViewController
 
 
-
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+  
     self.facebookLoginOperations = [[FacebookLoginModel alloc]init];
-    
-    NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
-    
-    NSLog(bundleIdentifier);
-    
-    
+  
     self.facebookLoginOperations.delegate = self;
+  
+    [self.facebookLoginOperations checkIfLoggedIn];
+  
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
-    if ([FBSDKAccessToken currentAccessToken])
-    {
-        [self performSegueWithIdentifier:@"loginSuccessful" sender:self];
-    }
-}
+//-(void)viewDidAppear:(BOOL)animated
+//{
+//  
+//  
+//}
 
 - (IBAction)onLoginWithFacebookButtonPressed:(UIButton *)sender
 {
+    //call the login with facbeook operation
     [self.facebookLoginOperations loginWithFacebook];
 }
 
@@ -52,6 +49,18 @@
 {
     NSLog(@"Delegate Method called");
     [self performSegueWithIdentifier:@"loginSuccessful" sender:self];
+}
+
+-(void) logInFailedWithError:(FacebookLoginModel *)sender
+{
+  UIAlertView *alertView = [[UIAlertView alloc]
+                            initWithTitle:@"Error"
+                            message:@"There was an error logging in with Facebook. Please try again"
+                            delegate:self
+                            cancelButtonTitle:@"Cancel"
+                            otherButtonTitles:@"OK", nil];
+  
+  [alertView show];
 }
 
 

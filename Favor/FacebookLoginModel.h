@@ -14,8 +14,9 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @class FacebookLoginModel;
-@protocol FacebookLoginDelegate <NSObject>   //define delegate protocol
-- (void) hasLoggedInSuccessFully: (FacebookLoginModel *) sender;  //define delegate method to be implemented within ano
+@protocol FacebookLoginDelegate <NSObject>
+- (void) hasLoggedInSuccessFully: (FacebookLoginModel *) sender;
+- (void) logInFailedWithError: (FacebookLoginModel *) sender;
 @end
 
 
@@ -25,6 +26,8 @@
 @property (nonatomic, weak) id <FacebookLoginDelegate> delegate;
 
 -(void)loginWithFacebook;
+
+-(void)checkIfLoggedIn;
 
 
 

@@ -20,6 +20,8 @@
         if (!user)
         {
             NSLog(@"Uh oh. The user cancelled the Facebook login.");
+            [self.delegate logInFailedWithError:self];
+
         }
         
         //if it's a new user
@@ -68,7 +70,30 @@
         }
     }];
 
+}
+
+- (void)checkIfLoggedIn
+{
+  
+  FBSDKAccessToken *currentAccessToken = [FBSDKAccessToken currentAccessToken];
+  
+  //attempts to log the user if the face book token is still active
+  [PFFacebookUtils logInInBackgroundWithAccessToken:currentAccessToken block:^(PFUser *user, NSError *error){
     
+    if(!error)
+    {
+      [self.delegate hasLoggedInSuccessFully:self];
+    }
     
+    else
+    {
+      [self.delegate logInFailedWithError:self];
+    }
+    
+  }];
+  
+  
+  
+  
 }
 @end

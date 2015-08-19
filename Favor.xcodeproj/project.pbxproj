@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19653BCD1B840661009DF2C2 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19653BCC1B840661009DF2C2 /* DatabaseManager.m */; };
 		19A035DA1B8281FC0062251C /* Favor.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A035D91B8281FC0062251C /* Favor.m */; };
 		19A035DE1B8284020062251C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A035DD1B8284020062251C /* User.m */; };
 		19AC32B91B825E4E00F38A47 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC32B81B825E4E00F38A47 /* main.m */; };
@@ -33,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		19653BCB1B840661009DF2C2 /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
+		19653BCC1B840661009DF2C2 /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
 		19A035D81B8281FC0062251C /* Favor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favor.h; sourceTree = "<group>"; };
 		19A035D91B8281FC0062251C /* Favor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favor.m; sourceTree = "<group>"; };
 		19A035DC1B8284020062251C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -100,6 +103,8 @@
 				19A035D91B8281FC0062251C /* Favor.m */,
 				19A035DC1B8284020062251C /* User.h */,
 				19A035DD1B8284020062251C /* User.m */,
+				19653BCB1B840661009DF2C2 /* DatabaseManager.h */,
+				19653BCC1B840661009DF2C2 /* DatabaseManager.m */,
 				19EDFE881B8396220076AB19 /* FacebookLoginModel.h */,
 				19EDFE891B8396230076AB19 /* FacebookLoginModel.m */,
 			);
@@ -355,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19EDFE8A1B8396230076AB19 /* FacebookLoginModel.m in Sources */,
+				19653BCD1B840661009DF2C2 /* DatabaseManager.m in Sources */,
 				19A035DE1B8284020062251C /* User.m in Sources */,
 				19A035DA1B8281FC0062251C /* Favor.m in Sources */,
 				19AC32BF1B825E4E00F38A47 /* FavorFeedViewController.m in Sources */,
