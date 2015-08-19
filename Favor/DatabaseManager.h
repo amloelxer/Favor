@@ -26,4 +26,10 @@
 
 - (void)getMyFavors:(User *)passedUser;
 
+- (void)getOfferedFavors;
+
+- (void)getAskedFavors;
+
+
+
 @end

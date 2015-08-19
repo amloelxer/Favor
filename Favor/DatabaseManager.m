@@ -11,6 +11,29 @@
 
 @implementation DatabaseManager
 
+-(NSString *)dateConverter:(NSDate *)passedDate
+{
+  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+  [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+  
+  NSString *stringFromDate = [formatter stringFromDate:passedDate];
+  
+  
+  return stringFromDate;
+  
+}
+
+- (void)getAskedFavors
+{
+  
+  
+}
+
+- (void)getOfferedFavors
+{
+  
+}
+
 
 
 - (void)getMyFavors:(User *)passedUser
@@ -32,13 +55,15 @@
           
           tempFavor.text = [o objectForKey:@"text"];
           
-          tempFavor.timePosted = [o objectForKey:@"updatedAt"];
-//          passedUser[@"ProfilePicture"];
+          NSDate *favorTimeUpdatedAt = o.updatedAt;
           
+          NSString *stringFavorWasPosted = [self dateConverter:favorTimeUpdatedAt];
+        
+          tempFavor.timePosted = stringFavorWasPosted;
+
           tempFavor.posterName = passedUser[@"name"];
           
           PFFile *profPictureFile = passedUser[@"ProfilePicture"];
-          
           
           tempFavor.imageFile = profPictureFile;
 //          [profPictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {

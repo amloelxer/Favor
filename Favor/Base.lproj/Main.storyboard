@@ -70,6 +70,9 @@
                                         <exclude reference="pfa-aL-T26"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="KVI-Xk-C2D"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="155" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6Mg-hi-9hS">
                                 <rect key="frame" x="0.0" y="144" width="600" height="456"/>
@@ -105,10 +108,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGY-hR-zeO">
-                                                    <rect key="frame" x="24" y="108" width="116" height="38"/>
+                                                    <rect key="frame" x="24" y="108" width="258" height="38"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="38" id="SWA-6Z-Hfp"/>
-                                                        <constraint firstAttribute="width" constant="116" id="sah-Hp-RHc"/>
+                                                        <constraint firstAttribute="width" constant="258" id="sah-Hp-RHc"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -193,6 +196,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="favorSegmentedControl" destination="fIG-Tu-yn9" id="XFt-CO-70m"/>
                         <outlet property="favorTableView" destination="6Mg-hi-9hS" id="eX4-ZI-YqH"/>
                     </connections>
                 </viewController>

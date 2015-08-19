@@ -25,12 +25,15 @@
 @property NSArray *arrayOfFavors;
 @property DatabaseManager *parseDataManager;
 
+@property (weak, nonatomic) IBOutlet UISegmentedControl *favorSegmentedControl;
 
 @end
 
 @implementation FavorFeedViewController
 
-//for dequeing the cells
+ //constants for Favor Feed declared here
+ NSInteger const asks = 0;
+ NSInteger const offer = 1;
  NSString *const cellResuseIdentifier = @"CellID";
 
 - (void)viewDidLoad
@@ -78,7 +81,9 @@
   
   firstFavor[@"text"] = @"Test Post with stuff";
   
-  //  firstFavor[@"askOrOffer"] = (BOOL)NO;
+  [firstFavor setObject:@"Test Post with text and stuff. Doesn't it look pretty?" forKey:@"text"];
+  
+  [firstFavor setObject:@(YES) forKey:@"askOrOffer"];
   
   PFRelation *relation = [firstFavor relationForKey:@"CreatedBy"];
   
@@ -89,6 +94,7 @@
     if (!error)
     {
       NSLog(@"Save sucessfully");
+      [self.favorTableView reloadData];
       
     }
     
@@ -109,6 +115,44 @@
 }
 
 
+- (void)callMethodForSegment
+{
+  if(self.favorSegmentedControl.selectedSegmentIndex == asks)
+  {
+    NSLog(@"asks");
+  }
+  
+  else if(self.favorSegmentedControl.selectedSegmentIndex == offer)
+  {
+    NSLog(@"Offers");
+  }
+  
+  else
+  {
+    NSLog(@"My Favors");
+  }
+  
+
+}
+
+- (IBAction)segmentChanged:(UISegmentedControl *)sender {
+  
+  if(sender.selectedSegmentIndex == asks)
+  {
+    [self callMethodForSegment];
+  }
+  
+  else if(sender.selectedSegmentIndex == offer)
+  {
+    [self callMethodForSegment];
+  }
+  
+  else
+  {
+    [self callMethodForSegment];
+  }
+  
+}
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -123,6 +167,8 @@
   UIImage *profImage = [UIImage imageWithData:[favorAtIndexPath.imageFile getData]];
   
   cell.profilePictureImageView.image = profImage;
+  
+  cell.timePassedSinceFavorWasPosted.text = favorAtIndexPath.timePosted;
   
 //  UIImageView *imageView = [[UIImageView alloc]init];
   
