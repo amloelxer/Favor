@@ -8,9 +8,9 @@ pod 'FBSDKLoginKit'
 pod 'FBSDKShareKit'
 pod 'ParseFacebookUtilsV4'
 pod 'ParseUI'
+pod 'pop', '~> 1.0'
 end
 
 target 'FavorTests' do
 pod 'Parse'
 end
-
