@@ -8,11 +8,13 @@
 
 #import "LoginViewController.h"
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
-#import "FacebookLoginModel.h"
+#import "FacebookLoginManager.h"
 
 
 @interface LoginViewController () <FacebookLoginDelegate>
-@property FacebookLoginModel *facebookLoginOperations;
+@property FacebookLoginManager *facebookLoginOperations;
+@property User *currentUser;
+
 
 @end
 
@@ -23,19 +25,20 @@
 {
     [super viewDidLoad];
   
-    self.facebookLoginOperations = [[FacebookLoginModel alloc]init];
+    self.facebookLoginOperations = [[FacebookLoginManager alloc]init];
   
     self.facebookLoginOperations.delegate = self;
   
-    [self.facebookLoginOperations checkIfLoggedIn];
+  self.currentUser = [User currentUser];
+  
+  
   
 }
 
-//-(void)viewDidAppear:(BOOL)animated
-//{
-//  
-//  
-//}
+-(void)viewDidAppear:(BOOL)animated
+{
+  [self.facebookLoginOperations checkIfLoggedIn:self.currentUser];
+}
 
 - (IBAction)onLoginWithFacebookButtonPressed:(UIButton *)sender
 {
@@ -45,21 +48,20 @@
 
 
 #pragma mark - Facebook Login Delegate Methods
-- (void) hasLoggedInSuccessFully:(FacebookLoginModel *)sender
+- (void) hasLoggedInSuccessFully:(FacebookLoginManager *)sender
 {
-    NSLog(@"Delegate Method called");
+    NSLog(@"Logged in sucessfully. Aka this delegate method should be called");
     [self performSegueWithIdentifier:@"loginSuccessful" sender:self];
 }
 
--(void) logInFailedWithError:(FacebookLoginModel *)sender
+-(void) logInFailedWithError:(FacebookLoginManager *)sender
 {
   UIAlertView *alertView = [[UIAlertView alloc]
                             initWithTitle:@"Error"
-                            message:@"There was an error logging in with Facebook. Please try again"
+                            message:@"There was an error or you have not logged in with Facebook. Please try again"
                             delegate:self
                             cancelButtonTitle:@"Cancel"
                             otherButtonTitles:@"OK", nil];
-  
   [alertView show];
 }
 

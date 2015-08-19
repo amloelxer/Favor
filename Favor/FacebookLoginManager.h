@@ -13,21 +13,21 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
-@class FacebookLoginModel;
+@class FacebookLoginManager;
 @protocol FacebookLoginDelegate <NSObject>
-- (void) hasLoggedInSuccessFully: (FacebookLoginModel *) sender;
-- (void) logInFailedWithError: (FacebookLoginModel *) sender;
+- (void) hasLoggedInSuccessFully: (FacebookLoginManager *) sender;
+- (void) logInFailedWithError: (FacebookLoginManager *) sender;
 @end
 
 
 
-@interface FacebookLoginModel : NSObject
+@interface FacebookLoginManager : NSObject
 
 @property (nonatomic, weak) id <FacebookLoginDelegate> delegate;
 
 -(void)loginWithFacebook;
 
--(void)checkIfLoggedIn;
+- (void)checkIfLoggedIn:(User *)passedUser;
 
 
 

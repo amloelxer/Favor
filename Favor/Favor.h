@@ -26,6 +26,12 @@ typedef NS_ENUM(NSInteger, FavorType) {
 @property NSString *text;
 @property NSMutableArray *arrayOfResponses;
 
+@property NSString *timePosted;
+
+@property UIImage *userImage;
+
+@property NSString *posterName;
+
 + (NSString *)parseClassName;
 
 @end

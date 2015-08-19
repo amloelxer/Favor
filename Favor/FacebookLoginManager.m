@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Alex Moller. All rights reserved.
 //
 
-#import "FacebookLoginModel.h"
+#import "FacebookLoginManager.h"
 
-@implementation FacebookLoginModel
+@implementation FacebookLoginManager
 
 
 -(void)loginWithFacebook
@@ -45,16 +45,28 @@
                      UIImage *userImage = [UIImage imageWithData: [NSData dataWithContentsOfURL:[NSURL URLWithString:userImageURL]]];
                      //convert the image into data
                      NSData *profilePictureData = UIImagePNGRepresentation(userImage);
-                     //make a file from the data
-                     PFFile *imageFile = [PFFile fileWithData:profilePictureData];
+ 
+                     PFFile *imageFile = [PFFile fileWithName:@"placeholder.png" data:profilePictureData];
+
                      //set the profile picture Column in parse to the data
                      user[@"ProfilePicture"] = imageFile;
                      user[@"name"] = name;
                      //save that bad boy
-                     [user saveInBackground];
-                     //login succesfully
-//                     [self performSegueWithIdentifier:@"loginSuccessful" sender:self];
+                   [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                     // user will automatically save its files & only call this once the
+                     // entire operation succeeds.
+                     if(!error)
+                     {
+                       NSLog(@"The save went sucessfully");
+                     }
+                     else
+                     {
+                       NSLog(@"The error message is %@", error);
+                     }
                      
+                   }];
+                     //login succesfully
+//                    [self performSegueWithIdentifier:@"loginSuccessful" sender:self];
                      [self.delegate hasLoggedInSuccessFully:self];
                  }
                  
@@ -64,36 +76,23 @@
         else
         {
             NSLog(@"User logged in through Facebook!");
-//
-            [self.delegate hasLoggedInSuccessFully:self];
-            
         }
+      
     }];
-
 }
 
-- (void)checkIfLoggedIn
+- (void)checkIfLoggedIn:(User *)passedUser
 {
+  //call delegate method accordingly if User has signed up
+  if([PFFacebookUtils isLinkedWithUser:passedUser])
+  {
+    [self.delegate hasLoggedInSuccessFully:self];
+  }
   
-  FBSDKAccessToken *currentAccessToken = [FBSDKAccessToken currentAccessToken];
-  
-  //attempts to log the user if the face book token is still active
-  [PFFacebookUtils logInInBackgroundWithAccessToken:currentAccessToken block:^(PFUser *user, NSError *error){
-    
-    if(!error)
-    {
-      [self.delegate hasLoggedInSuccessFully:self];
-    }
-    
-    else
-    {
-      [self.delegate logInFailedWithError:self];
-    }
-    
-  }];
-  
-  
-  
+  else
+  {
+    [self.delegate logInFailedWithError:self];
+  }
   
 }
 @end

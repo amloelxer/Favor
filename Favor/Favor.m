@@ -13,11 +13,18 @@
 @dynamic favorType;
 @dynamic text;
 @dynamic arrayOfResponses;
-+ (void)load {
+@dynamic timePosted;
+@dynamic posterName;
+@dynamic userImage;
+
+
++ (void)load
+{
     [self registerSubclass];
 }
 
-+ (NSString *)parseClassName {
++ (NSString *)parseClassName
+{
     return @"Favor";
 }
 

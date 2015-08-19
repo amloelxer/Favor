@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		19653BCD1B840661009DF2C2 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19653BCC1B840661009DF2C2 /* DatabaseManager.m */; };
+		19653BD01B840CD2009DF2C2 /* FavorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19653BCF1B840CD2009DF2C2 /* FavorCell.m */; };
+		19653BD41B840E1B009DF2C2 /* FavorDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19653BD31B840E1B009DF2C2 /* FavorDetailViewController.m */; };
+		19653BD81B842EBC009DF2C2 /* ProfileImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19653BD71B842EBC009DF2C2 /* ProfileImageView.m */; };
 		19A035DA1B8281FC0062251C /* Favor.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A035D91B8281FC0062251C /* Favor.m */; };
 		19A035DE1B8284020062251C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A035DD1B8284020062251C /* User.m */; };
 		19AC32B91B825E4E00F38A47 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC32B81B825E4E00F38A47 /* main.m */; };
@@ -17,7 +20,7 @@
 		19AC32C41B825E4E00F38A47 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19AC32C31B825E4E00F38A47 /* Images.xcassets */; };
 		19AC32C71B825E4E00F38A47 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19AC32C51B825E4E00F38A47 /* LaunchScreen.xib */; };
 		19AC32D31B825E4F00F38A47 /* FavorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC32D21B825E4F00F38A47 /* FavorTests.m */; };
-		19EDFE8A1B8396230076AB19 /* FacebookLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EDFE891B8396230076AB19 /* FacebookLoginModel.m */; };
+		19EDFE8A1B8396230076AB19 /* FacebookLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EDFE891B8396230076AB19 /* FacebookLoginManager.m */; };
 		19F59BA71B82B0770057BC6D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F59BA61B82B0770057BC6D /* LoginViewController.m */; };
 		4A00F09B0C304F259232D8A9 /* libPods-Favor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD6DEF3AFC654F6D7EFE8C4 /* libPods-Favor.a */; };
 		DBC3B31956D2BED7A8284DCE /* libPods-FavorTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D09AF03509A7622B685A85AB /* libPods-FavorTests.a */; };
@@ -36,6 +39,12 @@
 /* Begin PBXFileReference section */
 		19653BCB1B840661009DF2C2 /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
 		19653BCC1B840661009DF2C2 /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
+		19653BCE1B840CD2009DF2C2 /* FavorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavorCell.h; sourceTree = "<group>"; };
+		19653BCF1B840CD2009DF2C2 /* FavorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavorCell.m; sourceTree = "<group>"; };
+		19653BD21B840E1B009DF2C2 /* FavorDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavorDetailViewController.h; sourceTree = "<group>"; };
+		19653BD31B840E1B009DF2C2 /* FavorDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavorDetailViewController.m; sourceTree = "<group>"; };
+		19653BD61B842EBC009DF2C2 /* ProfileImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileImageView.h; sourceTree = "<group>"; };
+		19653BD71B842EBC009DF2C2 /* ProfileImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileImageView.m; sourceTree = "<group>"; };
 		19A035D81B8281FC0062251C /* Favor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favor.h; sourceTree = "<group>"; };
 		19A035D91B8281FC0062251C /* Favor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favor.m; sourceTree = "<group>"; };
 		19A035DC1B8284020062251C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -53,8 +62,8 @@
 		19AC32CC1B825E4F00F38A47 /* FavorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FavorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19AC32D11B825E4F00F38A47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19AC32D21B825E4F00F38A47 /* FavorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavorTests.m; sourceTree = "<group>"; };
-		19EDFE881B8396220076AB19 /* FacebookLoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookLoginModel.h; sourceTree = "<group>"; };
-		19EDFE891B8396230076AB19 /* FacebookLoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookLoginModel.m; sourceTree = "<group>"; };
+		19EDFE881B8396220076AB19 /* FacebookLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookLoginManager.h; sourceTree = "<group>"; };
+		19EDFE891B8396230076AB19 /* FacebookLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookLoginManager.m; sourceTree = "<group>"; };
 		19F59BA51B82B0770057BC6D /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		19F59BA61B82B0770057BC6D /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		29005DB7C27826C790BDC074 /* Pods-FavorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FavorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FavorTests/Pods-FavorTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -85,6 +94,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19653BD11B840CD8009DF2C2 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				19653BCE1B840CD2009DF2C2 /* FavorCell.h */,
+				19653BCF1B840CD2009DF2C2 /* FavorCell.m */,
+			);
+			name = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		19653BD51B841334009DF2C2 /* DataManagers */ = {
+			isa = PBXGroup;
+			children = (
+				19653BCB1B840661009DF2C2 /* DatabaseManager.h */,
+				19653BCC1B840661009DF2C2 /* DatabaseManager.m */,
+				19EDFE881B8396220076AB19 /* FacebookLoginManager.h */,
+				19EDFE891B8396230076AB19 /* FacebookLoginManager.m */,
+			);
+			name = DataManagers;
+			sourceTree = "<group>";
+		};
 		19A035D71B826C5A0062251C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +121,8 @@
 				19AC32BE1B825E4E00F38A47 /* FavorFeedViewController.m */,
 				19F59BA51B82B0770057BC6D /* LoginViewController.h */,
 				19F59BA61B82B0770057BC6D /* LoginViewController.m */,
+				19653BD21B840E1B009DF2C2 /* FavorDetailViewController.h */,
+				19653BD31B840E1B009DF2C2 /* FavorDetailViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -99,14 +130,13 @@
 		19A035DB1B8282030062251C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				19653BD51B841334009DF2C2 /* DataManagers */,
 				19A035D81B8281FC0062251C /* Favor.h */,
 				19A035D91B8281FC0062251C /* Favor.m */,
 				19A035DC1B8284020062251C /* User.h */,
 				19A035DD1B8284020062251C /* User.m */,
-				19653BCB1B840661009DF2C2 /* DatabaseManager.h */,
-				19653BCC1B840661009DF2C2 /* DatabaseManager.m */,
-				19EDFE881B8396220076AB19 /* FacebookLoginModel.h */,
-				19EDFE891B8396230076AB19 /* FacebookLoginModel.m */,
+				19653BD61B842EBC009DF2C2 /* ProfileImageView.h */,
+				19653BD71B842EBC009DF2C2 /* ProfileImageView.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -136,6 +166,7 @@
 			children = (
 				19AC32BA1B825E4E00F38A47 /* AppDelegate.h */,
 				19AC32BB1B825E4E00F38A47 /* AppDelegate.m */,
+				19653BD11B840CD8009DF2C2 /* Custom Cells */,
 				19A035DB1B8282030062251C /* Model */,
 				19A035D71B826C5A0062251C /* Controllers */,
 				19AC32C01B825E4E00F38A47 /* Main.storyboard */,
@@ -359,10 +390,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19EDFE8A1B8396230076AB19 /* FacebookLoginModel.m in Sources */,
+				19653BD41B840E1B009DF2C2 /* FavorDetailViewController.m in Sources */,
+				19EDFE8A1B8396230076AB19 /* FacebookLoginManager.m in Sources */,
 				19653BCD1B840661009DF2C2 /* DatabaseManager.m in Sources */,
 				19A035DE1B8284020062251C /* User.m in Sources */,
 				19A035DA1B8281FC0062251C /* Favor.m in Sources */,
+				19653BD81B842EBC009DF2C2 /* ProfileImageView.m in Sources */,
+				19653BD01B840CD2009DF2C2 /* FavorCell.m in Sources */,
 				19AC32BF1B825E4E00F38A47 /* FavorFeedViewController.m in Sources */,
 				19AC32BC1B825E4E00F38A47 /* AppDelegate.m in Sources */,
 				19F59BA71B82B0770057BC6D /* LoginViewController.m in Sources */,

@@ -12,7 +12,8 @@
 
 @dynamic phoneNumber;
 
-+ (void)load {
++ (void)load
+{
     [self registerSubclass];
 }
 

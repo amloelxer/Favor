@@ -8,6 +8,44 @@
 
 #import "DatabaseManager.h"
 
+
 @implementation DatabaseManager
+
+
+
+- (void)getMyFavors:(User *)passedUser
+{
+  
+    NSMutableArray *queryResults = [[NSMutableArray alloc]init];
+  
+    PFQuery *postQueryForUser = [PFQuery queryWithClassName:@"Favor"];
+  
+    [postQueryForUser whereKey:@"CreatedBy" equalTo:passedUser];
+  
+    [postQueryForUser findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+      if(!error)
+      {
+        for(PFObject *o in objects)
+        {
+        
+          Favor *tempFavor = [[Favor alloc]init];
+          
+          tempFavor.text = [o objectForKey:@"text"];
+          
+          tempFavor.timePosted = [o objectForKey:@"updatedAt"];
+//          passedUser[@"ProfilePicture"];
+          
+          tempFavor.posterName = passedUser[@"name"];
+          
+          [queryResults addObject:tempFavor];
+          
+        }
+        
+        [self.delegate reloadTableWithQueryResults:queryResults];
+        
+      }
+    }];
+}
+
 
 @end

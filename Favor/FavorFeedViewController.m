@@ -7,23 +7,46 @@
 //
 
 #import "FavorFeedViewController.h"
-#import <Parse.h>
 #import "User.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "Favor.h"
+#import "DatabaseManager.h"
+#import "FavorCell.h"
+#import <QuartzCore/QuartzCore.h>
+#import <Parse/Parse.h>
+#import <ParseUI.h>
 
-@interface FavorFeedViewController ()
+
+@interface FavorFeedViewController () <UITableViewDataSource, UITableViewDelegate, DatabaseManagerDelegate>
+
 @property User *currentUser;
+@property (weak, nonatomic) IBOutlet UITableView *favorTableView;
+@property NSArray *arrayOfFavors;
+@property DatabaseManager *parseDataManager;
+
 
 @end
 
 @implementation FavorFeedViewController
 
+//for dequeing the cells
+ NSString *const cellResuseIdentifier = @"CellID";
+
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+  
+  [super viewDidLoad];
+  
   self.currentUser = [User currentUser];
+  
+  self.arrayOfFavors = [NSArray new];
+  
+  self.parseDataManager = [[DatabaseManager alloc]init];
+  
+  self.parseDataManager.delegate = self;
+  
+  [self.parseDataManager getMyFavors:self.currentUser];
   
   UIColor *favorRedColor = [UIColor colorWithRed:251.0f/255.0f
                                            green:67.0f/255.0f
@@ -32,49 +55,23 @@
   
   [self.navigationController.navigationBar setBarTintColor:favorRedColor];
   
-   [self.navigationController.navigationBar setTranslucent:NO];
-  
-  [[UINavigationBar appearance] setTitleTextAttributes:
-  [NSDictionary dictionaryWithObjectsAndKeys:
-   [UIColor whiteColor],
-   NSForegroundColorAttributeName,
-   [UIColor whiteColor],
-   NSForegroundColorAttributeName,
-   [NSValue valueWithUIOffset:UIOffsetMake(0, -1)],
-   NSForegroundColorAttributeName,
-   [UIFont fontWithName:@"Arial-Bold" size:0.0],
-   NSFontAttributeName,
-   nil]];
   
 }
 
-//- (IBAction)addPost:(UIButton *)sender
-//{
 
+#pragma mark - DatabaseManager Delegate Methods
+
+-(void)reloadTableWithQueryResults:(NSArray *)queryResults
+{
   
-  //getting all the post by specific user
+  NSLog(@"reloadTableWithQueryResults is being called");
+  self.arrayOfFavors = queryResults;
   
-//  PFQuery *postQueryForUser = [PFQuery queryWithClassName:@"Favor"];
-//  [postQueryForUser whereKey:@"CreatedBy" equalTo:self.currentUser];
-//  
-//  [postQueryForUser findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//    if(!error)
-//    {
-//      for(PFObject *o in objects) {
-//        // o is an entry in the Follow table
-//        // to get the user, we get the object with the to key
-//        NSString *tempString = [o objectForKey:@"text"];
-//        
-//        NSLog(@"The text for the post is %@", tempString);
-//        
-//        // to get the time when we followed this user, get the date key
-//      }
-//    }
-//  }];
+  [self.favorTableView reloadData];
   
-  
-  
-//}
+}
+
+
 - (IBAction)addFavorPressed:(UIBarButtonItem *)sender {
   
   Favor *firstFavor = [Favor objectWithClassName:@"Favor"];
@@ -89,7 +86,8 @@
   
   [firstFavor saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
     
-    if (!error) {
+    if (!error)
+    {
       NSLog(@"Save sucessfully");
       
     }
@@ -97,12 +95,43 @@
     else
     {
       NSLog(@"The error is: %@", error);
-      
     }
     
   }];
   
+}
+
+#pragma mark - TableViewDelegate
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+  return self.arrayOfFavors.count;
+}
+
+
+
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
   
+  FavorCell *cell = [self.favorTableView dequeueReusableCellWithIdentifier:cellResuseIdentifier forIndexPath:indexPath];
+  
+  Favor *favorAtIndexPath = self.arrayOfFavors[indexPath.row];
+  
+  cell.posterName.text = favorAtIndexPath.posterName;
+  
+//  UIImageView *imageView = [[UIImageView alloc]init];
+  
+//  imageView.layer.cornerRadius
+  
+//  cell.profilePictureImageView
+  
+  
+  
+  
+//  cell.detailTextLabel.text = favorAtIndexPath.text;
+  
+  return cell;
 }
 
 

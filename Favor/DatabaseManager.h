@@ -7,15 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DatabaseManager.h"
+#import <Parse.h>
+#import "User.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "Favor.h"
 
 @class DatabaseManager;
 @protocol DatabaseManagerDelegate <NSObject>
-- (void) reloadTableWithQueryResults: (DatabaseManager *) sender;
+- (void) reloadTableWithQueryResults: (NSArray *) queryResults;
 //- (void) logInFailedWithError: (ParseManager *) sender;
 @end
 
 @interface DatabaseManager : NSObject
 
 @property (nonatomic, weak) id <DatabaseManagerDelegate> delegate;
+
+- (void)getMyFavors:(User *)passedUser;
 
 @end
