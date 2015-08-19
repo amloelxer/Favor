@@ -7,15 +7,6 @@
 //
 
 #import "FavorFeedViewController.h"
-#import "User.h"
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import "Favor.h"
-#import "DatabaseManager.h"
-#import "FavorCell.h"
-#import <QuartzCore/QuartzCore.h>
-#import <Parse/Parse.h>
-#import <ParseUI.h>
 
 
 @interface FavorFeedViewController () <UITableViewDataSource, UITableViewDelegate, DatabaseManagerDelegate>
@@ -52,11 +43,19 @@
   [self.parseDataManager getFavorsFromParseDataBase:nil asksOrOffer:asks];
   
   
-  [self.navigationController.navigationBar setBarTintColor:favorRedColor];
-  
-  
+  [self.navigationController.navigationBar setBarTintColor:[ColorPalette getFavorRedColor]];
+    
 }
 
+#pragma mark - ModalViewController
+
+-(void)ModalViewControllerDidCancel:(ModalViewController *)modalViewController {
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
+
+-(void)ModalViewControllerDidSubmitFavor:(ModalViewController *)modalViewController {
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
 
 #pragma mark - DatabaseManager Delegate Methods
 
@@ -72,37 +71,42 @@
 
 
 - (IBAction)addFavorPressed:(UIBarButtonItem *)sender {
-  
-  Favor *firstFavor = [Favor objectWithClassName:@"Favor"];
-  
-  firstFavor[@"text"] = @"Test Post with stuff";
-  
-  [firstFavor setObject:@"Test Post with text and stuff. Doesn't it look pretty?" forKey:@"text"];
-  
-  [firstFavor setObject:@(NO) forKey:@"askOrOffer"];
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+    ModalViewController *vc = [[ModalViewController alloc] initWithBackgroundViewController:self];
+    [vc setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+    
+    [self presentViewController:vc animated:NO completion:nil];
+    
+//  Favor *firstFavor = [Favor objectWithClassName:@"Favor"];
+//  
+//  firstFavor[@"text"] = @"Test Post with stuff";
+//  
+//  [firstFavor setObject:@"Test Post with text and stuff. Doesn't it look pretty?" forKey:@"text"];
+//  
+//  [firstFavor setObject:@(NO) forKey:@"askOrOffer"];
   
 //  PFRelation *relation = [firstFavor relationForKey:@"CreatedBy"];
   
 //  [relation addObject:self.currentUser];
   
-  firstFavor[@"CreatedBy"] = self.currentUser;
-  
-  [firstFavor saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-    
-    if (!error)
-    {
-      NSLog(@"Save sucessfully");
-      [self.favorTableView reloadData];
-      
-    }
-    
-    else
-    {
-      NSLog(@"The error is: %@", error);
-    }
-    
-  }];
-  
+//  firstFavor[@"CreatedBy"] = self.currentUser;
+//  
+//  [firstFavor saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//    
+//    if (!error)
+//    {
+//      NSLog(@"Save sucessfully");
+//      [self.favorTableView reloadData];
+//      
+//    }
+//    
+//    else
+//    {
+//      NSLog(@"The error is: %@", error);
+//    }
+//    
+//  }];
+//  
 }
 
 #pragma mark - TableViewDelegate

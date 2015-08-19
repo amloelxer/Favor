@@ -7,8 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "Favor.h"
+#import "DatabaseManager.h"
+#import "FavorCell.h"
+#import <QuartzCore/QuartzCore.h>
+#import <Parse/Parse.h>
+#import <ParseUI.h>
+#import "ColorPalette.h"
+#import "ModalViewController.h"
 
-@interface FavorFeedViewController : UIViewController
+
+@interface FavorFeedViewController : UIViewController <ModalViewControllerDelegate>
 
 
 
