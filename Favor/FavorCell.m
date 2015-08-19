@@ -7,7 +7,14 @@
 //
 
 #import "FavorCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation FavorCell
+
+-(void)makeImageViewCircular
+{
+  self.imageView.layer.cornerRadius = self.imageView.image.size.width / 2;
+  self.imageView.layer.masksToBounds = YES;
+}
 
 @end

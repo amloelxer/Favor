@@ -52,11 +52,6 @@
   [self.parseDataManager getFavorsFromParseDataBase:nil asksOrOffer:asks];
   
   
-  UIColor *favorRedColor = [UIColor colorWithRed:251.0f/255.0f
-                                           green:67.0f/255.0f
-                                            blue:48.0f/255.0f
-                                           alpha:1.0f];
-  
   [self.navigationController.navigationBar setBarTintColor:favorRedColor];
   
   
@@ -173,6 +168,9 @@
   UIImage *profImage = [UIImage imageWithData:[favorAtIndexPath.imageFile getData]];
   
   cell.profilePictureImageView.image = profImage;
+  
+  cell.profilePictureImageView.layer.cornerRadius = cell.profilePictureImageView.image.size.width/2;
+  cell.profilePictureImageView.layer.masksToBounds = YES;
   
   cell.timePassedSinceFavorWasPosted.text = favorAtIndexPath.timePosted;
   

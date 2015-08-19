@@ -16,4 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *distanceFromPoster;
 
 
+-(void)makeImageViewCircular;
+
 @end
