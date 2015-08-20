@@ -120,7 +120,10 @@
         
         tempFavor.text = [someFavor objectForKey:@"text"];
         
-        BOOL thisAskOrOffer = someFavor[@"askOrOffer"];
+        //must cast on the other side from type ID to boolValue
+        //I was getting the pointer to the object and not the actual value
+        //this is very very important
+        BOOL thisAskOrOffer = [someFavor[@"askOrOffer"]boolValue];
         
         tempFavor.askOrFavor = thisAskOrOffer;
         
