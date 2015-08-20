@@ -13,10 +13,12 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "Favor.h"
+#import <Bolts.h>
 
 @class DatabaseManager;
 @protocol DatabaseManagerDelegate <NSObject>
 - (void) reloadTableWithQueryResults: (NSArray *) queryResults;
+- (void) reloadTableWithCachedQueryResults: (NSArray *) queryResults;
 //- (void) logInFailedWithError: (ParseManager *) sender;
 @end
 
@@ -24,9 +26,17 @@
 
 @property (nonatomic, weak) id <DatabaseManagerDelegate> delegate;
 
+typedef NS_ENUM(NSInteger, AskOrOfferFavor) {
+  OfferFavor=0,
+  AskFavor,
+};
+
 - (void)getFavorsFromParseDataBase:(User *)passedUser asksOrOffer:(NSInteger)asksOrOffers;
 
+- (void)getAllFavorsFromLocalParseStore:(NSInteger)selectedSegment user:(User *)currentUser;
 
+-(void)getAllFavorsFromParse;
 
++ (NSString *)dateConverter:(NSDate *)passedDate;
 
 @end

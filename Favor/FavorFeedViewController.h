@@ -20,7 +20,10 @@
 #import "ModalViewController.h"
 
 
-@interface FavorFeedViewController : UIViewController <ModalViewControllerDelegate>
+@interface FavorFeedViewController : UIViewController 
+
+@property User *currentUser;
+
 
 
 

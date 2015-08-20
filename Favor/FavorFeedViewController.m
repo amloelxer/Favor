@@ -7,14 +7,17 @@
 //
 
 #import "FavorFeedViewController.h"
+#import "ModalViewController.h"
 
 
-@interface FavorFeedViewController () <UITableViewDataSource, UITableViewDelegate, DatabaseManagerDelegate>
+@interface FavorFeedViewController () <UITableViewDataSource, UITableViewDelegate, DatabaseManagerDelegate, ModalViewControllerDelegate>
 
-@property User *currentUser;
+
 @property (weak, nonatomic) IBOutlet UITableView *favorTableView;
 @property NSArray *arrayOfFavors;
 @property DatabaseManager *parseDataManager;
+@property ModalViewController *vc;
+
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *favorSegmentedControl;
 
@@ -29,8 +32,16 @@
 
 - (void)viewDidLoad
 {
-  
   [super viewDidLoad];
+  
+  PFQuery *query = [PFQuery queryWithClassName:@"Favor"];
+  [query fromLocalDatastore];
+  
+  [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    
+    [PFObject unpinAllInBackground:objects];
+    
+  }];
   
   self.currentUser = [User currentUser];
   
@@ -40,8 +51,9 @@
   
   self.parseDataManager.delegate = self;
   
-  [self.parseDataManager getFavorsFromParseDataBase:nil asksOrOffer:asks];
+  NSLog(@"The starting segment is %ld", (long)self.favorSegmentedControl.selectedSegmentIndex);
   
+  [self.parseDataManager getAllFavorsFromParse];
   
   [self.navigationController.navigationBar setBarTintColor:[ColorPalette getFavorRedColor]];
     
@@ -51,62 +63,47 @@
 
 -(void)ModalViewControllerDidCancel:(ModalViewController *)modalViewController {
     NSLog(@"%@", NSStringFromSelector(_cmd));
+  
+//  [modalViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)ModalViewControllerDidSubmitFavor:(ModalViewController *)modalViewController {
     NSLog(@"%@", NSStringFromSelector(_cmd));
+  
+  
+}
+
+- (void)ModalViewControllerDidSubmitFavor:(ModalViewController *)modalViewController askOrOffer:(NSInteger)someAskOrOffer
+{
+    NSLog(@"Delegate Method ask or offer called");
+  
+    [self callMethodForSegment];
 }
 
 #pragma mark - DatabaseManager Delegate Methods
 
 -(void)reloadTableWithQueryResults:(NSArray *)queryResults
 {
-  
-  NSLog(@"reloadTableWithQueryResults is being called");
+  NSLog(@"reload table with query is being called");
+
+  [self callMethodForSegment];
+}
+
+- (void) reloadTableWithCachedQueryResults: (NSArray *) queryResults
+{
+  NSLog(@"It's reloading the data with the cached query");
   self.arrayOfFavors = queryResults;
-  
   [self.favorTableView reloadData];
-  
 }
 
 
-- (IBAction)addFavorPressed:(UIBarButtonItem *)sender {
+- (IBAction)addFavorPressed:(UIBarButtonItem *)sender
+{
     NSLog(@"%@", NSStringFromSelector(_cmd));
     ModalViewController *vc = [[ModalViewController alloc] initWithBackgroundViewController:self];
     [vc setModalPresentationStyle:UIModalPresentationOverCurrentContext];
     
     [self presentViewController:vc animated:NO completion:nil];
-    
-//  Favor *firstFavor = [Favor objectWithClassName:@"Favor"];
-//  
-//  firstFavor[@"text"] = @"Test Post with stuff";
-//  
-//  [firstFavor setObject:@"Test Post with text and stuff. Doesn't it look pretty?" forKey:@"text"];
-//  
-//  [firstFavor setObject:@(NO) forKey:@"askOrOffer"];
-  
-//  PFRelation *relation = [firstFavor relationForKey:@"CreatedBy"];
-  
-//  [relation addObject:self.currentUser];
-  
-//  firstFavor[@"CreatedBy"] = self.currentUser;
-//  
-//  [firstFavor saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//    
-//    if (!error)
-//    {
-//      NSLog(@"Save sucessfully");
-//      [self.favorTableView reloadData];
-//      
-//    }
-//    
-//    else
-//    {
-//      NSLog(@"The error is: %@", error);
-//    }
-//    
-//  }];
-//  
 }
 
 #pragma mark - TableViewDelegate
@@ -119,44 +116,25 @@
 
 - (void)callMethodForSegment
 {
-  if(self.favorSegmentedControl.selectedSegmentIndex == asks)
+  //0 is offer 1 is ask 
+  if(self.favorSegmentedControl.selectedSegmentIndex == 0 || self.favorSegmentedControl.selectedSegmentIndex == 1 )
   {
-    NSLog(@"asks");
-  }
-  
-  else if(self.favorSegmentedControl.selectedSegmentIndex == offers)
-  {
-    NSLog(@"Offers");
+    NSLog(@"The selected segment is %ld", (long)self.favorSegmentedControl.selectedSegmentIndex);
+    
+    [self.parseDataManager getAllFavorsFromLocalParseStore:self.favorSegmentedControl.selectedSegmentIndex user:self.currentUser];
   }
   
   else
   {
-    NSLog(@"My Favors");
+    //can't send nil or it will default to 0
+     [self.parseDataManager getAllFavorsFromLocalParseStore:2 user:self.currentUser];
   }
   
-
 }
 
-- (IBAction)segmentChanged:(UISegmentedControl *)sender {
-  
-  if(sender.selectedSegmentIndex == asks)
-  {
-    NSLog(@"asks");
-    [self.parseDataManager getFavorsFromParseDataBase:nil asksOrOffer:asks];
-  }
-  
-  else if(sender.selectedSegmentIndex == offers)
-  {
-    [self.parseDataManager getFavorsFromParseDataBase:nil asksOrOffer:offers];
-    NSLog(@"Offers");
-  }
-  
-  else
-  {
-    [self.parseDataManager getFavorsFromParseDataBase:self.currentUser asksOrOffer:nil];
-     NSLog(@"My Favors");
-  }
-  
+- (IBAction)segmentChanged:(UISegmentedControl *)sender
+{
+  [self callMethodForSegment];
 }
 
 
@@ -169,14 +147,15 @@
   
   cell.posterName.text = favorAtIndexPath.posterName;
   
-  UIImage *profImage = [UIImage imageWithData:[favorAtIndexPath.imageFile getData]];
+  cell.timePassedSinceFavorWasPosted.text = favorAtIndexPath.timePosted;
   
+  UIImage *profImage = [UIImage imageWithData:[favorAtIndexPath.imageFile getData]];
+
   cell.profilePictureImageView.image = profImage;
   
   cell.profilePictureImageView.layer.cornerRadius = cell.profilePictureImageView.image.size.width/2;
   cell.profilePictureImageView.layer.masksToBounds = YES;
-  
-  cell.timePassedSinceFavorWasPosted.text = favorAtIndexPath.timePosted;
+  cell.cellTextField.text = favorAtIndexPath.text;
   
   return cell;
 }

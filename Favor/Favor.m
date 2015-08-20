@@ -16,7 +16,8 @@
 @dynamic timePosted;
 @dynamic posterName;
 @dynamic userImage;
-
+@dynamic imageFile;
+@dynamic askOrFavor;
 
 + (void)load
 {

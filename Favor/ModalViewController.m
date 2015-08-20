@@ -10,7 +10,7 @@
 
 @interface ModalViewController()
 
-@property (nonatomic, strong) UIViewController *backgroundVC;
+@property (nonatomic, strong) FavorFeedViewController *backgroundVC;
 @property (nonatomic, strong) UIView *backgroundBlurView;
 @property (nonatomic, strong) UIView *modalView;
 @property (nonatomic) CGPoint modalViewOffscreenCenter;
@@ -30,13 +30,15 @@
 @property (nonatomic) CGPoint offerMagicLineCenter;
 @property (nonatomic) CGPoint askMagicLineCenter;
 @property (nonatomic) NSInteger offerOrAsk; //Offer = 0, ask = 1
+@property DatabaseManager *parseManager;
 
 @end
 
 
 @implementation ModalViewController
 
--(instancetype)initWithBackgroundViewController:(UIViewController *)backgroundVC {
+
+-(instancetype)initWithBackgroundViewController:(FavorFeedViewController *)backgroundVC {
     self = [super init];
     if (self) {
         _backgroundVC = backgroundVC;
@@ -45,19 +47,27 @@
     return self;
 }
 
+#pragma mark - Database Manager Delegate Method
+
+
 -(void)viewWillAppear:(BOOL)animated {
     [self captureBackgroundBlurImage];
     [self showCoordinator];
+    self.parseManager = [[DatabaseManager alloc]init];
+//    self.parseManager.delegate = self;
+  
+   self.offerOrAsk = 0;
 }
 
 -(void)viewDidLoad {
     [self setupModalView];
-    self.offerOrAsk = 0; // Defaults to offer on load.
+    // Defaults to offer on load.
 
     
     // Preload the keyboard
     [self.favorTextView becomeFirstResponder];
     [self.favorTextView resignFirstResponder];
+  
 }
 
 -(void)showCoordinator {
@@ -315,6 +325,57 @@
     }
 }
 
+
+-(void)saveDataToParseAndDismiss
+{
+  Favor *firstFavor = [Favor objectWithClassName:@"Favor"];
+  Favor *favorToPin = [[Favor alloc]init];
+  
+  [firstFavor setObject:self.favorTextView.text forKey:@"text"];
+  favorToPin.text = self.favorTextView.text;
+  
+  //offer is 0 so it is false
+  if(self.offerOrAsk == 0)
+  {
+    [firstFavor setObject:@(NO) forKey:@"askOrOffer"];
+     favorToPin.askOrFavor = NO;
+    
+  }
+  //else it's an ask which is true so 1
+  else
+  {
+    [firstFavor setObject:@(YES) forKey:@"askOrOffer"];
+    favorToPin.askOrFavor = YES;
+    
+  }
+  
+  
+  firstFavor[@"CreatedBy"] = self.backgroundVC.currentUser;
+  favorToPin.userThatCreatedThisFavor = self.backgroundVC.currentUser;
+  favorToPin.imageFile = [self.backgroundVC.currentUser objectForKey:@"ProfilePicture"];
+  favorToPin.posterName = [self.backgroundVC.currentUser objectForKey:@"name"];
+  favorToPin.timePosted = [DatabaseManager dateConverter:firstFavor.updatedAt];
+  
+  [favorToPin pinInBackground];
+  
+  [firstFavor saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    
+        if (!error)
+        {
+          [self.delegate ModalViewControllerDidSubmitFavor:self askOrOffer:self.offerOrAsk];
+          [self hideCoordinator];
+        }
+        else
+        {
+          NSLog(@"The error is: %@", error);
+        }
+        
+      }];
+
+  
+}
+
+#pragma mark - Submit Favor
 -(void)submitFavor {
     
     // Disable other interactive elements
@@ -327,7 +388,11 @@
     // Make API Call with following values.
     NSLog(@"Favor Text: %@", self.favorTextView.text);
     NSLog(@"Favor Type: %li", self.offerOrAsk);
-
+  
+//  Favor *firstFavor = [Favor objectWithClassName:@"Favor"];
+  
+    [self saveDataToParseAndDismiss];
+  
     // Indicate loading - this should go in a block.
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     [self.indicator startAnimating];
@@ -335,7 +400,7 @@
     self.postFavorButton.enabled = NO;
     [self.postFavorButton setTitle:@"" forState:UIControlStateDisabled];
     
-    // Call [self hideCoordinator];
+  
 }
 
 -(void)declinePost {

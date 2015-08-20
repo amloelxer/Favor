@@ -59,8 +59,8 @@
                                     <constraint firstAttribute="height" constant="28" id="pfa-aL-T26"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="Asks"/>
                                     <segment title="Offers"/>
+                                    <segment title="Asks"/>
                                     <segment title="My Favors"/>
                                 </segments>
                                 <color key="tintColor" red="0.98431372549019602" green="0.2627450980392157" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
@@ -148,21 +148,44 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="adsfknlafdklskladfkladfkljadfkljadfkljlafdkjadfkjadfjkladfkl;adj" translatesAutoresizingMaskIntoConstraints="NO" id="CIs-XG-KZR">
+                                                    <rect key="frame" x="148" y="64" width="305" height="49"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="49" id="l5w-2A-4h4"/>
+                                                        <constraint firstAttribute="width" constant="305" id="vL0-pH-KJU"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="CIs-XG-KZR" firstAttribute="top" secondItem="8iK-Lj-4Jq" secondAttribute="topMargin" constant="48" id="A0m-ek-k2D"/>
                                                 <constraint firstItem="AGY-hR-zeO" firstAttribute="bottom" secondItem="8iK-Lj-4Jq" secondAttribute="bottomMargin" id="Df7-43-Dat"/>
                                                 <constraint firstItem="Mpq-0h-tsn" firstAttribute="centerY" secondItem="eee-kd-rzS" secondAttribute="centerY" constant="6" id="H9s-BO-UpT"/>
                                                 <constraint firstItem="eee-kd-rzS" firstAttribute="top" secondItem="8iK-Lj-4Jq" secondAttribute="topMargin" constant="12" id="K4u-OR-ELG"/>
+                                                <constraint firstAttribute="centerX" secondItem="CIs-XG-KZR" secondAttribute="centerX" constant="-0.5" id="L7D-be-1UZ"/>
                                                 <constraint firstItem="Pnj-wD-kYY" firstAttribute="leading" secondItem="8iK-Lj-4Jq" secondAttribute="leadingMargin" id="Wnc-kS-Dyv"/>
+                                                <constraint firstAttribute="centerY" secondItem="CIs-XG-KZR" secondAttribute="centerY" constant="-11.5" id="WyK-CK-9IK"/>
+                                                <constraint firstAttribute="centerX" secondItem="CIs-XG-KZR" secondAttribute="centerX" constant="4" id="gU8-QG-fEt"/>
                                                 <constraint firstItem="Mpq-0h-tsn" firstAttribute="trailing" secondItem="8iK-Lj-4Jq" secondAttribute="trailingMargin" constant="-9" id="iII-vB-KNg"/>
                                                 <constraint firstItem="AGY-hR-zeO" firstAttribute="leading" secondItem="8iK-Lj-4Jq" secondAttribute="leadingMargin" constant="16" id="lwJ-CJ-hOG"/>
+                                                <constraint firstItem="CIs-XG-KZR" firstAttribute="top" secondItem="8iK-Lj-4Jq" secondAttribute="topMargin" constant="56" id="nph-hW-qSS"/>
                                                 <constraint firstItem="eee-kd-rzS" firstAttribute="leading" secondItem="Pnj-wD-kYY" secondAttribute="trailing" constant="8" id="uaX-eN-5yz"/>
                                                 <constraint firstItem="Pnj-wD-kYY" firstAttribute="top" secondItem="8iK-Lj-4Jq" secondAttribute="topMargin" constant="5" id="xQk-HF-LcA"/>
                                                 <constraint firstItem="pP2-c4-9hc" firstAttribute="trailing" secondItem="8iK-Lj-4Jq" secondAttribute="trailingMargin" id="ynR-Lx-zmv"/>
                                                 <constraint firstItem="AGY-hR-zeO" firstAttribute="centerY" secondItem="pP2-c4-9hc" secondAttribute="centerY" constant="0.5" id="z2Q-r9-3QJ"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="A0m-ek-k2D"/>
+                                                    <exclude reference="gU8-QG-fEt"/>
+                                                    <exclude reference="nph-hW-qSS"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="cellTextField" destination="CIs-XG-KZR" id="Y7F-rS-F06"/>
                                             <outlet property="distanceFromPoster" destination="pP2-c4-9hc" id="P5j-gn-7uk"/>
                                             <outlet property="numberOfResponses" destination="Mpq-0h-tsn" id="frG-4n-hoD"/>
                                             <outlet property="posterName" destination="eee-kd-rzS" id="uKL-6M-a1W"/>

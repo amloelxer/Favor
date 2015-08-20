@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *numberOfResponses;
 @property (weak, nonatomic) IBOutlet UILabel *distanceFromPoster;
 
+@property (weak, nonatomic) IBOutlet UITextView *cellTextField;
+
 
 -(void)makeImageViewCircular;
 

@@ -34,6 +34,12 @@ typedef NS_ENUM(NSInteger, FavorType) {
 
 @property PFFile *imageFile;
 
+@property BOOL askOrFavor;
+
+@property User *userThatCreatedThisFavor;
+
+
+
 + (NSString *)parseClassName;
 
 @end

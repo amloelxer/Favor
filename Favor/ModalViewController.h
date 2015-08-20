@@ -9,19 +9,24 @@
 #import <UIKit/UIKit.h>
 #import "UIImageEffects.h"
 #import "Pop.h"
+#import "Favor.h"
+#import "FavorFeedViewController.h"
+#import "DatabaseManager.h"
 
 @protocol ModalViewControllerDelegate;
 
 @interface ModalViewController : UIViewController <UITextViewDelegate>
 
 @property (nonatomic) id <ModalViewControllerDelegate> delegate;
--(instancetype)initWithBackgroundViewController:(UIViewController *)backgroundVC;
+- (instancetype)initWithBackgroundViewController:(UIViewController *)backgroundVC;
+
+
 
 @end
 
 @protocol ModalViewControllerDelegate <NSObject>
 
--(void)ModalViewControllerDidCancel:(ModalViewController *)modalViewController;
--(void)ModalViewControllerDidSubmitFavor:(ModalViewController *)modalViewController;
+- (void)ModalViewControllerDidCancel:(ModalViewController *)modalViewController;
+- (void)ModalViewControllerDidSubmitFavor:(ModalViewController *)modalViewController askOrOffer:(NSInteger)someAskOrOffer;
 
 @end
