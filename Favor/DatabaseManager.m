@@ -109,6 +109,8 @@
   
   [postQueryForUser addDescendingOrder:@"updatedAt"];
   
+  //gotta have this line. So So So So So So important
+  [postQueryForUser includeKey:@"CreatedBy"];
   [postQueryForUser findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
     
     if(!error)
@@ -133,7 +135,10 @@
         
         tempFavor.timePosted = stringFavorWasPosted;
         
+        
+        
         User *user = [someFavor objectForKey:@"CreatedBy"];
+        
         
         tempFavor.userThatCreatedThisFavor = [someFavor objectForKey:@"CreatedBy"];
         

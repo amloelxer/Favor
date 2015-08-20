@@ -51,6 +51,9 @@
   
   self.parseDataManager.delegate = self;
   
+  NSLog(@"Selected Segment %lu", self.favorSegmentedControl.selectedSegmentIndex);
+  
+  
   [self.parseDataManager getAllFavorsFromParse];
   
   [self.navigationController.navigationBar setBarTintColor:[ColorPalette getFavorRedColor]];
@@ -75,7 +78,7 @@
 
 -(void)reloadTableWithQueryResults:(NSArray *)queryResults
 {
-  NSLog(@"reload table with query is being called");
+  NSLog(@"reload table with query is being called", self.favorSegmentedControl.selectedSegmentIndex);
 
   [self callMethodForSegment];
 }

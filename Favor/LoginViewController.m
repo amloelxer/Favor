@@ -29,7 +29,7 @@
   
     self.facebookLoginOperations.delegate = self;
   
-  self.currentUser = [User currentUser];
+    self.currentUser = [User currentUser];
   
   
   
@@ -37,6 +37,8 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+  
+  NSLog(@"Check Login Did Pop UP");
   [self.facebookLoginOperations checkIfLoggedIn:self.currentUser];
 }
 
