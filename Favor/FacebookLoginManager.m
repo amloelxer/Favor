@@ -76,6 +76,7 @@
         else
         {
             NSLog(@"User logged in through Facebook!");
+            [self.delegate hasLoggedInSuccessFully:self];
         }
       
     }];
@@ -91,7 +92,7 @@
   
   else
   {
-    [self.delegate logInFailedWithError:self];
+//    [self.delegate logInFailedWithError:self];
   }
   
 }

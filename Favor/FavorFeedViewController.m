@@ -51,8 +51,6 @@
   
   self.parseDataManager.delegate = self;
   
-  NSLog(@"The starting segment is %ld", (long)self.favorSegmentedControl.selectedSegmentIndex);
-  
   [self.parseDataManager getAllFavorsFromParse];
   
   [self.navigationController.navigationBar setBarTintColor:[ColorPalette getFavorRedColor]];
@@ -63,13 +61,6 @@
 
 -(void)ModalViewControllerDidCancel:(ModalViewController *)modalViewController {
     NSLog(@"%@", NSStringFromSelector(_cmd));
-  
-//  [modalViewController dismissViewControllerAnimated:YES completion:nil];
-}
-
--(void)ModalViewControllerDidSubmitFavor:(ModalViewController *)modalViewController {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
-  
   
 }
 
