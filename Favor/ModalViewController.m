@@ -348,14 +348,13 @@
     favorToPin.askOrFavor = YES;
     
   }
-  
-  NSDate *todaysDate = [NSDate date];
-    
+      
   firstFavor[@"CreatedBy"] = self.backgroundVC.currentUser;
   favorToPin.userThatCreatedThisFavor = self.backgroundVC.currentUser;
   favorToPin.imageFile = [self.backgroundVC.currentUser objectForKey:@"ProfilePicture"];
   favorToPin.posterName = [self.backgroundVC.currentUser objectForKey:@"name"];
   favorToPin.timePosted = [DatabaseManager dateConverter:firstFavor.createdAt];
+  
   
   [favorToPin pinInBackground];
   
@@ -364,6 +363,7 @@
         if (!error)
         {
           [self.delegate ModalViewControllerDidSubmitFavor:self askOrOffer:self.offerOrAsk];
+          
           [self hideCoordinator];
         }
         else

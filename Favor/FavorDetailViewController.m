@@ -35,6 +35,24 @@
   self.passedSelectedFavorPosterNameLabel.text = self.passedSelectedFavorPosterName;
   self.timePassedTextLabel.text = self.passedTimeText;
   
+  if([self.passedUserThatMadeTheFavor isEqual:[User currentUser]])
+  {
+    NSLog(@"This is a post of mine");
+    //enable what needs to be done on setup to change screens
+  }
+  //if this is not my favor
+  else
+  {
+    self.phoneNumberLabel.hidden = YES;
+  }
+  
+  [self.navigationController.navigationBar setBarTintColor:[ColorPalette getFavorRedColor]];
+  self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+  [self.navigationController.navigationBar setTranslucent:NO];
+  
+  
+  
+  
 }
 
 @end

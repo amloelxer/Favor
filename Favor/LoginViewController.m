@@ -30,9 +30,6 @@
     self.facebookLoginOperations.delegate = self;
   
     self.currentUser = [User currentUser];
-  
-  
-  
 }
 
 -(void)viewDidAppear:(BOOL)animated

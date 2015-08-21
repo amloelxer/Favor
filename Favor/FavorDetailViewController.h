@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "ColorPalette.h"
+#import "User.h"
 
 @interface FavorDetailViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property NSString *passedFavorText;
 @property NSString *passedTimeText;
 @property NSString *passedSelectedFavorPosterName;
+@property User *passedUserThatMadeTheFavor;
 
 @property UIImage *profImage;
 @end

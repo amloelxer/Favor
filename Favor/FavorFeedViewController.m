@@ -26,17 +26,24 @@
 @implementation FavorFeedViewController
 
  //constants for Favor Feed declared here
- NSInteger const asks = 0;
- NSInteger const offers = 1;
+ NSInteger const offers = 0;
+ NSInteger const asks = 1;
+
  NSString *const cellResuseIdentifier = @"CellID";
 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
   
+  //code for making the cells pop to the top of the table view on laod
+  self.automaticallyAdjustsScrollViewInsets = NO;
   
-//  [self.favorTableView registerClass:[FavorCell class] forCellReuseIdentifier:@"CellID"];
+  //do nav bar stuff
+  [self.navigationController.navigationBar setBarTintColor:[ColorPalette getFavorRedColor]];
+  self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+  [self.navigationController.navigationBar setTranslucent:NO];
   
+  //deletes everything in the cache on load
   PFQuery *query = [PFQuery queryWithClassName:@"Favor"];
   [query fromLocalDatastore];
   
@@ -54,13 +61,9 @@
   
   self.parseDataManager.delegate = self;
   
-  NSLog(@"Selected Segment %lu", self.favorSegmentedControl.selectedSegmentIndex);
-  
-  
+  //get all the favors from parse on load
   [self.parseDataManager getAllFavorsFromParse];
   
-  [self.navigationController.navigationBar setBarTintColor:[ColorPalette getFavorRedColor]];
-    
 }
 
 #pragma mark - ModalViewController
@@ -72,21 +75,32 @@
 
 - (void)ModalViewControllerDidSubmitFavor:(ModalViewController *)modalViewController askOrOffer:(NSInteger)someAskOrOffer
 {
-    NSLog(@"Delegate Method ask or offer called");
   
-    [self callMethodForSegment];
+  PFQuery *query = [PFQuery queryWithClassName:@"Favor"];
+  [query fromLocalDatastore];
+  
+  [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    
+    //when you're saving to the cache make sure to unpin (work around for now)
+    [PFObject unpinAllInBackground:objects block:^(BOOL succeeded, NSError *error) {
+      
+        [self.parseDataManager getAllFavorsFromParse];
+      
+    }];
+    
+  }];
+  
 }
 
 #pragma mark - DatabaseManager Delegate Methods
 
 -(void)reloadTableWithQueryResults:(NSArray *)queryResults
 {
-  [self callMethodForSegment];
+  [self getCachedFavorsWithSegmentFilterApplied];
 }
 
 - (void) reloadTableWithCachedQueryResults: (NSArray *) queryResults
 {
-  NSLog(@"It's reloading the data with the cached query");
   self.arrayOfFavors = queryResults;
   [self.favorTableView reloadData];
 }
@@ -97,25 +111,17 @@
 //    NSLog(@"%@", NSStringFromSelector(_cmd));
     ModalViewController *vc = [[ModalViewController alloc] initWithBackgroundViewController:self];
     [vc setModalPresentationStyle:UIModalPresentationOverCurrentContext];
-    
     [self presentViewController:vc animated:NO completion:nil];
 }
 
-#pragma mark - TableViewDelegate
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-  return self.arrayOfFavors.count;
-}
 
 
-- (void)callMethodForSegment
+- (void)getCachedFavorsWithSegmentFilterApplied
 {
   //0 is offer 1 is ask 
   if(self.favorSegmentedControl.selectedSegmentIndex == 0 || self.favorSegmentedControl.selectedSegmentIndex == 1 )
   {
-    NSLog(@"The selected segment is %ld", (long)self.favorSegmentedControl.selectedSegmentIndex);
-    
+    //gets all the favors from parse depending what was selected on the UISegment controller
     [self.parseDataManager getAllFavorsFromLocalParseStore:self.favorSegmentedControl.selectedSegmentIndex user:self.currentUser];
   }
   
@@ -129,13 +135,12 @@
 
 - (IBAction)segmentChanged:(UISegmentedControl *)sender
 {
-  [self callMethodForSegment];
+  [self getCachedFavorsWithSegmentFilterApplied];
 }
 
-
+#pragma mark - Table View Delegate Methods
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  
   FavorCell *cell = [self.favorTableView dequeueReusableCellWithIdentifier:@"CellID" forIndexPath:indexPath];
                      
   Favor *favorAtIndexPath = self.arrayOfFavors[indexPath.row];
@@ -144,23 +149,41 @@
   
   cell.timePassedSinceFavorWasPosted.text = favorAtIndexPath.timePosted;
   
-  UIImage *profImage = [UIImage imageWithData:[favorAtIndexPath.imageFile getData]];
-
-  cell.profilePictureImageView.image = profImage;
-  
-  cell.profilePictureImageView.layer.cornerRadius = cell.profilePictureImageView.image.size.width/2;
-  cell.profilePictureImageView.layer.masksToBounds = YES;
   cell.favorText.text = favorAtIndexPath.text;
   
-//  [cell layoutSubviews];
+  
+  [favorAtIndexPath.imageFile getDataInBackgroundWithBlock:^(NSData *result, NSError *error) {
+    
+    //make sure the cell image loads for the right cell by comparing index Paths
+    if([[self.favorTableView indexPathForCell:cell] isEqual:indexPath])
+    {
+      UIImage *profImage = [UIImage imageWithData:result];
+      cell.profilePictureImageView.image = profImage;
+      
+      cell.profilePictureImageView.layer.cornerRadius = cell.profilePictureImageView.image.size.width/2;
+      cell.profilePictureImageView.layer.masksToBounds = YES;
+
+    }
+    
+  }];
+  
   
   return cell;
+  
+
+
+  
+  
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+  return self.arrayOfFavors.count;
+}
 
+#pragma mark - Prepare for Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-  
   NSIndexPath *path = [self.favorTableView indexPathForSelectedRow];
   
   Favor *favorAtIndexPath = self.arrayOfFavors[path.row];
@@ -176,6 +199,9 @@
   vc.passedSelectedFavorPosterName = favorAtIndexPath.posterName;
   
   vc.passedTimeText = favorAtIndexPath.timePosted;
+  
+  vc.passedUserThatMadeTheFavor = favorAtIndexPath.userThatCreatedThisFavor;
+  
 }
 
 

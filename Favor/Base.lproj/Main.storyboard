@@ -58,30 +58,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fIG-Tu-yn9">
-                                <rect key="frame" x="191" y="97" width="233" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="218" id="5mR-01-61d"/>
-                                    <constraint firstAttribute="height" constant="28" id="CxY-kH-kb6"/>
-                                    <constraint firstAttribute="width" constant="233" id="IUI-u1-3tM"/>
-                                    <constraint firstAttribute="height" constant="28" id="pfa-aL-T26"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="Offers"/>
-                                    <segment title="Asks"/>
-                                    <segment title="My Favors"/>
-                                </segments>
-                                <color key="tintColor" red="0.98431372549019602" green="0.2627450980392157" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="5mR-01-61d"/>
-                                        <exclude reference="pfa-aL-T26"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="segmentChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="KVI-Xk-C2D"/>
-                                </connections>
-                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="155" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6Mg-hi-9hS">
                                 <rect key="frame" x="0.0" y="144" width="600" height="456"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -223,6 +199,30 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="eWt-pZ-h9O"/>
                                 </connections>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fIG-Tu-yn9">
+                                <rect key="frame" x="191" y="97" width="233" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="218" id="5mR-01-61d"/>
+                                    <constraint firstAttribute="height" constant="28" id="CxY-kH-kb6"/>
+                                    <constraint firstAttribute="width" constant="233" id="IUI-u1-3tM"/>
+                                    <constraint firstAttribute="height" constant="28" id="pfa-aL-T26"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Offers"/>
+                                    <segment title="Asks"/>
+                                    <segment title="My Favors"/>
+                                </segments>
+                                <color key="tintColor" red="0.98431372549019602" green="0.2627450980392157" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5mR-01-61d"/>
+                                        <exclude reference="pfa-aL-T26"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="KVI-Xk-C2D"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -230,11 +230,15 @@
                             <constraint firstItem="6Mg-hi-9hS" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Fn2-ct-l5O"/>
                             <constraint firstAttribute="trailing" secondItem="6Mg-hi-9hS" secondAttribute="trailing" id="Gdo-1C-DIe"/>
                             <constraint firstItem="6Mg-hi-9hS" firstAttribute="top" secondItem="fIG-Tu-yn9" secondAttribute="bottom" constant="19" id="I5n-SA-cG6"/>
-                            <constraint firstItem="fIG-Tu-yn9" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="33" id="M5o-cT-OrN"/>
+                            <constraint firstItem="fIG-Tu-yn9" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="33" id="M5o-cT-OrN">
+                                <variation key="widthClass=compact" constant="18"/>
+                            </constraint>
                             <constraint firstAttribute="centerY" secondItem="fIG-Tu-yn9" secondAttribute="centerY" constant="194" id="PYm-PW-3h8"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="6Mg-hi-9hS" secondAttribute="bottom" id="egS-ix-bSz"/>
                             <constraint firstItem="fIG-Tu-yn9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="175" id="t2T-xe-rhK"/>
-                            <constraint firstItem="6Mg-hi-9hS" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="80" id="wEf-oh-4gH"/>
+                            <constraint firstItem="6Mg-hi-9hS" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="80" id="wEf-oh-4gH">
+                                <variation key="widthClass=compact" constant="54"/>
+                            </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="fIG-Tu-yn9" secondAttribute="trailing" constant="160" id="wmE-XI-xpw"/>
                             <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="fIG-Tu-yn9" secondAttribute="trailing" constant="160" id="zKK-uR-eNX"/>
                         </constraints>
@@ -262,7 +266,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1904" y="311"/>
+            <point key="canvasLocation" x="1903.5" y="311"/>
         </scene>
         <!--Favor Detail View Controller-->
         <scene sceneID="xqa-de-K5o">
@@ -447,18 +451,18 @@
                                 <exclude reference="diA-PK-SdA"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="0gA-fs-xAF"/>
-                                <exclude reference="bHP-qC-w1F"/>
-                                <exclude reference="cO2-kl-Pn5"/>
-                                <exclude reference="woh-xZ-WfK"/>
+                                <exclude reference="vdR-mC-FIv"/>
                                 <exclude reference="h1N-v6-hdh"/>
                                 <exclude reference="j6J-oj-MvE"/>
                                 <exclude reference="1CJ-Hy-wvJ"/>
                                 <exclude reference="o8x-ML-f87"/>
-                                <exclude reference="vdR-mC-FIv"/>
                                 <exclude reference="JJG-qX-kcG"/>
                                 <exclude reference="lIT-6U-QDN"/>
                                 <exclude reference="mGt-ij-hYT"/>
+                                <exclude reference="0gA-fs-xAF"/>
+                                <exclude reference="bHP-qC-w1F"/>
+                                <exclude reference="cO2-kl-Pn5"/>
+                                <exclude reference="woh-xZ-WfK"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -470,18 +474,18 @@
                                 <include reference="diA-PK-SdA"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="0gA-fs-xAF"/>
-                                <include reference="bHP-qC-w1F"/>
-                                <include reference="cO2-kl-Pn5"/>
-                                <include reference="woh-xZ-WfK"/>
+                                <include reference="vdR-mC-FIv"/>
                                 <include reference="h1N-v6-hdh"/>
                                 <include reference="j6J-oj-MvE"/>
                                 <include reference="1CJ-Hy-wvJ"/>
                                 <exclude reference="o8x-ML-f87"/>
-                                <include reference="vdR-mC-FIv"/>
                                 <exclude reference="JJG-qX-kcG"/>
                                 <include reference="lIT-6U-QDN"/>
                                 <include reference="mGt-ij-hYT"/>
+                                <include reference="0gA-fs-xAF"/>
+                                <include reference="bHP-qC-w1F"/>
+                                <include reference="cO2-kl-Pn5"/>
+                                <include reference="woh-xZ-WfK"/>
                             </mask>
                         </variation>
                     </view>
@@ -496,7 +500,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZZX-rm-SCR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2884.5" y="232"/>
+            <point key="canvasLocation" x="2937" y="311"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CQt-VR-orA">

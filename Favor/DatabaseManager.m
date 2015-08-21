@@ -13,13 +13,6 @@
 
 + (NSString *)dateConverter:(NSDate *)passedDate
 {
-//  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//  [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-//  
-//  NSString *stringFromDate = [formatter stringFromDate:passedDate];
-//  
-//  
-//  return stringFromDate;
   
   NSTimeInterval timeInterval = fabs([passedDate timeIntervalSinceNow]);
   
@@ -49,6 +42,10 @@
   
 }
 
+/*This method sorts all the cached Favors based on the segment
+ controller value in FavorFeedView and calls the delegate method
+ reloadTableWithCachedQueryResults with the sorted array of comments */
+
 - (void)getAllFavorsFromLocalParseStore:(NSInteger)selectedSegment user:(User *)currentUser
 {
   NSMutableArray *queryResults = [[NSMutableArray alloc]init];
@@ -64,22 +61,18 @@
   if(selectedSegment == 0)
   {
     [query whereKey:@"askOrFavor" equalTo:[NSNumber numberWithBool:NO]];
-    NSLog(@"The selected segment from the getAllFavors Method is %ld",(long)selectedSegment);
-    
   }
   
   //it's an ask so it's 1 for yes
   else if(selectedSegment == 1)
   {
     [query whereKey:@"askOrFavor" equalTo:[NSNumber numberWithBool:YES]];
-     NSLog(@"The selected segment from the getAllFavors Method is %ld",(long)selectedSegment);
   }
   
   else
   {
     NSLog(@"My Own Favors should print");
     [query whereKey:@"userThatCreatedThisFavor" equalTo:currentUser];
-     NSLog(@"The selected segment from the getAllFavors Method is %ld",(long)selectedSegment);
   }
   
   
@@ -89,7 +82,6 @@
     for(Favor *favor in objects)
     {
       
-      Favor *someFav = favor;
       [queryResults addObject:favor];
       
     }
@@ -100,7 +92,8 @@
 
 }
 
-
+/* Gets all the favors from the parse servers and pins
+ them locally to the cache */
 -(void)getAllFavorsFromParse
 {
   

@@ -31,8 +31,6 @@ typedef NS_ENUM(NSInteger, AskOrOfferFavor) {
   AskFavor,
 };
 
-- (void)getFavorsFromParseDataBase:(User *)passedUser asksOrOffer:(NSInteger)asksOrOffers;
-
 - (void)getAllFavorsFromLocalParseStore:(NSInteger)selectedSegment user:(User *)currentUser;
 
 -(void)getAllFavorsFromParse;
