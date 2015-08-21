@@ -10,6 +10,10 @@
 
 @interface FavorDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *favorLabel;
+@property (weak, nonatomic) IBOutlet UILabel *selectedFavorTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timePassedTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *passedSelectedFavorPosterNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *phoneNumberLabel;
 
 @end
 
@@ -27,7 +31,9 @@
   self.profileImageView.layer.cornerRadius = self.profileImageView.image.size.width / 2;
   self.profileImageView.layer.masksToBounds = YES;
   
-  
+  self.selectedFavorTextLabel.text = self.passedFavorText;
+  self.passedSelectedFavorPosterNameLabel.text = self.passedSelectedFavorPosterName;
+  self.timePassedTextLabel.text = self.passedTimeText;
   
 }
 

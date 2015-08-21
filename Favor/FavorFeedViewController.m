@@ -167,12 +167,15 @@
   
   FavorDetailViewController *vc = segue.destinationViewController;
   
-  
   UIImage *profImage = [UIImage imageWithData:[favorAtIndexPath.imageFile getData]];
   
   vc.profImage = profImage;
   
+  vc.passedFavorText = favorAtIndexPath.text;
+
+  vc.passedSelectedFavorPosterName = favorAtIndexPath.posterName;
   
+  vc.passedTimeText = favorAtIndexPath.timePosted;
 }
 
 

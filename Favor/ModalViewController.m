@@ -355,7 +355,7 @@
   favorToPin.userThatCreatedThisFavor = self.backgroundVC.currentUser;
   favorToPin.imageFile = [self.backgroundVC.currentUser objectForKey:@"ProfilePicture"];
   favorToPin.posterName = [self.backgroundVC.currentUser objectForKey:@"name"];
-  favorToPin[@"updatedAt"]= [DatabaseManager dateConverter:todaysDate];
+  favorToPin.timePosted = [DatabaseManager dateConverter:firstFavor.createdAt];
   
   [favorToPin pinInBackground];
   
@@ -373,7 +373,6 @@
         
       }];
 
-  
 }
 
 #pragma mark - Submit Favor
