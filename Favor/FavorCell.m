@@ -13,8 +13,8 @@
 
 -(void)makeImageViewCircular
 {
-  self.imageView.layer.cornerRadius = self.imageView.image.size.width / 2;
-  self.imageView.layer.masksToBounds = YES;
+  self.profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.image.size.width / 2;
+  self.profilePictureImageView.layer.masksToBounds = YES;
 }
 
 @end

@@ -136,6 +136,7 @@
 				19F59BA61B82B0770057BC6D /* LoginViewController.m */,
 				19653BD21B840E1B009DF2C2 /* FavorDetailViewController.h */,
 				19653BD31B840E1B009DF2C2 /* FavorDetailViewController.m */,
+				19AC32C31B825E4E00F38A47 /* Images.xcassets */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -185,7 +186,6 @@
 				19A035DB1B8282030062251C /* Model */,
 				19A035D71B826C5A0062251C /* Controllers */,
 				19AC32C01B825E4E00F38A47 /* Main.storyboard */,
-				19AC32C31B825E4E00F38A47 /* Images.xcassets */,
 				19AC32C51B825E4E00F38A47 /* LaunchScreen.xib */,
 				19AC32B61B825E4E00F38A47 /* Supporting Files */,
 			);

@@ -54,6 +54,8 @@
   NSMutableArray *queryResults = [[NSMutableArray alloc]init];
   
   PFQuery *query = [PFQuery queryWithClassName:@"Favor"];
+//  [query includeKey:@"updatedAt"];
+//  
   [query addDescendingOrder:@"updatedAt"];
   
   [query fromLocalDatastore];
@@ -107,7 +109,7 @@
   PFQuery *postQueryForUser = [PFQuery queryWithClassName:@"Favor"];
   
   
-  [postQueryForUser addDescendingOrder:@"updatedAt"];
+//  [postQueryForUser addDescendingOrder:@"updatedAt"];
   
   //gotta have this line. So So So So So So important
   [postQueryForUser includeKey:@"CreatedBy"];
@@ -135,10 +137,7 @@
         
         tempFavor.timePosted = stringFavorWasPosted;
         
-        
-        
         User *user = [someFavor objectForKey:@"CreatedBy"];
-        
         
         tempFavor.userThatCreatedThisFavor = [someFavor objectForKey:@"CreatedBy"];
         

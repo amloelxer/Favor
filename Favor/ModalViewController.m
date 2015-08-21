@@ -349,12 +349,13 @@
     
   }
   
-  
+  NSDate *todaysDate = [NSDate date];
+    
   firstFavor[@"CreatedBy"] = self.backgroundVC.currentUser;
   favorToPin.userThatCreatedThisFavor = self.backgroundVC.currentUser;
   favorToPin.imageFile = [self.backgroundVC.currentUser objectForKey:@"ProfilePicture"];
   favorToPin.posterName = [self.backgroundVC.currentUser objectForKey:@"name"];
-  favorToPin.timePosted = [DatabaseManager dateConverter:firstFavor.updatedAt];
+  favorToPin[@"updatedAt"]= [DatabaseManager dateConverter:todaysDate];
   
   [favorToPin pinInBackground];
   

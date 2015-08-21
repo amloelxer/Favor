@@ -8,6 +8,27 @@
 
 #import "FavorDetailViewController.h"
 
+@interface FavorDetailViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *favorLabel;
+
+@end
+
 @implementation FavorDetailViewController
+
+-(void)viewDidLoad
+{
+  [super viewDidLoad];
+  
+  self.favorLabel.backgroundColor = [ColorPalette getFavorRedColor];
+  
+  self.profileImageView.image = self.profImage;
+  
+  //code to make it circular 
+  self.profileImageView.layer.cornerRadius = self.profileImageView.image.size.width / 2;
+  self.profileImageView.layer.masksToBounds = YES;
+  
+  
+  
+}
 
 @end

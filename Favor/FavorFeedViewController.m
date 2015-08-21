@@ -8,7 +8,7 @@
 
 #import "FavorFeedViewController.h"
 #import "ModalViewController.h"
-
+#import "FavorDetailViewController.h"
 
 @interface FavorFeedViewController () <UITableViewDataSource, UITableViewDelegate, DatabaseManagerDelegate, ModalViewControllerDelegate>
 
@@ -33,6 +33,9 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  
+  
+//  [self.favorTableView registerClass:[FavorCell class] forCellReuseIdentifier:@"CellID"];
   
   PFQuery *query = [PFQuery queryWithClassName:@"Favor"];
   [query fromLocalDatastore];
@@ -78,8 +81,6 @@
 
 -(void)reloadTableWithQueryResults:(NSArray *)queryResults
 {
-  NSLog(@"reload table with query is being called", self.favorSegmentedControl.selectedSegmentIndex);
-
   [self callMethodForSegment];
 }
 
@@ -93,7 +94,7 @@
 
 - (IBAction)addFavorPressed:(UIBarButtonItem *)sender
 {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+//    NSLog(@"%@", NSStringFromSelector(_cmd));
     ModalViewController *vc = [[ModalViewController alloc] initWithBackgroundViewController:self];
     [vc setModalPresentationStyle:UIModalPresentationOverCurrentContext];
     
@@ -135,8 +136,8 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   
-  FavorCell *cell = [self.favorTableView dequeueReusableCellWithIdentifier:cellResuseIdentifier forIndexPath:indexPath];
-  
+  FavorCell *cell = [self.favorTableView dequeueReusableCellWithIdentifier:@"CellID" forIndexPath:indexPath];
+                     
   Favor *favorAtIndexPath = self.arrayOfFavors[indexPath.row];
   
   cell.posterName.text = favorAtIndexPath.posterName;
@@ -149,9 +150,29 @@
   
   cell.profilePictureImageView.layer.cornerRadius = cell.profilePictureImageView.image.size.width/2;
   cell.profilePictureImageView.layer.masksToBounds = YES;
-  cell.cellTextField.text = favorAtIndexPath.text;
+  cell.favorText.text = favorAtIndexPath.text;
+  
+//  [cell layoutSubviews];
   
   return cell;
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+  
+  NSIndexPath *path = [self.favorTableView indexPathForSelectedRow];
+  
+  Favor *favorAtIndexPath = self.arrayOfFavors[path.row];
+  
+  FavorDetailViewController *vc = segue.destinationViewController;
+  
+  
+  UIImage *profImage = [UIImage imageWithData:[favorAtIndexPath.imageFile getData]];
+  
+  vc.profImage = profImage;
+  
+  
 }
 
 

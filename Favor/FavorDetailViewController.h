@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ColorPalette.h"
 
 @interface FavorDetailViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 
+@property UIImage *profImage;
 @end
