@@ -71,7 +71,6 @@
   
   else
   {
-    NSLog(@"My Own Favors should print");
     [query whereKey:@"userThatCreatedThisFavor" equalTo:currentUser];
   }
   

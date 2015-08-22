@@ -190,18 +190,23 @@
   
   FavorDetailViewController *vc = segue.destinationViewController;
   
-  UIImage *profImage = [UIImage imageWithData:[favorAtIndexPath.imageFile getData]];
+  FavorCell *cell = [self.favorTableView cellForRowAtIndexPath:path];
+  
+  UIImage *profImage = cell.profilePictureImageView.image;
   
   vc.profImage = profImage;
   
   vc.passedFavorText = favorAtIndexPath.text;
-
+  
   vc.passedSelectedFavorPosterName = favorAtIndexPath.posterName;
   
   vc.passedTimeText = favorAtIndexPath.timePosted;
   
   vc.passedUserThatMadeTheFavor = favorAtIndexPath.userThatCreatedThisFavor;
   
+  vc.passedFavor = favorAtIndexPath;
+  
+    
 }
 
 

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		191C21651B84FE8A00780221 /* ColorPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 191C21641B84FE8A00780221 /* ColorPalette.m */; };
+		192D9CE31B87F64D00399A65 /* ResponseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 192D9CE21B87F64D00399A65 /* ResponseCell.m */; };
+		192D9CE61B891E9B00399A65 /* Response.m in Sources */ = {isa = PBXBuildFile; fileRef = 192D9CE51B891E9B00399A65 /* Response.m */; };
 		19653BCD1B840661009DF2C2 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19653BCC1B840661009DF2C2 /* DatabaseManager.m */; };
 		19653BD01B840CD2009DF2C2 /* FavorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19653BCF1B840CD2009DF2C2 /* FavorCell.m */; };
 		19653BD41B840E1B009DF2C2 /* FavorDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19653BD31B840E1B009DF2C2 /* FavorDetailViewController.m */; };
@@ -42,6 +44,10 @@
 /* Begin PBXFileReference section */
 		191C21631B84FE8A00780221 /* ColorPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPalette.h; sourceTree = "<group>"; };
 		191C21641B84FE8A00780221 /* ColorPalette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPalette.m; sourceTree = "<group>"; };
+		192D9CE11B87F64D00399A65 /* ResponseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseCell.h; sourceTree = "<group>"; };
+		192D9CE21B87F64D00399A65 /* ResponseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseCell.m; sourceTree = "<group>"; };
+		192D9CE41B891E9B00399A65 /* Response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Response.h; sourceTree = "<group>"; };
+		192D9CE51B891E9B00399A65 /* Response.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Response.m; sourceTree = "<group>"; };
 		19653BCB1B840661009DF2C2 /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
 		19653BCC1B840661009DF2C2 /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
 		19653BCE1B840CD2009DF2C2 /* FavorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavorCell.h; sourceTree = "<group>"; };
@@ -103,11 +109,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		192D9CE71B891EAE00399A65 /* Parse Objects */ = {
+			isa = PBXGroup;
+			children = (
+				19A035D81B8281FC0062251C /* Favor.h */,
+				19A035D91B8281FC0062251C /* Favor.m */,
+				19A035DC1B8284020062251C /* User.h */,
+				19A035DD1B8284020062251C /* User.m */,
+				192D9CE41B891E9B00399A65 /* Response.h */,
+				192D9CE51B891E9B00399A65 /* Response.m */,
+			);
+			name = "Parse Objects";
+			sourceTree = "<group>";
+		};
+		192D9CE81B891EBD00399A65 /* Color/Animation */ = {
+			isa = PBXGroup;
+			children = (
+				19653BD61B842EBC009DF2C2 /* ProfileImageView.h */,
+				19653BD71B842EBC009DF2C2 /* ProfileImageView.m */,
+				191C21631B84FE8A00780221 /* ColorPalette.h */,
+				191C21641B84FE8A00780221 /* ColorPalette.m */,
+			);
+			name = Color/Animation;
+			sourceTree = "<group>";
+		};
 		19653BD11B840CD8009DF2C2 /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
 				19653BCE1B840CD2009DF2C2 /* FavorCell.h */,
 				19653BCF1B840CD2009DF2C2 /* FavorCell.m */,
+				192D9CE11B87F64D00399A65 /* ResponseCell.h */,
+				192D9CE21B87F64D00399A65 /* ResponseCell.m */,
 			);
 			name = "Custom Cells";
 			sourceTree = "<group>";
@@ -145,14 +177,8 @@
 			isa = PBXGroup;
 			children = (
 				19653BD51B841334009DF2C2 /* DataManagers */,
-				19A035D81B8281FC0062251C /* Favor.h */,
-				19A035D91B8281FC0062251C /* Favor.m */,
-				19A035DC1B8284020062251C /* User.h */,
-				19A035DD1B8284020062251C /* User.m */,
-				19653BD61B842EBC009DF2C2 /* ProfileImageView.h */,
-				19653BD71B842EBC009DF2C2 /* ProfileImageView.m */,
-				191C21631B84FE8A00780221 /* ColorPalette.h */,
-				191C21641B84FE8A00780221 /* ColorPalette.m */,
+				192D9CE71B891EAE00399A65 /* Parse Objects */,
+				192D9CE81B891EBD00399A65 /* Color/Animation */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -409,11 +435,13 @@
 				19EDFE8A1B8396230076AB19 /* FacebookLoginManager.m in Sources */,
 				19653BCD1B840661009DF2C2 /* DatabaseManager.m in Sources */,
 				191C21651B84FE8A00780221 /* ColorPalette.m in Sources */,
+				192D9CE61B891E9B00399A65 /* Response.m in Sources */,
 				19A035DE1B8284020062251C /* User.m in Sources */,
 				19A035DA1B8281FC0062251C /* Favor.m in Sources */,
 				19653BD81B842EBC009DF2C2 /* ProfileImageView.m in Sources */,
 				19653BD01B840CD2009DF2C2 /* FavorCell.m in Sources */,
 				C33E19BB1B85153C00546523 /* ModalViewController.m in Sources */,
+				192D9CE31B87F64D00399A65 /* ResponseCell.m in Sources */,
 				19AC32BF1B825E4E00F38A47 /* FavorFeedViewController.m in Sources */,
 				C33E19BC1B85153C00546523 /* UIImageEffects.m in Sources */,
 				19AC32BC1B825E4E00F38A47 /* AppDelegate.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import "FavorDetailViewController.h"
+#import "FavorCell.h"
 
 @interface FavorDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *favorLabel;
@@ -14,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *timePassedTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *passedSelectedFavorPosterNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *phoneNumberLabel;
+@property (weak, nonatomic) IBOutlet UITableView *responseTableView;
+@property NSMutableArray *arrayOfResponses;
 
 @end
 
@@ -50,9 +53,88 @@
   self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
   [self.navigationController.navigationBar setTranslucent:NO];
   
+}
+
+#pragma mark - Table View Delegate Methods
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
   
+   FavorCell *cell = [self.responseTableView dequeueReusableCellWithIdentifier:@"CellID" forIndexPath:indexPath];
   
+  //make sure the cell image loads for the right cell by comparing index Paths
+  if([[self.responseTableView indexPathForCell:cell] isEqual:indexPath])
+  {
+
+  }
+//
+//  Favor *favorAtIndexPath = self.arrayOfFavors[indexPath.row];
+//  
+//  cell.posterName.text = favorAtIndexPath.posterName;
+//  
+//  cell.timePassedSinceFavorWasPosted.text = favorAtIndexPath.timePosted;
+//  
+//  cell.favorText.text = favorAtIndexPath.text;
+//  
   
+//  [favorAtIndexPath.imageFile getDataInBackgroundWithBlock:^(NSData *result, NSError *error) {
+//    
+//    //make sure the cell image loads for the right cell by comparing index Paths
+//    if([[self.favorTableView indexPathForCell:cell] isEqual:indexPath])
+//    {
+//      UIImage *profImage = [UIImage imageWithData:result];
+//      cell.profilePictureImageView.image = profImage;
+//      
+//      cell.profilePictureImageView.layer.cornerRadius = cell.profilePictureImageView.image.size.width/2;
+//      cell.profilePictureImageView.layer.masksToBounds = YES;
+//      
+//    }
+//    
+//  }];
+//  
+//  
+  return cell;
+}
+
+//just a temp to test before we have cassidy's view
+- (IBAction)makeResponseButtonPressed:(UIButton *)sender
+{
+  [self saveResponse];
+}
+
+//method to be put into cassidy's view controller later
+-(void)saveResponse
+{
+  Response *newResponse = [Response objectWithClassName:@"Response"];
+  [newResponse setObject:@"Default Response Text" forKey:@"responseText"];
+  [newResponse setObject:[User currentUser] forKey:@"userWhoMadeTheResponse"];
+  [newResponse setObject:self.passedFavor forKey:@"favorWhichResponseIsOn"];
+  
+
+  
+  [newResponse saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    
+    if (!error)
+    {
+      NSLog(@"The new response was saved sucessfully");
+    }
+    else
+    {
+      NSLog(@"The error is: %@", error);
+    }
+    
+  }];
+  
+
+
+}
+
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+//  return self.arrayOfResponses.count;
+  
+    return 1;
 }
 
 @end
