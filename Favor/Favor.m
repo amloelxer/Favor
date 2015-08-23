@@ -21,6 +21,8 @@
 //if you have a problem check this
 @dynamic userThatCreatedThisFavor;
 
+@dynamic uniqueID;
+
 + (void)load
 {
     [self registerSubclass];

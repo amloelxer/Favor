@@ -38,6 +38,8 @@ typedef NS_ENUM(NSInteger, FavorType) {
 
 @property User *userThatCreatedThisFavor;
 
+@property NSString *uniqueID;
+
 
 
 + (NSString *)parseClassName;

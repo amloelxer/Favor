@@ -16,4 +16,9 @@
   return @"Response";
 }
 
++ (void)load
+{
+  [self registerSubclass];
+}
+
 @end

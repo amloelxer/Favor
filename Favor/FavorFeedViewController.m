@@ -204,9 +204,8 @@
   
   vc.passedUserThatMadeTheFavor = favorAtIndexPath.userThatCreatedThisFavor;
   
-  vc.passedFavor = favorAtIndexPath;
-  
-    
+  vc.passedFavorID = favorAtIndexPath.uniqueID;
+
 }
 
 

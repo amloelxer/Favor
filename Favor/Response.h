@@ -18,6 +18,7 @@
 @property NSString *timeAgo;
 @property NSString *phoneNumber;
 @property NSString *responseText;
+@property PFFile *profPicFile;
 @property User *userWhoMadeThisResponse;
 @property Favor *favorThisResponseIsOn;
 

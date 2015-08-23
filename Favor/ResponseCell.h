@@ -11,7 +11,9 @@
 #import "User.h"
 
 @interface ResponseCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *responseProfilePicture;
+@property (weak, nonatomic) IBOutlet UIImageView *responseProfilePictureView;
 @property (weak, nonatomic) IBOutlet UILabel *responderName;
+@property (weak, nonatomic) IBOutlet UIButton *chosenButton;
+@property (weak, nonatomic) IBOutlet UILabel *responderText;
 
 @end

@@ -46,6 +46,7 @@
  controller value in FavorFeedView and calls the delegate method
  reloadTableWithCachedQueryResults with the sorted array of comments */
 
+#pragma Favor Methods
 - (void)getAllFavorsFromLocalParseStore:(NSInteger)selectedSegment user:(User *)currentUser
 {
   NSMutableArray *queryResults = [[NSMutableArray alloc]init];
@@ -105,6 +106,7 @@
   
   //gotta have this line. So So So So So So important
   [postQueryForUser includeKey:@"CreatedBy"];
+  [postQueryForUser includeKey:@"objectID"];
   [postQueryForUser findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
     
     if(!error)
@@ -115,7 +117,7 @@
         Favor *tempFavor = [Favor new];
         
         tempFavor.text = [someFavor objectForKey:@"text"];
-        
+        tempFavor.uniqueID = someFavor.objectId;
         //must cast on the other side from type ID to boolValue
         //I was getting the pointer to the object and not the actual value
         //this is very very important
@@ -168,10 +170,66 @@
     
   }];
   
- 
+}
+
+
+#pragma mark - Response Methods
+
+-(void)getResponseForSelectedFavor:(NSString *)selectedFavorID
+{
+  
+  NSMutableArray *queryResults = [[NSMutableArray alloc]init];
+  
+  PFQuery *responseQueryForFavor = [PFQuery queryWithClassName:@"Response"];
+  
+  
+  PFQuery *query = [PFQuery queryWithClassName:@"Favor"];
+  
+  [query getObjectInBackgroundWithId:selectedFavorID block:^(PFObject *someFavor, NSError *error) {
+    
+    [responseQueryForFavor whereKey:@"favorWhichResponseIsOn" equalTo:(Favor *)someFavor];
+    
+    [responseQueryForFavor findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+      if (!error)
+      {
+        //change for consistency later?
+        for (int i=0; i<objects.count; i++)
+        {
+          Response *someResponse = objects[i];
+          
+          Response *responseToBeAdded = [Response new];
+          responseToBeAdded.responseText = someResponse.responseText;
+          User *responseCreator = [someResponse objectForKey:@"userWhoMadeTheResponse"];
+          responseToBeAdded.responseCreatorName = [responseCreator objectForKey:@"name"];
+          PFFile *imageFile = [responseCreator objectForKey:@"ProfilePicture"];
+          responseToBeAdded.profPicFile = imageFile;
+          [queryResults addObject:responseToBeAdded];
+          
+        }
+        
+        [self.delegate reloadTableWithResponses:queryResults];
+        
+      }
+      else
+      {
+        // Log details of the failure
+        NSLog(@"Error: %@ %@", error, [error userInfo]);
+      }
+    }];
+
+    
+  }];
+  
+  
+  
+
 
   
+  
+  
 }
+
+
 
 
 

@@ -8,16 +8,18 @@
 
 #import "FavorDetailViewController.h"
 #import "FavorCell.h"
+#import "DatabaseManager.h"
 
-@interface FavorDetailViewController ()
+@interface FavorDetailViewController ()  <DatabaseManagerDelegate>
+
 @property (weak, nonatomic) IBOutlet UILabel *favorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *selectedFavorTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timePassedTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *passedSelectedFavorPosterNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *phoneNumberLabel;
 @property (weak, nonatomic) IBOutlet UITableView *responseTableView;
-@property NSMutableArray *arrayOfResponses;
-
+@property NSArray *arrayOfResponses;
+@property DatabaseManager *parseManager;
 @end
 
 @implementation FavorDetailViewController
@@ -25,6 +27,12 @@
 -(void)viewDidLoad
 {
   [super viewDidLoad];
+  
+  self.parseManager = [[DatabaseManager alloc]init];
+  
+  self.parseManager.delegate = self;
+  
+  
   
   self.favorLabel.backgroundColor = [ColorPalette getFavorRedColor];
   
@@ -55,44 +63,65 @@
   
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+  [self.parseManager getResponseForSelectedFavor:self.passedFavorID];
+  
+}
+
+#pragma DatabaseManager Delegate responses
+- (void) reloadTableWithResponses: (NSArray *) queryResults;
+{
+  NSLog(@"delegate method in reload table with responses is being called");
+  
+  self.arrayOfResponses = queryResults;
+  [self.responseTableView reloadData];
+  
+}
+
 #pragma mark - Table View Delegate Methods
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   
-   FavorCell *cell = [self.responseTableView dequeueReusableCellWithIdentifier:@"CellID" forIndexPath:indexPath];
+   ResponseCell *cell = [self.responseTableView dequeueReusableCellWithIdentifier:@"CellID" forIndexPath:indexPath];
+  
+  Response *responseForCell = self.arrayOfResponses[indexPath.row];
   
   //make sure the cell image loads for the right cell by comparing index Paths
   if([[self.responseTableView indexPathForCell:cell] isEqual:indexPath])
   {
-
-  }
-//
-//  Favor *favorAtIndexPath = self.arrayOfFavors[indexPath.row];
-//  
-//  cell.posterName.text = favorAtIndexPath.posterName;
-//  
-//  cell.timePassedSinceFavorWasPosted.text = favorAtIndexPath.timePosted;
-//  
-//  cell.favorText.text = favorAtIndexPath.text;
-//  
   
-//  [favorAtIndexPath.imageFile getDataInBackgroundWithBlock:^(NSData *result, NSError *error) {
-//    
-//    //make sure the cell image loads for the right cell by comparing index Paths
-//    if([[self.favorTableView indexPathForCell:cell] isEqual:indexPath])
-//    {
-//      UIImage *profImage = [UIImage imageWithData:result];
-//      cell.profilePictureImageView.image = profImage;
-//      
-//      cell.profilePictureImageView.layer.cornerRadius = cell.profilePictureImageView.image.size.width/2;
-//      cell.profilePictureImageView.layer.masksToBounds = YES;
-//      
-//    }
-//    
-//  }];
-//  
-//  
+    
+  }
+  
+  cell.responderName.text = responseForCell.responseCreatorName;
+  
+  cell.responderText.text = responseForCell.responseText;
+  
+  [responseForCell.profPicFile getDataInBackgroundWithBlock:^(NSData *result, NSError *error) {
+    
+    //make sure the cell image loads for the right cell by comparing index Paths
+    if([[self.responseTableView indexPathForCell:cell] isEqual:indexPath])
+    {
+        UIImage *profImage = [UIImage imageWithData:result];
+      cell.responseProfilePictureView.image = profImage;
+      
+      cell.responseProfilePictureView.layer.cornerRadius = cell.responseProfilePictureView.image.size.width/2;
+      cell.responseProfilePictureView.layer.masksToBounds = YES;
+    }
+    
+  }];
+
+  
+  
+//  cell.responseProfilePictureView.layer.cornerRadius = cell.responseProfilePictureView.image.size.width/2;
+
   return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+  return self.arrayOfResponses.count;
 }
 
 //just a temp to test before we have cassidy's view
@@ -104,37 +133,38 @@
 //method to be put into cassidy's view controller later
 -(void)saveResponse
 {
-  Response *newResponse = [Response objectWithClassName:@"Response"];
-  [newResponse setObject:@"Default Response Text" forKey:@"responseText"];
-  [newResponse setObject:[User currentUser] forKey:@"userWhoMadeTheResponse"];
-  [newResponse setObject:self.passedFavor forKey:@"favorWhichResponseIsOn"];
+ 
+    Response *newResponse = [Response objectWithClassName:@"Response"];
+    [newResponse setObject:@"Default Response Text" forKey:@"responseText"];
+    [newResponse setObject:[User currentUser] forKey:@"userWhoMadeTheResponse"];
   
+  
+  PFQuery *query = [PFQuery queryWithClassName:@"Favor"];
+  [query getObjectInBackgroundWithId:self.passedFavorID block:^(PFObject *someFavor, NSError *error) {
+    
+    [newResponse setObject:someFavor forKey:@"favorWhichResponseIsOn"];
+    
+    
+    [newResponse saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+      
+      if (!error)
+      {
+        NSLog(@"The new response was saved sucessfully");
+      }
+      else
+      {
+        NSLog(@"The error is: %@", error);
+      }
+      
+    }];
 
   
-  [newResponse saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-    
-    if (!error)
-    {
-      NSLog(@"The new response was saved sucessfully");
-    }
-    else
-    {
-      NSLog(@"The error is: %@", error);
-    }
-    
   }];
   
-
-
-}
-
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-//  return self.arrayOfResponses.count;
   
-    return 1;
+  
 }
+
+
 
 @end

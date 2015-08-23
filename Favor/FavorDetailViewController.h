@@ -12,6 +12,7 @@
 #import "Response.h"
 #import "Favor.h"
 #import "User.h"
+#import "ResponseCell.h"
 
 @interface FavorDetailViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
@@ -19,7 +20,7 @@
 @property NSString *passedTimeText;
 @property NSString *passedSelectedFavorPosterName;
 @property User *passedUserThatMadeTheFavor;
-@property Favor *passedFavor;
+@property NSString *passedFavorID;
 
 @property UIImage *profImage;
 @end

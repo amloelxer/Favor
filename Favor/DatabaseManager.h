@@ -14,11 +14,14 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "Favor.h"
 #import <Bolts.h>
+#import "Response.h"
 
 @class DatabaseManager;
 @protocol DatabaseManagerDelegate <NSObject>
+@optional
 - (void) reloadTableWithQueryResults: (NSArray *) queryResults;
 - (void) reloadTableWithCachedQueryResults: (NSArray *) queryResults;
+- (void) reloadTableWithResponses: (NSArray *) queryResults;
 //- (void) logInFailedWithError: (ParseManager *) sender;
 @end
 
@@ -34,6 +37,8 @@ typedef NS_ENUM(NSInteger, AskOrOfferFavor) {
 - (void)getAllFavorsFromLocalParseStore:(NSInteger)selectedSegment user:(User *)currentUser;
 
 -(void)getAllFavorsFromParse;
+
+-(void)getResponseForSelectedFavor:(NSString *)selectedFavorID;
 
 + (NSString *)dateConverter:(NSDate *)passedDate;
 
