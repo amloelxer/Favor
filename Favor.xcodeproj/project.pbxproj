@@ -25,6 +25,8 @@
 		19AC32D31B825E4F00F38A47 /* FavorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC32D21B825E4F00F38A47 /* FavorTests.m */; };
 		19EDFE8A1B8396230076AB19 /* FacebookLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EDFE891B8396230076AB19 /* FacebookLoginManager.m */; };
 		19EF06EF1B8BB3B70035D7A9 /* ResponseLabelOnFavor.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EF06EE1B8BB3B70035D7A9 /* ResponseLabelOnFavor.m */; };
+		19EF06F11B8BC7B20035D7A9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EF06F01B8BC7B20035D7A9 /* CoreLocation.framework */; };
+		19EF06F41B8BCFE70035D7A9 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EF06F31B8BCFE70035D7A9 /* LocationManager.m */; };
 		19F59BA71B82B0770057BC6D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F59BA61B82B0770057BC6D /* LoginViewController.m */; };
 		4A00F09B0C304F259232D8A9 /* libPods-Favor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD6DEF3AFC654F6D7EFE8C4 /* libPods-Favor.a */; };
 		C33E19BB1B85153C00546523 /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33E19B81B85153C00546523 /* ModalViewController.m */; };
@@ -78,6 +80,9 @@
 		19EDFE891B8396230076AB19 /* FacebookLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookLoginManager.m; sourceTree = "<group>"; };
 		19EF06ED1B8BB3B70035D7A9 /* ResponseLabelOnFavor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseLabelOnFavor.h; sourceTree = "<group>"; };
 		19EF06EE1B8BB3B70035D7A9 /* ResponseLabelOnFavor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseLabelOnFavor.m; sourceTree = "<group>"; };
+		19EF06F01B8BC7B20035D7A9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		19EF06F21B8BCFE70035D7A9 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		19EF06F31B8BCFE70035D7A9 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		19F59BA51B82B0770057BC6D /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		19F59BA61B82B0770057BC6D /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		29005DB7C27826C790BDC074 /* Pods-FavorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FavorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FavorTests/Pods-FavorTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -97,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19EF06F11B8BC7B20035D7A9 /* CoreLocation.framework in Frameworks */,
 				4A00F09B0C304F259232D8A9 /* libPods-Favor.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,6 +191,8 @@
 				192D9CE81B891EBD00399A65 /* Color/Animation */,
 				19EF06ED1B8BB3B70035D7A9 /* ResponseLabelOnFavor.h */,
 				19EF06EE1B8BB3B70035D7A9 /* ResponseLabelOnFavor.m */,
+				19EF06F21B8BCFE70035D7A9 /* LocationManager.h */,
+				19EF06F31B8BCFE70035D7A9 /* LocationManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -263,6 +271,7 @@
 		C237CBE8237D489AC76603CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				19EF06F01B8BC7B20035D7A9 /* CoreLocation.framework */,
 				BAD6DEF3AFC654F6D7EFE8C4 /* libPods-Favor.a */,
 				D09AF03509A7622B685A85AB /* libPods-FavorTests.a */,
 			);
@@ -448,6 +457,7 @@
 				19653BD01B840CD2009DF2C2 /* FavorCell.m in Sources */,
 				C33E19BB1B85153C00546523 /* ModalViewController.m in Sources */,
 				192D9CE31B87F64D00399A65 /* ResponseCell.m in Sources */,
+				19EF06F41B8BCFE70035D7A9 /* LocationManager.m in Sources */,
 				19AC32BF1B825E4E00F38A47 /* FavorFeedViewController.m in Sources */,
 				C33E19BC1B85153C00546523 /* UIImageEffects.m in Sources */,
 				19AC32BC1B825E4E00F38A47 /* AppDelegate.m in Sources */,

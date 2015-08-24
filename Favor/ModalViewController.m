@@ -7,6 +7,7 @@
 //
 
 #import "ModalViewController.h"
+#import "LocationManager.h"
 
 @interface ModalViewController()
 
@@ -31,6 +32,7 @@
 @property (nonatomic) CGPoint askMagicLineCenter;
 @property (nonatomic) NSInteger offerOrAsk; //Offer = 0, ask = 1
 @property DatabaseManager *parseManager;
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end
 
@@ -57,6 +59,7 @@
 //    self.parseManager.delegate = self;
   
    self.offerOrAsk = 0;
+  
 }
 
 -(void)viewDidLoad {
@@ -356,6 +359,13 @@
 //  firstFavor[@"timePosted"] = [DatabaseManager dateConverter:firstFavor.createdAt];
   firstFavor[@"posterName"] = [self.backgroundVC.currentUser objectForKey:@"name"];
   firstFavor[@"imageFile"] =  favorToPin.imageFile = [self.backgroundVC.currentUser objectForKey:@"ProfilePicture"];
+  
+  
+  LocationManager *currentLocationManager = [LocationManager sharedManager];
+  
+  PFGeoPoint *currentLocation = [PFGeoPoint geoPointWithLocation:currentLocationManager.currentLocation];
+  
+  firstFavor[@"locationOfFavor"] = currentLocation;
   
   favorToPin.CreatedBy = self.backgroundVC.currentUser;
   favorToPin.imageFile = [self.backgroundVC.currentUser objectForKey:@"ProfilePicture"];

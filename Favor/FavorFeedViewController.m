@@ -9,6 +9,8 @@
 #import "FavorFeedViewController.h"
 #import "ModalViewController.h"
 #import "FavorDetailViewController.h"
+#import <CoreLocation/CoreLocation.h>
+#import "LocationManager.h"
 
 
 @interface FavorFeedViewController () <UITableViewDataSource, UITableViewDelegate, DatabaseManagerDelegate, ModalViewControllerDelegate>
@@ -18,8 +20,6 @@
 @property NSArray *arrayOfFavors;
 @property DatabaseManager *parseDataManager;
 @property ModalViewController *vc;
-
-
 @property (weak, nonatomic) IBOutlet UISegmentedControl *favorSegmentedControl;
 
 @end
@@ -35,6 +35,9 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  
+  LocationManager *someLocationManger = [LocationManager sharedManager];
+  
   
   //code for making the cells pop to the top of the table view on laod
   self.automaticallyAdjustsScrollViewInsets = NO;
