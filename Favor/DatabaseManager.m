@@ -61,18 +61,18 @@
   //it's an offer so it's 0 for no
   if(selectedSegment == 0)
   {
-    [query whereKey:@"askOrFavor" equalTo:[NSNumber numberWithBool:NO]];
+    [query whereKey:@"askOrOffer" equalTo:[NSNumber numberWithBool:NO]];
   }
   
   //it's an ask so it's 1 for yes
   else if(selectedSegment == 1)
   {
-    [query whereKey:@"askOrFavor" equalTo:[NSNumber numberWithBool:YES]];
+    [query whereKey:@"askOrOffer" equalTo:[NSNumber numberWithBool:YES]];
   }
   
   else
   {
-    [query whereKey:@"userThatCreatedThisFavor" equalTo:currentUser];
+    [query whereKey:@"CreatedBy" equalTo:currentUser];
   }
   
   
@@ -123,7 +123,7 @@
         //this is very very important
         BOOL thisAskOrOffer = [someFavor[@"askOrOffer"]boolValue];
         
-        tempFavor.askOrFavor = thisAskOrOffer;
+        tempFavor.askOrOffer = thisAskOrOffer;
         
         NSDate *favorTimeUpdatedAt = someFavor.updatedAt;
         
@@ -135,7 +135,7 @@
         
         User *user = [someFavor objectForKey:@"CreatedBy"];
         
-        tempFavor.userThatCreatedThisFavor = [someFavor objectForKey:@"CreatedBy"];
+        tempFavor.CreatedBy = [someFavor objectForKey:@"CreatedBy"];
         
         tempFavor.posterName = [user objectForKey:@"name"];
         

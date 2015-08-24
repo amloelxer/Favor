@@ -206,7 +206,7 @@
   
   vc.passedTimeText = favorAtIndexPath.timePosted;
   
-  vc.passedUserThatMadeTheFavor = favorAtIndexPath.userThatCreatedThisFavor;
+  vc.passedUserThatMadeTheFavor = favorAtIndexPath.CreatedBy;
   
   vc.passedFavorID = favorAtIndexPath.uniqueID;
 

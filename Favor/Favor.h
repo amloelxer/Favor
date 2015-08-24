@@ -24,22 +24,22 @@ typedef NS_ENUM(NSInteger, FavorType) {
 
 
 @property NSString *text;
-@property NSMutableArray *arrayOfResponses;
+
 @property NSNumber *numberOfResponses;
 
 @property NSString *timePosted;
-
-@property UIImage *userImage;
 
 @property NSString *posterName;
 
 @property PFFile *imageFile;
 
-@property BOOL askOrFavor;
+@property BOOL askOrOffer;
 
-@property User *userThatCreatedThisFavor;
+@property User *CreatedBy;
 
 @property NSString *uniqueID;
+
+@property NSNumber *currentState;
 
 
 

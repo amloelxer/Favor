@@ -12,15 +12,15 @@
 
 @dynamic favorType;
 @dynamic text;
-@dynamic arrayOfResponses;
 @dynamic timePosted;
 @dynamic posterName;
-@dynamic userImage;
 @dynamic imageFile;
-@dynamic askOrFavor;
 @dynamic numberOfResponses;
+@dynamic askOrOffer;
 //if you have a problem check this
-@dynamic userThatCreatedThisFavor;
+@dynamic CreatedBy;
+
+@dynamic currentState;
 
 @dynamic uniqueID;
 

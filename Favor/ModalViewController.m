@@ -338,25 +338,30 @@
   if(self.offerOrAsk == 0)
   {
     [firstFavor setObject:@(NO) forKey:@"askOrOffer"];
-     favorToPin.askOrFavor = NO;
+     favorToPin.askOrOffer = NO;
     
   }
   //else it's an ask which is true so 1
   else
   {
     [firstFavor setObject:@(YES) forKey:@"askOrOffer"];
-    favorToPin.askOrFavor = YES;
+    favorToPin.askOrOffer = YES;
     
   }
       
   firstFavor[@"CreatedBy"] = self.backgroundVC.currentUser;
   firstFavor[@"numOfResponses"] = @(0);
+  firstFavor[@"currentState"] = @(0);
   
-  favorToPin.userThatCreatedThisFavor = self.backgroundVC.currentUser;
+//  firstFavor[@"timePosted"] = [DatabaseManager dateConverter:firstFavor.createdAt];
+  firstFavor[@"posterName"] = [self.backgroundVC.currentUser objectForKey:@"name"];
+  firstFavor[@"imageFile"] =  favorToPin.imageFile = [self.backgroundVC.currentUser objectForKey:@"ProfilePicture"];
+  
+  favorToPin.CreatedBy = self.backgroundVC.currentUser;
   favorToPin.imageFile = [self.backgroundVC.currentUser objectForKey:@"ProfilePicture"];
   favorToPin.posterName = [self.backgroundVC.currentUser objectForKey:@"name"];
   favorToPin.timePosted = [DatabaseManager dateConverter:firstFavor.createdAt];
-  
+  favorToPin.currentState = @(0);
   
   [favorToPin pinInBackground];
   
