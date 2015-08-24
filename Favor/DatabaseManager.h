@@ -40,6 +40,10 @@ typedef NS_ENUM(NSInteger, AskOrOfferFavor) {
 
 -(void)getResponseForSelectedFavor:(NSString *)selectedFavorID;
 
+- (NSInteger)getNumberOfResponsesForSelectedFavor:(NSString *)selectedFavorID;
+
 + (NSString *)dateConverter:(NSDate *)passedDate;
+
+
 
 @end

@@ -131,6 +131,8 @@
         
         tempFavor.timePosted = stringFavorWasPosted;
         
+        tempFavor.numberOfResponses = someFavor[@"numOfResponses"];
+        
         User *user = [someFavor objectForKey:@"CreatedBy"];
         
         tempFavor.userThatCreatedThisFavor = [someFavor objectForKey:@"CreatedBy"];
@@ -182,7 +184,6 @@
   
   PFQuery *responseQueryForFavor = [PFQuery queryWithClassName:@"Response"];
   
-  
   PFQuery *query = [PFQuery queryWithClassName:@"Favor"];
   
   [query getObjectInBackgroundWithId:selectedFavorID block:^(PFObject *someFavor, NSError *error) {
@@ -220,15 +221,7 @@
     
   }];
   
-  
-  
-
-
-  
-  
-  
 }
-
 
 
 

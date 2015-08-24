@@ -25,6 +25,7 @@ typedef NS_ENUM(NSInteger, FavorType) {
 
 @property NSString *text;
 @property NSMutableArray *arrayOfResponses;
+@property NSNumber *numberOfResponses;
 
 @property NSString *timePosted;
 

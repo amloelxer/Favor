@@ -350,6 +350,8 @@
   }
       
   firstFavor[@"CreatedBy"] = self.backgroundVC.currentUser;
+  firstFavor[@"numOfResponses"] = @(0);
+  
   favorToPin.userThatCreatedThisFavor = self.backgroundVC.currentUser;
   favorToPin.imageFile = [self.backgroundVC.currentUser objectForKey:@"ProfilePicture"];
   favorToPin.posterName = [self.backgroundVC.currentUser objectForKey:@"name"];

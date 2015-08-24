@@ -87,31 +87,47 @@
   
   Response *responseForCell = self.arrayOfResponses[indexPath.row];
   
-  //make sure the cell image loads for the right cell by comparing index Paths
-  if([[self.responseTableView indexPathForCell:cell] isEqual:indexPath])
+  
+  if([self.passedUserThatMadeTheFavor isEqual:[User currentUser]])
   {
-  
-    
+    //enable what needs to be done on setup to change screens
   }
-  
+  //hide and disable the buttons because they shouldn't be there
+  else
+  {
+    cell.chosenButton.hidden = YES;
+    cell.chosenButton.enabled = NO;
+  }
+
   cell.responderName.text = responseForCell.responseCreatorName;
   
   cell.responderText.text = responseForCell.responseText;
   
-  [responseForCell.profPicFile getDataInBackgroundWithBlock:^(NSData *result, NSError *error) {
+  //make sure the cell image loads for the right cell by comparing index Paths
+  if([[self.responseTableView indexPathForCell:cell] isEqual:indexPath])
+  {
     
-    //make sure the cell image loads for the right cell by comparing index Paths
-    if([[self.responseTableView indexPathForCell:cell] isEqual:indexPath])
-    {
-        UIImage *profImage = [UIImage imageWithData:result];
-      cell.responseProfilePictureView.image = profImage;
-      
-      cell.responseProfilePictureView.layer.cornerRadius = cell.responseProfilePictureView.image.size.width/2;
-      cell.responseProfilePictureView.layer.masksToBounds = YES;
-    }
     
-  }];
+  }
+     
+     
+     [responseForCell.profPicFile getDataInBackgroundWithBlock:^(NSData *result, NSError *error) {
+       
+       //make sure the cell image loads for the right cell by comparing index Paths
+       if([[self.responseTableView indexPathForCell:cell] isEqual:indexPath])
+       {
+         UIImage *profImage = [UIImage imageWithData:result];
+         cell.responseProfilePictureView.image = profImage;
+         
+         cell.responseProfilePictureView.layer.cornerRadius = cell.responseProfilePictureView.image.size.width/2;
+         cell.responseProfilePictureView.layer.masksToBounds = YES;
+       }
+       
+     }];
 
+  
+  
+  
   
   
 //  cell.responseProfilePictureView.layer.cornerRadius = cell.responseProfilePictureView.image.size.width/2;
@@ -144,6 +160,11 @@
     
     [newResponse setObject:someFavor forKey:@"favorWhichResponseIsOn"];
     
+    NSNumber *numOfResponses = someFavor[@"numOfResponses"];
+    
+    NSNumber *newNumber = [NSNumber numberWithInt:[numOfResponses intValue] + 1];
+    
+    someFavor[@"numOfResponses"] = newNumber;
     
     [newResponse saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
       

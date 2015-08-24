@@ -24,6 +24,7 @@
 		19AC32C71B825E4E00F38A47 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19AC32C51B825E4E00F38A47 /* LaunchScreen.xib */; };
 		19AC32D31B825E4F00F38A47 /* FavorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC32D21B825E4F00F38A47 /* FavorTests.m */; };
 		19EDFE8A1B8396230076AB19 /* FacebookLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EDFE891B8396230076AB19 /* FacebookLoginManager.m */; };
+		19EF06EF1B8BB3B70035D7A9 /* ResponseLabelOnFavor.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EF06EE1B8BB3B70035D7A9 /* ResponseLabelOnFavor.m */; };
 		19F59BA71B82B0770057BC6D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F59BA61B82B0770057BC6D /* LoginViewController.m */; };
 		4A00F09B0C304F259232D8A9 /* libPods-Favor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD6DEF3AFC654F6D7EFE8C4 /* libPods-Favor.a */; };
 		C33E19BB1B85153C00546523 /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33E19B81B85153C00546523 /* ModalViewController.m */; };
@@ -75,6 +76,8 @@
 		19AC32D21B825E4F00F38A47 /* FavorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavorTests.m; sourceTree = "<group>"; };
 		19EDFE881B8396220076AB19 /* FacebookLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookLoginManager.h; sourceTree = "<group>"; };
 		19EDFE891B8396230076AB19 /* FacebookLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookLoginManager.m; sourceTree = "<group>"; };
+		19EF06ED1B8BB3B70035D7A9 /* ResponseLabelOnFavor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseLabelOnFavor.h; sourceTree = "<group>"; };
+		19EF06EE1B8BB3B70035D7A9 /* ResponseLabelOnFavor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseLabelOnFavor.m; sourceTree = "<group>"; };
 		19F59BA51B82B0770057BC6D /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		19F59BA61B82B0770057BC6D /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		29005DB7C27826C790BDC074 /* Pods-FavorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FavorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FavorTests/Pods-FavorTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -176,9 +179,12 @@
 		19A035DB1B8282030062251C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				19653BD11B840CD8009DF2C2 /* Custom Cells */,
 				19653BD51B841334009DF2C2 /* DataManagers */,
 				192D9CE71B891EAE00399A65 /* Parse Objects */,
 				192D9CE81B891EBD00399A65 /* Color/Animation */,
+				19EF06ED1B8BB3B70035D7A9 /* ResponseLabelOnFavor.h */,
+				19EF06EE1B8BB3B70035D7A9 /* ResponseLabelOnFavor.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -208,7 +214,6 @@
 			children = (
 				19AC32BA1B825E4E00F38A47 /* AppDelegate.h */,
 				19AC32BB1B825E4E00F38A47 /* AppDelegate.m */,
-				19653BD11B840CD8009DF2C2 /* Custom Cells */,
 				19A035DB1B8282030062251C /* Model */,
 				19A035D71B826C5A0062251C /* Controllers */,
 				19AC32C01B825E4E00F38A47 /* Main.storyboard */,
@@ -432,6 +437,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19653BD41B840E1B009DF2C2 /* FavorDetailViewController.m in Sources */,
+				19EF06EF1B8BB3B70035D7A9 /* ResponseLabelOnFavor.m in Sources */,
 				19EDFE8A1B8396230076AB19 /* FacebookLoginManager.m in Sources */,
 				19653BCD1B840661009DF2C2 /* DatabaseManager.m in Sources */,
 				191C21651B84FE8A00780221 /* ColorPalette.m in Sources */,

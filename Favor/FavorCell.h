@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ResponseLabelOnFavor.h"
 
 @interface FavorCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *profilePictureImageView;
@@ -17,6 +18,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *favorText;
 
+@property (weak, nonatomic) IBOutlet ResponseLabelOnFavor *responseLabelOnFavor;
 
 -(void)makeImageViewCircular;
 

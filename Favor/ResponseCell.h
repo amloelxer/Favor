@@ -15,5 +15,4 @@
 @property (weak, nonatomic) IBOutlet UILabel *responderName;
 @property (weak, nonatomic) IBOutlet UIButton *chosenButton;
 @property (weak, nonatomic) IBOutlet UILabel *responderText;
-
 @end

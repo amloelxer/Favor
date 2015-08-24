@@ -18,6 +18,7 @@
 @dynamic userImage;
 @dynamic imageFile;
 @dynamic askOrFavor;
+@dynamic numberOfResponses;
 //if you have a problem check this
 @dynamic userThatCreatedThisFavor;
 

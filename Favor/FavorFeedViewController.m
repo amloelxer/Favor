@@ -10,6 +10,7 @@
 #import "ModalViewController.h"
 #import "FavorDetailViewController.h"
 
+
 @interface FavorFeedViewController () <UITableViewDataSource, UITableViewDelegate, DatabaseManagerDelegate, ModalViewControllerDelegate>
 
 
@@ -151,6 +152,9 @@
   
   cell.favorText.text = favorAtIndexPath.text;
   
+  NSNumber *numOfResponses = favorAtIndexPath.numberOfResponses;
+    
+  [cell.responseLabelOnFavor setOnNumber:numOfResponses];
   
   [favorAtIndexPath.imageFile getDataInBackgroundWithBlock:^(NSData *result, NSError *error) {
     
