@@ -92,6 +92,75 @@
 
 }
 
+-(void)submitFavorToParse:(NSString *)text askOrOffer:(NSInteger)askOrOffer vc:(FavorFeedViewController *)favorFeedVC
+{
+  Favor *firstFavor = [Favor objectWithClassName:@"Favor"];
+  Favor *favorToPin = [[Favor alloc]init];
+  
+  [firstFavor setObject:text forKey:@"text"];
+  favorToPin.text = text;
+  
+  //offer is 0 so it is false
+  if(askOrOffer == 0)
+  {
+    [firstFavor setObject:@(NO) forKey:@"askOrOffer"];
+    favorToPin.askOrOffer = NO;
+    
+  }
+  //else it's an ask which is true so 1
+  else
+  {
+    [firstFavor setObject:@(YES) forKey:@"askOrOffer"];
+    favorToPin.askOrOffer = YES;
+    
+  }
+  
+  firstFavor[@"CreatedBy"] = favorFeedVC.currentUser;
+  firstFavor[@"numOfResponses"] = @(0);
+  firstFavor[@"currentState"] = @(0);
+  
+  //  firstFavor[@"timePosted"] = [DatabaseManager dateConverter:firstFavor.createdAt];
+  firstFavor[@"posterName"] = [favorFeedVC.currentUser objectForKey:@"name"];
+  firstFavor[@"imageFile"] =  favorToPin.imageFile = [favorFeedVC.currentUser objectForKey:@"ProfilePicture"];
+  
+  
+  LocationManager *currentLocationManager = [LocationManager sharedManager];
+  
+  PFGeoPoint *currentLocation = [PFGeoPoint geoPointWithLocation:currentLocationManager.currentLocation];
+  
+  firstFavor[@"locationOfFavor"] = currentLocation;
+  
+  favorToPin.CreatedBy = favorFeedVC.currentUser;
+  favorToPin.imageFile = [favorFeedVC.currentUser objectForKey:@"ProfilePicture"];
+  favorToPin.posterName = [favorFeedVC.currentUser objectForKey:@"name"];
+  favorToPin.timePosted = [DatabaseManager dateConverter:firstFavor.createdAt];
+  favorToPin.currentState = @(0);
+  
+  [favorToPin pinInBackground];
+  
+  [firstFavor saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    
+    if (!error)
+    {
+//      [self.delegate ModalViewControllerDidSubmitFavor:self askOrOffer:self.offerOrAsk];
+//      
+//      [self hideCoordinator];
+      
+      [self.delegate isDoneWithSavingFavor];
+    }
+    else
+    {
+      NSLog(@"The error is: %@", error);
+    }
+    
+  }];
+
+  
+  
+  
+  
+}
+
 /* Gets all the favors from the parse servers and pins
  them locally to the cache */
 -(void)getAllFavorsFromParse:(double)withSelectedRadius;

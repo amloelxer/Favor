@@ -9,7 +9,7 @@
 #import "ModalViewController.h"
 #import "LocationManager.h"
 
-@interface ModalViewController()
+@interface ModalViewController() <DatabaseManagerDelegate>
 
 @property (nonatomic, strong) FavorFeedViewController *backgroundVC;
 @property (nonatomic, strong) UIView *backgroundBlurView;
@@ -56,7 +56,7 @@
     [self captureBackgroundBlurImage];
     [self showCoordinator];
     self.parseManager = [[DatabaseManager alloc]init];
-//    self.parseManager.delegate = self;
+    self.parseManager.delegate = self;
   
    self.offerOrAsk = 0;
   
@@ -331,65 +331,74 @@
 
 -(void)saveDataToParseAndDismiss
 {
-  Favor *firstFavor = [Favor objectWithClassName:@"Favor"];
-  Favor *favorToPin = [[Favor alloc]init];
   
-  [firstFavor setObject:self.favorTextView.text forKey:@"text"];
-  favorToPin.text = self.favorTextView.text;
-  
-  //offer is 0 so it is false
-  if(self.offerOrAsk == 0)
-  {
-    [firstFavor setObject:@(NO) forKey:@"askOrOffer"];
-     favorToPin.askOrOffer = NO;
-    
-  }
-  //else it's an ask which is true so 1
-  else
-  {
-    [firstFavor setObject:@(YES) forKey:@"askOrOffer"];
-    favorToPin.askOrOffer = YES;
-    
-  }
-      
-  firstFavor[@"CreatedBy"] = self.backgroundVC.currentUser;
-  firstFavor[@"numOfResponses"] = @(0);
-  firstFavor[@"currentState"] = @(0);
-  
-//  firstFavor[@"timePosted"] = [DatabaseManager dateConverter:firstFavor.createdAt];
-  firstFavor[@"posterName"] = [self.backgroundVC.currentUser objectForKey:@"name"];
-  firstFavor[@"imageFile"] =  favorToPin.imageFile = [self.backgroundVC.currentUser objectForKey:@"ProfilePicture"];
+  [self.parseManager submitFavorToParse:self.favorTextView.text askOrOffer:self.offerOrAsk vc:self.backgroundVC];
   
   
-  LocationManager *currentLocationManager = [LocationManager sharedManager];
-  
-  PFGeoPoint *currentLocation = [PFGeoPoint geoPointWithLocation:currentLocationManager.currentLocation];
-  
-  firstFavor[@"locationOfFavor"] = currentLocation;
-  
-  favorToPin.CreatedBy = self.backgroundVC.currentUser;
-  favorToPin.imageFile = [self.backgroundVC.currentUser objectForKey:@"ProfilePicture"];
-  favorToPin.posterName = [self.backgroundVC.currentUser objectForKey:@"name"];
-  favorToPin.timePosted = [DatabaseManager dateConverter:firstFavor.createdAt];
-  favorToPin.currentState = @(0);
-  
-  [favorToPin pinInBackground];
-  
-  [firstFavor saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-    
-        if (!error)
-        {
-          [self.delegate ModalViewControllerDidSubmitFavor:self askOrOffer:self.offerOrAsk];
-          
-          [self hideCoordinator];
-        }
-        else
-        {
-          NSLog(@"The error is: %@", error);
-        }
-        
-      }];
+//  Favor *firstFavor = [Favor objectWithClassName:@"Favor"];
+//  Favor *favorToPin = [[Favor alloc]init];
+//  
+//  [firstFavor setObject:self.favorTextView.text forKey:@"text"];
+//  favorToPin.text = self.favorTextView.text;
+//  
+//  //offer is 0 so it is false
+//  if(self.offerOrAsk == 0)
+//  {
+//    [firstFavor setObject:@(NO) forKey:@"askOrOffer"];
+//     favorToPin.askOrOffer = NO;
+//    
+//  }
+//  //else it's an ask which is true so 1
+//  else
+//  {
+//    [firstFavor setObject:@(YES) forKey:@"askOrOffer"];
+//    favorToPin.askOrOffer = YES;
+//    
+//  }
+//      
+//  firstFavor[@"CreatedBy"] = self.backgroundVC.currentUser;
+//  firstFavor[@"numOfResponses"] = @(0);
+//  firstFavor[@"currentState"] = @(0);
+//  
+////  firstFavor[@"timePosted"] = [DatabaseManager dateConverter:firstFavor.createdAt];
+//  firstFavor[@"posterName"] = [self.backgroundVC.currentUser objectForKey:@"name"];
+//  firstFavor[@"imageFile"] =  favorToPin.imageFile = [self.backgroundVC.currentUser objectForKey:@"ProfilePicture"];
+//  
+//  
+//  LocationManager *currentLocationManager = [LocationManager sharedManager];
+//  
+//  PFGeoPoint *currentLocation = [PFGeoPoint geoPointWithLocation:currentLocationManager.currentLocation];
+//  
+//  firstFavor[@"locationOfFavor"] = currentLocation;
+//  
+//  favorToPin.CreatedBy = self.backgroundVC.currentUser;
+//  favorToPin.imageFile = [self.backgroundVC.currentUser objectForKey:@"ProfilePicture"];
+//  favorToPin.posterName = [self.backgroundVC.currentUser objectForKey:@"name"];
+//  favorToPin.timePosted = [DatabaseManager dateConverter:firstFavor.createdAt];
+//  favorToPin.currentState = @(0);
+//  
+//  [favorToPin pinInBackground];
+//  
+//  [firstFavor saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//    
+//        if (!error)
+//        {
+//
+//        }
+//        else
+//        {
+//          NSLog(@"The error is: %@", error);
+//        }
+//        
+//      }];
 
+}
+
+- (void)isDoneWithSavingFavor
+{
+  [self.delegate ModalViewControllerDidSubmitFavor:self askOrOffer:self.offerOrAsk];
+  
+  [self hideCoordinator];
 }
 
 #pragma mark - Submit Favor

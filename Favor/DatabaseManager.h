@@ -16,6 +16,7 @@
 #import <Bolts.h>
 #import "Response.h"
 #import "LocationManager.h"
+#import "FavorFeedViewController.h"
 
 @class DatabaseManager;
 @protocol DatabaseManagerDelegate <NSObject>
@@ -23,6 +24,7 @@
 - (void) reloadTableWithQueryResults: (NSArray *) queryResults;
 - (void) reloadTableWithCachedQueryResults: (NSArray *) queryResults;
 - (void) reloadTableWithResponses: (NSArray *) queryResults;
+- (void) isDoneWithSavingFavor;
 //- (void) logInFailedWithError: (ParseManager *) sender;
 @end
 
@@ -40,6 +42,8 @@ typedef NS_ENUM(NSInteger, AskOrOfferFavor) {
 -(void)getAllFavorsFromParse:(double)withSelectedRadius;
 
 -(void)getResponseForSelectedFavor:(NSString *)selectedFavorID;
+
+-(void)submitFavorToParse:(NSString *)text askOrOffer:(NSInteger)askOrOffer vc:(UIViewController *)someVC;
 
 + (NSString *)dateConverter:(NSDate *)passedDate;
 
