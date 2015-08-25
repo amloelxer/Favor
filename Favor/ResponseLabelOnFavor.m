@@ -29,4 +29,14 @@
 
 }
 
+
+- (void)checkIfFavorHasBeenAcceped:(NSNumber *)favorAcception
+{
+  if([favorAcception intValue] == 1)
+  {
+    self.backgroundColor = [ColorPalette getFavorGreenColor];
+    self.text =  [NSString stringWithFormat:@"Response Accepted"];
+  }
+}
+
 @end

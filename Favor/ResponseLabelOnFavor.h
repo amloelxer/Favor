@@ -13,4 +13,6 @@
 //@property (strong, nonatomic) NSNumber *numOfResponses;
 - (void)setOnNumber:(NSNumber *)numOfResponses;
 
+- (void)checkIfFavorHasBeenAcceped:(NSNumber *)favorAcception;
+
 @end

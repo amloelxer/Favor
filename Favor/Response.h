@@ -21,6 +21,9 @@
 @property PFFile *profPicFile;
 @property User *userWhoMadeThisResponse;
 @property Favor *favorThisResponseIsOn;
+@property NSString *uniqueID;
+
+@property NSNumber *wasChosen;
 
 
 

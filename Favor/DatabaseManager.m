@@ -200,9 +200,11 @@
         
         tempFavor.numberOfResponses = someFavor[@"numOfResponses"];
         
-        User *user = [someFavor objectForKey:@"CreatedBy"];
+        tempFavor.currentState = someFavor[@"currentState"];
         
         tempFavor.CreatedBy = [someFavor objectForKey:@"CreatedBy"];
+        
+        User *user = [someFavor objectForKey:@"CreatedBy"];
         
         tempFavor.posterName = [user objectForKey:@"name"];
         
@@ -271,10 +273,33 @@
           responseToBeAdded.responseCreatorName = [responseCreator objectForKey:@"name"];
           responseToBeAdded.userWhoMadeThisResponse = [someResponse objectForKey:@"userWhoMadeTheResponse"];
           responseToBeAdded.favorThisResponseIsOn = [someResponse objectForKey:@"favorWhichResponseIsOn"];
+          responseToBeAdded.uniqueID = someResponse.objectId;
+          responseToBeAdded.wasChosen = [someResponse objectForKey:@"wasChosen"];
           PFFile *imageFile = [responseCreator objectForKey:@"ProfilePicture"];
           responseToBeAdded.profPicFile = imageFile;
+          
           [queryResults addObject:responseToBeAdded];
           
+        }
+        
+        NSMutableArray *tempArray = [[NSMutableArray alloc]init];
+        NSInteger j;
+        //to put the comments we want at the stop
+        Response *chosenResponse;
+        for(int i=0; i<queryResults.count; i++)
+        {
+          Response *tempResponse  = queryResults[i];
+          if([tempResponse.wasChosen intValue] ==1)
+          {
+            chosenResponse = queryResults[i];
+            j=i;
+          }
+        }
+        
+        if(chosenResponse != nil)
+        {
+          [queryResults removeObjectAtIndex:j];
+          [queryResults insertObject:chosenResponse atIndex:0];
         }
         
         [self.delegate reloadTableWithResponses:queryResults];

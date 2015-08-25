@@ -18,7 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *passedSelectedFavorPosterNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *phoneNumberLabel;
 @property (weak, nonatomic) IBOutlet UITableView *responseTableView;
-@property NSArray *arrayOfResponses;
+@property NSMutableArray *arrayOfResponses;
+@property (weak, nonatomic) IBOutlet UIButton *addCommentButton;
 @property DatabaseManager *parseManager;
 @end
 
@@ -79,7 +80,34 @@
   
   Response *responseForCell = self.arrayOfResponses[indexPath.row];
   
-  //now send push notifications to that badboy. Also lock the favor
+  //now send push notifications to that badboy
+  User* userWhoseResponseWasSelected = [responseForCell objectForKey:@"userWhoMadeThisResponse"];
+  
+  Favor *favorWhichResponseIsOn = [responseForCell objectForKey:@"favorThisResponseIsOn"];
+  
+  NSNumber *responseHasBeenSelectedForFavor = [NSNumber numberWithInt:FavorStateClosed];
+  
+  [favorWhichResponseIsOn setObject:responseHasBeenSelectedForFavor forKey:@"currentState"];
+  
+  [favorWhichResponseIsOn saveInBackground];
+  
+  
+  PFQuery *query = [PFQuery queryWithClassName:@"Response"];
+  [query getObjectInBackgroundWithId:responseForCell.uniqueID
+                               block:^(PFObject *response, NSError *error) {
+                                 [response setObject:responseHasBeenSelectedForFavor forKey:@"wasChosen"];
+                                 
+                                 [response saveInBackground];
+                                 
+                               }];
+  
+  [self.arrayOfResponses removeObjectAtIndex:indexPath.row];
+  
+  [self.arrayOfResponses insertObject:responseForCell atIndex:0];
+  
+  [self.responseTableView reloadData];
+  
+  chosenResponseCell.backgroundColor = [ColorPalette getFavorGreenColor];
   
 }
 
@@ -89,7 +117,7 @@
 {
   NSLog(@"delegate method in reload table with responses is being called");
   
-  self.arrayOfResponses = queryResults;
+  self.arrayOfResponses = [queryResults mutableCopy];
   [self.responseTableView reloadData];
   
 }
@@ -113,6 +141,16 @@
   {
     cell.chosenButton.hidden = YES;
     cell.chosenButton.enabled = NO;
+  }
+  
+  ;
+  if ([responseForCell.wasChosen intValue] == FavorStateClosed)
+  {
+    cell.backgroundColor = [ColorPalette getFavorGreenColor];
+    cell.chosenButton.hidden = YES;
+    cell.chosenButton.enabled = NO;
+    self.addCommentButton.hidden = YES;
+    self.addCommentButton.enabled = YES;
   }
 
   cell.responderName.text = responseForCell.responseCreatorName;

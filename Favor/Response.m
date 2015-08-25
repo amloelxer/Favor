@@ -18,6 +18,7 @@
 @dynamic profPicFile;
 @dynamic userWhoMadeThisResponse;
 @dynamic favorThisResponseIsOn;
+@dynamic wasChosen;
 
 
 + (NSString *)parseClassName

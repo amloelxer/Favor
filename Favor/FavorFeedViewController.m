@@ -165,8 +165,14 @@
   cell.favorText.text = favorAtIndexPath.text;
   
   NSNumber *numOfResponses = favorAtIndexPath.numberOfResponses;
-    
+  
+  NSNumber *hasResponseBeenAccepeted = favorAtIndexPath.currentState;
+  
+  //checks responses first
   [cell.responseLabelOnFavor setOnNumber:numOfResponses];
+  
+  //then checks the state and changes accordingly 
+  [cell.responseLabelOnFavor checkIfFavorHasBeenAcceped:hasResponseBeenAccepeted];
   
   [favorAtIndexPath.imageFile getDataInBackgroundWithBlock:^(NSData *result, NSError *error) {
     
