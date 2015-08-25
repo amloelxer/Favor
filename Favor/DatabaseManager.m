@@ -141,11 +141,7 @@
   [firstFavor saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
     
     if (!error)
-    {
-//      [self.delegate ModalViewControllerDidSubmitFavor:self askOrOffer:self.offerOrAsk];
-//      
-//      [self hideCoordinator];
-      
+    {      
       [self.delegate isDoneWithSavingFavor];
     }
     else
@@ -273,6 +269,8 @@
           responseToBeAdded.responseText = someResponse.responseText;
           User *responseCreator = [someResponse objectForKey:@"userWhoMadeTheResponse"];
           responseToBeAdded.responseCreatorName = [responseCreator objectForKey:@"name"];
+          responseToBeAdded.userWhoMadeThisResponse = [someResponse objectForKey:@"userWhoMadeTheResponse"];
+          responseToBeAdded.favorThisResponseIsOn = [someResponse objectForKey:@"favorWhichResponseIsOn"];
           PFFile *imageFile = [responseCreator objectForKey:@"ProfilePicture"];
           responseToBeAdded.profPicFile = imageFile;
           [queryResults addObject:responseToBeAdded];

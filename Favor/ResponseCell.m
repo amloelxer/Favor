@@ -23,6 +23,8 @@
 - (IBAction)chosenButtonWasPressed:(UIButton *)sender {
   
   NSLog(@"Button Was Chosen");
+  [self.delegate chosenButtonOnCellWasPressed:self];
+  
 }
 
 

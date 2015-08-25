@@ -10,7 +10,7 @@
 #import "FavorCell.h"
 #import "DatabaseManager.h"
 
-@interface FavorDetailViewController ()  <DatabaseManagerDelegate>
+@interface FavorDetailViewController ()  <DatabaseManagerDelegate, ResponseCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *favorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *selectedFavorTextLabel;
@@ -69,6 +69,21 @@
   
 }
 
+#pragma Response Cell Delegate was Chosen
+
+-(void)chosenButtonOnCellWasPressed:(ResponseCell *)chosenResponseCell
+{
+  NSLog(@"Button on cell was pressed");
+  
+  NSIndexPath *indexPath = [self.responseTableView indexPathForCell:chosenResponseCell];
+  
+  Response *responseForCell = self.arrayOfResponses[indexPath.row];
+  
+  //now send push notifications to that badboy. Also lock the favor
+  
+}
+
+
 #pragma DatabaseManager Delegate responses
 - (void) reloadTableWithResponses: (NSArray *) queryResults;
 {
@@ -87,6 +102,7 @@
   
   Response *responseForCell = self.arrayOfResponses[indexPath.row];
   
+  cell.delegate = self;
   
   if([self.passedUserThatMadeTheFavor isEqual:[User currentUser]])
   {
@@ -151,9 +167,11 @@
 {
  
     Response *newResponse = [Response objectWithClassName:@"Response"];
-    [newResponse setObject:@"Default Response Text" forKey:@"responseText"];
+    [newResponse setObject:@"I'm in TOKYOOOOOO" forKey:@"responseText"];
     [newResponse setObject:[User currentUser] forKey:@"userWhoMadeTheResponse"];
   
+  NSNumber *defaultWasChosenIsNo = [NSNumber numberWithInt:0];
+  [newResponse setObject:defaultWasChosenIsNo forKey:@"wasChosen"];
   
   PFQuery *query = [PFQuery queryWithClassName:@"Favor"];
   [query getObjectInBackgroundWithId:self.passedFavorID block:^(PFObject *someFavor, NSError *error) {
