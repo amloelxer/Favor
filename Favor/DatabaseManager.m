@@ -94,19 +94,21 @@
 
 /* Gets all the favors from the parse servers and pins
  them locally to the cache */
--(void)getAllFavorsFromParse
+-(void)getAllFavorsFromParse:(double)withSelectedRadius;
 {
   
   NSMutableArray *queryResults = [[NSMutableArray alloc]init];
   
   PFQuery *postQueryForUser = [PFQuery queryWithClassName:@"Favor"];
   
+  LocationManager *singletonManager = [LocationManager sharedManager];
   
 //  [postQueryForUser addDescendingOrder:@"updatedAt"];
-  
+  PFGeoPoint *currentGeoPoint = [PFGeoPoint geoPointWithLocation:singletonManager.currentLocation];
   //gotta have this line. So So So So So So important
   [postQueryForUser includeKey:@"CreatedBy"];
   [postQueryForUser includeKey:@"objectID"];
+  [postQueryForUser whereKey:@"locationOfFavor" nearGeoPoint:currentGeoPoint withinMiles:withSelectedRadius];
   [postQueryForUser findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
     
     if(!error)

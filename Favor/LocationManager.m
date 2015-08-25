@@ -9,7 +9,8 @@
 #import "LocationManager.h"
 
 @interface LocationManager () <CLLocationManagerDelegate>
-
+//written so you don't get multiple locations from multiple threads
+@property BOOL hasGottenOneLocation;
 @end
 
 @implementation LocationManager
@@ -35,7 +36,8 @@
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.locationManager requestWhenInUseAuthorization];
-    
+    self.locationManager.pausesLocationUpdatesAutomatically = YES;
+    self.hasGottenOneLocation = NO;
     [self.locationManager startUpdatingLocation];
   }
   
@@ -45,8 +47,21 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-  self.currentLocation = [locations lastObject];
-  [self.locationManager stopUpdatingLocation];
+  
+  if(self.hasGottenOneLocation == NO)
+  {
+    [self.locationManager stopUpdatingLocation];
+    self.currentLocation = [locations lastObject];
+    NSLog(@"The First Location has been updated");
+    [self.delegate initialLocationHasBeenRecieved];
+    self.hasGottenOneLocation = YES;
+  }
+  else
+  {
+    NSLog(@"Sending more stuff but I don't want it ");
+  }
+
+  
 }
 
 @end

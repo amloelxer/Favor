@@ -15,6 +15,7 @@
 #import "Favor.h"
 #import <Bolts.h>
 #import "Response.h"
+#import "LocationManager.h"
 
 @class DatabaseManager;
 @protocol DatabaseManagerDelegate <NSObject>
@@ -36,7 +37,7 @@ typedef NS_ENUM(NSInteger, AskOrOfferFavor) {
 
 - (void)getAllFavorsFromLocalParseStore:(NSInteger)selectedSegment user:(User *)currentUser;
 
--(void)getAllFavorsFromParse;
+-(void)getAllFavorsFromParse:(double)withSelectedRadius;
 
 -(void)getResponseForSelectedFavor:(NSString *)selectedFavorID;
 

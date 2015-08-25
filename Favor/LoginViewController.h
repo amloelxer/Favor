@@ -11,6 +11,7 @@
 #import "User.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "LocationManager.h"
 
 
 @interface LoginViewController : UIViewController

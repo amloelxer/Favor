@@ -13,7 +13,7 @@
 #import "LocationManager.h"
 
 
-@interface FavorFeedViewController () <UITableViewDataSource, UITableViewDelegate, DatabaseManagerDelegate, ModalViewControllerDelegate>
+@interface FavorFeedViewController () <UITableViewDataSource, UITableViewDelegate, DatabaseManagerDelegate, ModalViewControllerDelegate, LocationManagerDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UITableView *favorTableView;
@@ -38,6 +38,7 @@
   
   LocationManager *someLocationManger = [LocationManager sharedManager];
   
+  someLocationManger.delegate = self;
   
   //code for making the cells pop to the top of the table view on laod
   self.automaticallyAdjustsScrollViewInsets = NO;
@@ -65,9 +66,6 @@
   
   self.parseDataManager.delegate = self;
   
-  //get all the favors from parse on load
-  [self.parseDataManager getAllFavorsFromParse];
-  
 }
 
 #pragma mark - ModalViewController
@@ -88,7 +86,7 @@
     //when you're saving to the cache make sure to unpin (work around for now)
     [PFObject unpinAllInBackground:objects block:^(BOOL succeeded, NSError *error) {
       
-        [self.parseDataManager getAllFavorsFromParse];
+        [self.parseDataManager getAllFavorsFromParse:10];
       
     }];
     
@@ -98,7 +96,7 @@
 
 #pragma mark - DatabaseManager Delegate Methods
 
--(void)reloadTableWithQueryResults:(NSArray *)queryResults
+- (void)reloadTableWithQueryResults:(NSArray *)queryResults
 {
   [self getCachedFavorsWithSegmentFilterApplied];
 }
@@ -109,6 +107,13 @@
   [self.favorTableView reloadData];
 }
 
+#pragma mark - LocationManager Delegate Methods
+- (void)initialLocationHasBeenRecieved
+{
+  NSLog(@"Inital Location has been recieved");
+  //within a default raidus let's say 10 miles
+  [self.parseDataManager getAllFavorsFromParse:10];
+}
 
 - (IBAction)addFavorPressed:(UIBarButtonItem *)sender
 {
