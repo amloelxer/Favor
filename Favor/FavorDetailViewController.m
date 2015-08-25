@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *responseTableView;
 @property NSMutableArray *arrayOfResponses;
 @property (weak, nonatomic) IBOutlet UIButton *addCommentButton;
+@property BOOL favorHasBeenChosen;
 @property DatabaseManager *parseManager;
 @end
 
@@ -28,6 +29,8 @@
 -(void)viewDidLoad
 {
   [super viewDidLoad];
+  
+  self.favorHasBeenChosen = NO;
   
   self.parseManager = [[DatabaseManager alloc]init];
   
@@ -66,6 +69,11 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+  if(self.favorHasBeenChosen == YES)
+  {
+    self.addCommentButton.hidden = YES;
+    self.addCommentButton.enabled = YES;
+  }
   [self.parseManager getResponseForSelectedFavor:self.passedFavorID];
   
 }
@@ -75,6 +83,8 @@
 -(void)chosenButtonOnCellWasPressed:(ResponseCell *)chosenResponseCell
 {
   NSLog(@"Button on cell was pressed");
+  
+  self.favorHasBeenChosen = YES;
   
   NSIndexPath *indexPath = [self.responseTableView indexPathForCell:chosenResponseCell];
   
@@ -147,11 +157,15 @@
   if ([responseForCell.wasChosen intValue] == FavorStateClosed)
   {
     cell.backgroundColor = [ColorPalette getFavorGreenColor];
+  }
+  
+  if(self.favorHasBeenChosen == YES)
+  {
     cell.chosenButton.hidden = YES;
     cell.chosenButton.enabled = NO;
-    self.addCommentButton.hidden = YES;
-    self.addCommentButton.enabled = YES;
   }
+
+
 
   cell.responderName.text = responseForCell.responseCreatorName;
   
@@ -163,8 +177,7 @@
     
     
   }
-     
-     
+  
      [responseForCell.profPicFile getDataInBackgroundWithBlock:^(NSData *result, NSError *error) {
        
        //make sure the cell image loads for the right cell by comparing index Paths
@@ -179,13 +192,6 @@
        
      }];
 
-  
-  
-  
-  
-  
-//  cell.responseProfilePictureView.layer.cornerRadius = cell.responseProfilePictureView.image.size.width/2;
-
   return cell;
 }
 
@@ -197,50 +203,17 @@
 //just a temp to test before we have cassidy's view
 - (IBAction)makeResponseButtonPressed:(UIButton *)sender
 {
-  [self saveResponse];
+  [self.parseManager saveResponse:@"Some Default Response" passedFavorID:self.passedFavorID];
 }
 
-//method to be put into cassidy's view controller later
--(void)saveResponse
+//method to be put into cassidy's view controller/Database later
+
+-(void)isDoneSavingResponse
 {
- 
-    Response *newResponse = [Response objectWithClassName:@"Response"];
-    [newResponse setObject:@"I'm in TOKYOOOOOO" forKey:@"responseText"];
-    [newResponse setObject:[User currentUser] forKey:@"userWhoMadeTheResponse"];
-  
-  NSNumber *defaultWasChosenIsNo = [NSNumber numberWithInt:0];
-  [newResponse setObject:defaultWasChosenIsNo forKey:@"wasChosen"];
-  
-  PFQuery *query = [PFQuery queryWithClassName:@"Favor"];
-  [query getObjectInBackgroundWithId:self.passedFavorID block:^(PFObject *someFavor, NSError *error) {
-    
-    [newResponse setObject:someFavor forKey:@"favorWhichResponseIsOn"];
-    
-    NSNumber *numOfResponses = someFavor[@"numOfResponses"];
-    
-    NSNumber *newNumber = [NSNumber numberWithInt:[numOfResponses intValue] + 1];
-    
-    someFavor[@"numOfResponses"] = newNumber;
-    
-    [newResponse saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-      
-      if (!error)
-      {
-        NSLog(@"The new response was saved sucessfully");
-      }
-      else
-      {
-        NSLog(@"The error is: %@", error);
-      }
-      
-    }];
-
-  
-  }];
-  
-  
-  
+  NSLog(@"Is done saving the response");
+  [self.parseManager getResponseForSelectedFavor:self.passedFavorID];
 }
+
 
 
 

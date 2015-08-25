@@ -246,6 +246,49 @@
 
 #pragma mark - Response Methods
 
+-(void)saveResponse:(NSString *)responseText passedFavorID:(NSString*)passedFavorID
+{
+  
+  Response *newResponse = [Response objectWithClassName:@"Response"];
+  [newResponse setObject:@"I'm in TOKYOOOOOO" forKey:@"responseText"];
+  [newResponse setObject:[User currentUser] forKey:@"userWhoMadeTheResponse"];
+  
+  NSNumber *defaultWasChosenIsNo = [NSNumber numberWithInt:0];
+  [newResponse setObject:defaultWasChosenIsNo forKey:@"wasChosen"];
+  
+  PFQuery *query = [PFQuery queryWithClassName:@"Favor"];
+  [query getObjectInBackgroundWithId:passedFavorID block:^(PFObject *someFavor, NSError *error) {
+    
+    [newResponse setObject:someFavor forKey:@"favorWhichResponseIsOn"];
+    
+    NSNumber *numOfResponses = someFavor[@"numOfResponses"];
+    
+    NSNumber *newNumber = [NSNumber numberWithInt:[numOfResponses intValue] + 1];
+    
+    someFavor[@"numOfResponses"] = newNumber;
+    
+    [newResponse saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+      
+      if (!error)
+      {
+        NSLog(@"The new response was saved sucessfully");
+        [self.delegate isDoneSavingResponse];
+      }
+      else
+      {
+        NSLog(@"The error is: %@", error);
+      }
+      
+    }];
+    
+    
+  }];
+
+}
+
+
+
+
 -(void)getResponseForSelectedFavor:(NSString *)selectedFavorID
 {
   

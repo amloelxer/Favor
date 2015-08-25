@@ -25,6 +25,7 @@
 - (void) reloadTableWithCachedQueryResults: (NSArray *) queryResults;
 - (void) reloadTableWithResponses: (NSArray *) queryResults;
 - (void) isDoneWithSavingFavor;
+- (void)isDoneSavingResponse;
 //- (void) logInFailedWithError: (ParseManager *) sender;
 @end
 
@@ -44,6 +45,8 @@ typedef NS_ENUM(NSInteger, AskOrOfferFavor) {
 -(void)getResponseForSelectedFavor:(NSString *)selectedFavorID;
 
 -(void)submitFavorToParse:(NSString *)text askOrOffer:(NSInteger)askOrOffer vc:(UIViewController *)someVC;
+
+-(void)saveResponse:(NSString *)responseText passedFavorID:(NSString*)passedFavorID;
 
 + (NSString *)dateConverter:(NSDate *)passedDate;
 
