@@ -19,7 +19,7 @@
   else if([numOfResponses intValue] == 1)
   {
     self.backgroundColor = [ColorPalette getFavorYellowColor];
-    self.text = @" 1 Responses";
+    self.text = @" 1 Response";
   }
   else
   {
