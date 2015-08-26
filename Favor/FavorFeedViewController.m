@@ -21,6 +21,7 @@
 @property DatabaseManager *parseDataManager;
 @property ModalViewController *vc;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *favorSegmentedControl;
+@property double radius;
 
 @end
 
@@ -35,6 +36,9 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  
+  //sets the default radius at 10
+  self.radius = 10;
   
   LocationManager *someLocationManger = [LocationManager sharedManager];
   
@@ -69,7 +73,8 @@
 }
 - (IBAction)onRadiusButtonPressed:(UIBarButtonItem *)sender
 {
-  
+  //set the radius here
+  //self.radius = something;
 }
 
 #pragma mark - ModalViewController
@@ -90,7 +95,7 @@
     //when you're saving to the cache make sure to unpin (work around for now)
     [PFObject unpinAllInBackground:objects block:^(BOOL succeeded, NSError *error) {
       
-        [self.parseDataManager getAllFavorsFromParse:10];
+        [self.parseDataManager getAllFavorsFromParse:self.radius];
       
     }];
     
@@ -116,7 +121,7 @@
 {
   NSLog(@"Inital Location has been recieved");
   //within a default raidus let's say 10 miles
-  [self.parseDataManager getAllFavorsFromParse:10];
+  [self.parseDataManager getAllFavorsFromParse:self.radius];
 }
 
 - (IBAction)addFavorPressed:(UIBarButtonItem *)sender
@@ -192,10 +197,6 @@
   
   return cell;
   
-
-
-  
-  
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -228,6 +229,7 @@
   
   vc.passedFavorID = favorAtIndexPath.uniqueID;
 
+  vc.passedFavorState = favorAtIndexPath.currentState;
 }
 
 

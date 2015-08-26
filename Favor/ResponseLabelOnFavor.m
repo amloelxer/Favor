@@ -35,7 +35,7 @@
   if([favorAcception intValue] == 1)
   {
     self.backgroundColor = [ColorPalette getFavorGreenColor];
-    self.text =  [NSString stringWithFormat:@"Response Accepted"];
+    self.text =  [NSString stringWithFormat:@" Response Accepted"];
   }
 }
 

@@ -141,7 +141,11 @@
   [firstFavor saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
     
     if (!error)
-    {      
+    {
+//      PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+//      [currentInstallation addObject:firstFavor.uniqueID forKey:@"channels"];
+//      [currentInstallation saveInBackground];
+//      
       [self.delegate isDoneWithSavingFavor];
     }
     else
@@ -250,7 +254,7 @@
 {
   
   Response *newResponse = [Response objectWithClassName:@"Response"];
-  [newResponse setObject:@"I'm in TOKYOOOOOO" forKey:@"responseText"];
+  [newResponse setObject:responseText forKey:@"responseText"];
   [newResponse setObject:[User currentUser] forKey:@"userWhoMadeTheResponse"];
   
   NSNumber *defaultWasChosenIsNo = [NSNumber numberWithInt:0];

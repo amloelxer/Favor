@@ -139,9 +139,11 @@
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="4uO-Wf-scC"/>
-                                                        <constraint firstAttribute="width" constant="108" id="vaa-ma-hko"/>
+                                                        <constraint firstAttribute="width" constant="108" id="vaa-ma-hko">
+                                                            <variation key="widthClass=compact" constant="130"/>
+                                                        </constraint>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
@@ -558,8 +560,7 @@
                                                             <exclude reference="Ype-qi-PuH"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="142" y="13" width="53" height="30"/>
+                                                    <variation key="widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="TN6-DK-FI7"/>
                                                             <include reference="Ype-qi-PuH"/>

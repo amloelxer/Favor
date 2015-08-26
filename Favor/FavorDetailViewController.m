@@ -30,13 +30,19 @@
 {
   [super viewDidLoad];
   
-  self.favorHasBeenChosen = NO;
+    self.favorHasBeenChosen = NO;
   
+  if([self.passedFavorState intValue] == FavorStateClosed)
+  {
+    self.addCommentButton.hidden = YES;
+    self.addCommentButton.enabled = NO;
+    self.favorHasBeenChosen = YES;
+  }
+  
+
   self.parseManager = [[DatabaseManager alloc]init];
   
   self.parseManager.delegate = self;
-  
-  
   
   self.favorLabel.backgroundColor = [ColorPalette getFavorRedColor];
   
@@ -69,13 +75,7 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-  if(self.favorHasBeenChosen == YES)
-  {
-    self.addCommentButton.hidden = YES;
-    self.addCommentButton.enabled = YES;
-  }
   [self.parseManager getResponseForSelectedFavor:self.passedFavorID];
-  
 }
 
 #pragma Response Cell Delegate was Chosen
@@ -86,11 +86,15 @@
   
   self.favorHasBeenChosen = YES;
   
+  self.addCommentButton.hidden = YES;
+  self.addCommentButton.enabled = NO;
+  
   NSIndexPath *indexPath = [self.responseTableView indexPathForCell:chosenResponseCell];
   
   Response *responseForCell = self.arrayOfResponses[indexPath.row];
   
   //now send push notifications to that badboy
+  //waiting to set up for cassidy's code
   User* userWhoseResponseWasSelected = [responseForCell objectForKey:@"userWhoMadeThisResponse"];
   
   Favor *favorWhichResponseIsOn = [responseForCell objectForKey:@"favorThisResponseIsOn"];
@@ -131,6 +135,15 @@
   [self.responseTableView reloadData];
   
 }
+
+//method to be put into cassidy's view controller/Database later
+
+-(void)isDoneSavingResponse
+{
+  NSLog(@"Is done saving the response");
+  [self.parseManager getResponseForSelectedFavor:self.passedFavorID];
+}
+
 
 #pragma mark - Table View Delegate Methods
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -206,13 +219,6 @@
   [self.parseManager saveResponse:@"Some Default Response" passedFavorID:self.passedFavorID];
 }
 
-//method to be put into cassidy's view controller/Database later
-
--(void)isDoneSavingResponse
-{
-  NSLog(@"Is done saving the response");
-  [self.parseManager getResponseForSelectedFavor:self.passedFavorID];
-}
 
 
 
