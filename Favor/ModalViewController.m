@@ -33,6 +33,9 @@
 @property (nonatomic) NSInteger offerOrAsk; //Offer = 0, ask = 1
 @property DatabaseManager *parseManager;
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property UIFont* proximaNovaRegular;
+@property UIFont* proximaNovaBold;
+@property UIFont* proximaNovaSoftBold;
 
 @end
 
@@ -66,7 +69,6 @@
     [self setupModalView];
     // Defaults to offer on load.
 
-    
     // Preload the keyboard
     [self.favorTextView becomeFirstResponder];
     [self.favorTextView resignFirstResponder];
@@ -100,6 +102,14 @@
 
 -(void)setupModalView {
     // Modal View Initializer
+  
+  
+  self.proximaNovaRegular = [UIFont fontWithName:@"ProximaNova-Regular" size:20];
+  
+  self.proximaNovaBold = [UIFont fontWithName:@"ProximaNova-Bold" size:16];
+  
+  self.proximaNovaSoftBold = [UIFont fontWithName:@"ProximaNovaSoft-Bold" size:24];
+  
     CGRect modalRect = CGRectMake(0, 0, self.view.frame.size.width - 32, self.view.frame.size.height / 2.5);
     UIView *modalView = [[UIView alloc] initWithFrame:modalRect];
     
@@ -129,7 +139,7 @@
     self.closeButton = closeButton;
     
     // Setup Text Field
-    UIFont *font = [UIFont fontWithName:@"Helvetica" size:20];
+  UIFont *font = self.proximaNovaRegular;
     int textFieldY = modalRect.size.height / 4;
     CGRect textFieldRect = CGRectMake(16, textFieldY, modalView.frame.size.width - 32, modalRect.size.height / 2);
     UITextView *textView = [[UITextView alloc] initWithFrame:textFieldRect];
@@ -153,13 +163,14 @@
     [modalView addSubview:self.favorPlaceholderLabel];
     
     // Create Favor Type Labels
-    UIFont *labelFont = [UIFont fontWithName:@"Helvetica-Bold" size:24];
+    UIFont *labelFont = self.proximaNovaSoftBold;
 
     UILabel *offerLabel = [[UILabel alloc] init];
     UILabel *askLabel = [[UILabel alloc] init];
 
     offerLabel.text = @"Offer";
     askLabel.text = @"Ask";
+  
     
     UIColor *dark = [UIColor colorWithRed:75.0/255 green:82.0/255 blue:88.0/255 alpha:1.0];
     

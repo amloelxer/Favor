@@ -22,6 +22,9 @@
 @property ModalViewController *vc;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *favorSegmentedControl;
 @property double radius;
+@property UIFont* proximaNovaRegular;
+@property UIFont* proximaNovaBold;
+@property UIFont* proximaNovaSoftBold;
 
 @end
 
@@ -37,6 +40,26 @@
 {
   [super viewDidLoad];
   
+  self.proximaNovaRegular = [UIFont fontWithName:@"ProximaNova-Regular" size:16];
+  
+  self.proximaNovaBold = [UIFont fontWithName:@"ProximaNova-Bold" size:16];
+  
+  self.proximaNovaSoftBold = [UIFont fontWithName:@"ProximaNovaSoft-Bold" size:16];
+  
+  //sets the navigation bar text
+  [[UINavigationBar appearance] setTitleTextAttributes:
+  [NSDictionary dictionaryWithObjectsAndKeys:
+   [UIColor whiteColor], NSForegroundColorAttributeName,
+   [UIFont fontWithName:@"ProximaNovaSoft-Bold" size:24.0], NSFontAttributeName,nil]];
+  
+  //sets the favor segemtn control text
+  NSDictionary *attributes = [NSDictionary dictionaryWithObject:self.proximaNovaRegular
+                                                         forKey:NSFontAttributeName];
+  [self.favorSegmentedControl setTitleTextAttributes:attributes
+                                  forState:UIControlStateNormal];
+
+  
+//  self.navigationController.tit
   //sets the default radius at 10
   self.radius = 10;
   
@@ -165,9 +188,19 @@
   
   cell.posterName.text = favorAtIndexPath.posterName;
   
+  cell.posterName.font = self.proximaNovaBold;
+  
   cell.timePassedSinceFavorWasPosted.text = favorAtIndexPath.timePosted;
   
+  cell.timePassedSinceFavorWasPosted.font = self.proximaNovaRegular;
+  
   cell.favorText.text = favorAtIndexPath.text;
+  
+  cell.favorText.font = self.proximaNovaRegular;
+  
+  
+  //need to calculate distance from currentUser
+  cell.distanceFromPoster.font = self.proximaNovaRegular;
   
   NSNumber *numOfResponses = favorAtIndexPath.numberOfResponses;
   
@@ -178,6 +211,8 @@
   
   //then checks the state and changes accordingly 
   [cell.responseLabelOnFavor checkIfFavorHasBeenAcceped:hasResponseBeenAccepeted];
+  
+  cell.responseLabelOnFavor.font = self.proximaNovaRegular;
   
   [favorAtIndexPath.imageFile getDataInBackgroundWithBlock:^(NSData *result, NSError *error) {
     
