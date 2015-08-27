@@ -12,7 +12,7 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 //#import <PFFacebookUtils.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
-
+#import "ColorPalette.h"
 @interface AppDelegate ()
 
 @end
@@ -22,6 +22,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+  
+//  [[UINavigationBar appearance]setBackgroundColor:[ColorPalette getFavorPinkRedColor]];
+//  
   
   //Setting up the stuff for Push Notifications
   UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |

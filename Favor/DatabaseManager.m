@@ -172,7 +172,7 @@
   
   LocationManager *singletonManager = [LocationManager sharedManager];
   
-//  [postQueryForUser addDescendingOrder:@"updatedAt"];
+  [postQueryForUser addDescendingOrder:@"updatedAt"];
   PFGeoPoint *currentGeoPoint = [PFGeoPoint geoPointWithLocation:singletonManager.currentLocation];
   //gotta have this line. So So So So So So important
   [postQueryForUser includeKey:@"CreatedBy"];

@@ -41,9 +41,9 @@
   self.proximaNovaBold = [UIFont fontWithName:@"ProximaNova-Bold" size:16];
   self.proximaNovaSoftBold = [UIFont fontWithName:@"ProximaNovaSoft-Bold" size:16];
   
-  self.originalFavorPosterView.backgroundColor = [ColorPalette getFavorRedColor];
+  self.originalFavorPosterView.backgroundColor = [ColorPalette getFavorPinkRedColor];
   
-  [self.navigationController.navigationBar setBarTintColor:[ColorPalette getFavorRedColor]];
+  [self.navigationController.navigationBar setBarTintColor:[ColorPalette getFavorPinkRedColor]];
   self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
   [self.navigationController.navigationBar setTranslucent:NO];
   
@@ -95,7 +95,7 @@
     self.phoneNumberLabel.hidden = YES;
   }
   
-  [self.navigationController.navigationBar setBarTintColor:[ColorPalette getFavorRedColor]];
+  [self.navigationController.navigationBar setBarTintColor:[ColorPalette getFavorPinkRedColor]];
   self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
   [self.navigationController.navigationBar setTranslucent:NO];
   

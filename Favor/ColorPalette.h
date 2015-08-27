@@ -21,4 +21,6 @@
 
 + (UIColor *)getGreyTextLessOpaqueColor;
 
++ (UIColor *)getFavorPinkRedColor;
+
 @end

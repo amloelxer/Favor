@@ -44,6 +44,16 @@
   return self;
 }
 
+- (void)updateLocation
+{
+  self.locationManager.distanceFilter = kCLDistanceFilterNone;
+  self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+  [self.locationManager requestWhenInUseAuthorization];
+  self.locationManager.pausesLocationUpdatesAutomatically = YES;
+  self.hasGottenOneLocation = NO;
+  [self.locationManager startUpdatingLocation];
+}
+
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {

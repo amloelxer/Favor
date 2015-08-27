@@ -22,9 +22,9 @@
 
 + (UIColor *)getFavorYellowColor
 {
-  UIColor *favorYellowColor = [UIColor colorWithRed:252.0f/255.0f
-                                           green:198.0f/255.0f
-                                            blue:2.0f/255.0f
+  UIColor *favorYellowColor = [UIColor colorWithRed:249.0f/255.0f
+                                           green:219.0f/255.0f
+                                            blue:14.0f/255.0f
                                            alpha:1.0f];
   return favorYellowColor;
 
@@ -57,6 +57,16 @@
                                            alpha:0.5f];
   return greyTextColor;
   
+}
+
++ (UIColor *)getFavorPinkRedColor
+{
+  UIColor *favorPinkRed = [UIColor colorWithRed:243.0f/255.0f
+                                           green:44.0f/255.0f
+                                            blue:104.0f/255.0f
+                                           alpha:1.0f];
+  return favorPinkRed;
+
 }
 
 

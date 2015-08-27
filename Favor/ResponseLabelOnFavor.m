@@ -13,7 +13,7 @@
 {
   if([numOfResponses intValue] == 0)
   {
-    self.backgroundColor = [ColorPalette getFavorRedColor];
+    self.backgroundColor = [ColorPalette getFavorPinkRedColor];
     self.text = @" No Responses ";
   }
   else if([numOfResponses intValue] == 1)

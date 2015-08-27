@@ -82,10 +82,11 @@
   //code for making the cells pop to the top of the table view on laod
   self.automaticallyAdjustsScrollViewInsets = NO;
   
-  //do nav bar stuff
-  [self.navigationController.navigationBar setBarTintColor:[ColorPalette getFavorRedColor]];
+  [self.navigationController.navigationBar setBarTintColor:[ColorPalette getFavorPinkRedColor]];
   self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
   [self.navigationController.navigationBar setTranslucent:NO];
+  
+  self.favorSegmentedControl.tintColor = [ColorPalette getFavorPinkRedColor];
   
   //deletes everything in the cache on load
   PFQuery *query = [PFQuery queryWithClassName:@"Favor"];
@@ -261,7 +262,7 @@
   //then checks the state and changes accordingly 
   [cell.responseLabelOnFavor checkIfFavorHasBeenAcceped:hasResponseBeenAccepeted];
   
-  UIFont *proximaNovaRegSmaller = [UIFont fontWithName:@"ProximaNova-Regular" size:12];
+  UIFont *proximaNovaRegSmaller = [UIFont fontWithName:@"ProximaNova-Regular" size:16];
 
   cell.responseLabelOnFavor.font = proximaNovaRegSmaller;
   

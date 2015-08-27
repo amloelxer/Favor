@@ -22,6 +22,8 @@
 @property (nonatomic, weak) id <LocationManagerDelegate> delegate;
 @property CLLocation *currentLocation;
 
+- (void)updateLocation;
+
 + (instancetype)sharedManager;
 
 @end
