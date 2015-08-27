@@ -14,17 +14,17 @@
   if([numOfResponses intValue] == 0)
   {
     self.backgroundColor = [ColorPalette getFavorRedColor];
-    self.text = @" 0 Responses";
+    self.text = @"0 Responses";
   }
   else if([numOfResponses intValue] == 1)
   {
     self.backgroundColor = [ColorPalette getFavorYellowColor];
-    self.text = @" 1 Response";
+    self.text = @"1 Response";
   }
   else
   {
     self.backgroundColor = [ColorPalette getFavorYellowColor];
-    self.text =  [NSString stringWithFormat:@" %@ Responses",numOfResponses];
+    self.text =  [NSString stringWithFormat:@"%@ Responses",numOfResponses];
   }
 
 }

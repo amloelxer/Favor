@@ -11,9 +11,10 @@
 #import "FavorDetailViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "LocationManager.h"
+#import "RadiusViewController.h"
 
 
-@interface FavorFeedViewController () <UITableViewDataSource, UITableViewDelegate, DatabaseManagerDelegate, ModalViewControllerDelegate, LocationManagerDelegate>
+@interface FavorFeedViewController () <UITableViewDataSource, UITableViewDelegate, DatabaseManagerDelegate, ModalViewControllerDelegate, LocationManagerDelegate, RadiusViewControllerDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UITableView *favorTableView;
@@ -25,6 +26,7 @@
 @property UIFont* proximaNovaRegular;
 @property UIFont* proximaNovaBold;
 @property UIFont* proximaNovaSoftBold;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *radiusButton;
 
 @end
 
@@ -39,6 +41,9 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  
+  self.favorTableView.estimatedRowHeight = 155.0;
+  self.favorTableView.rowHeight = UITableViewAutomaticDimension;
   
   self.proximaNovaRegular = [UIFont fontWithName:@"ProximaNova-Regular" size:16];
   
@@ -94,10 +99,41 @@
   self.parseDataManager.delegate = self;
   
 }
+
 - (IBAction)onRadiusButtonPressed:(UIBarButtonItem *)sender
 {
-  //set the radius here
-  //self.radius = something;
+  NSNumber *radius = [NSNumber numberWithDouble:self.radius];
+  RadiusViewController *vc = [[RadiusViewController alloc] initWithBackgroundViewController:self currentRadius:radius];
+  [vc setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+  
+  [self presentViewController:vc animated:NO completion:nil];
+}
+
+- (void)radiusSelected:(NSNumber *)radius radiusViewController:(RadiusViewController *)radiusVC
+{
+  NSLog(@"The radius is %@", radius);
+  
+  PFQuery *query = [PFQuery queryWithClassName:@"Favor"];
+  [query fromLocalDatastore];
+  
+  [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    
+    //when you're saving to the cache make sure to unpin (work around for now)
+    [PFObject unpinAllInBackground:objects block:^(BOOL succeeded, NSError *error) {
+      
+      self.radius = [radius doubleValue];
+      [self.parseDataManager getAllFavorsFromParse:self.radius];
+      NSString *distanceLabelText = [NSString stringWithFormat:@"%@ miles", radius];
+      
+      self.radiusButton.title = distanceLabelText;
+      
+      
+    }];
+    
+  }];
+
+  
+  
 }
 
 #pragma mark - ModalViewController
@@ -212,7 +248,9 @@
   //then checks the state and changes accordingly 
   [cell.responseLabelOnFavor checkIfFavorHasBeenAcceped:hasResponseBeenAccepeted];
   
-  cell.responseLabelOnFavor.font = self.proximaNovaRegular;
+  UIFont *proximaNovaRegSmaller = [UIFont fontWithName:@"ProximaNova-Regular" size:12];
+
+  cell.responseLabelOnFavor.font = proximaNovaRegSmaller;
   
   [favorAtIndexPath.imageFile getDataInBackgroundWithBlock:^(NSData *result, NSError *error) {
     
