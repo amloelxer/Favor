@@ -17,4 +17,8 @@
 
 + (UIColor *)getFavorGreenColor;
 
++ (UIColor *)getGreyTextColor;
+
++ (UIColor *)getGreyTextLessOpaqueColor;
+
 @end

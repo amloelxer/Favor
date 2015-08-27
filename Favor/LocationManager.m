@@ -58,7 +58,7 @@
   }
   else
   {
-    NSLog(@"Sending more stuff but I don't want it ");
+    
   }
 
   

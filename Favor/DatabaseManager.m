@@ -186,7 +186,16 @@
       {
         
         Favor *tempFavor = [Favor new];
+        PFGeoPoint *locationOfFavor = someFavor[@"locationOfFavor"];
         
+        double distanceInMilesFromCurrentLocation = [locationOfFavor distanceInMilesTo:currentGeoPoint];
+        
+        NSInteger distanceInMilesWithNoDecimals = (NSInteger)distanceInMilesFromCurrentLocation;
+        
+        NSString *distanceAwayFromCurrentLocation = [NSString stringWithFormat:@"%ld miles away", (long)distanceInMilesWithNoDecimals];
+        
+        tempFavor.distanceAwayFromCL = distanceAwayFromCurrentLocation;
+  
         tempFavor.text = [someFavor objectForKey:@"text"];
         tempFavor.uniqueID = someFavor.objectId;
         //must cast on the other side from type ID to boolValue

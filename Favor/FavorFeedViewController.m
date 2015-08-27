@@ -28,6 +28,7 @@
 @property UIFont* proximaNovaSoftBold;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *radiusButton;
 
+
 @end
 
 @implementation FavorFeedViewController
@@ -51,7 +52,7 @@
   
   self.proximaNovaSoftBold = [UIFont fontWithName:@"ProximaNovaSoft-Bold" size:16];
   
-  //sets the navigation bar text
+  
   [[UINavigationBar appearance] setTitleTextAttributes:
   [NSDictionary dictionaryWithObjectsAndKeys:
    [UIColor whiteColor], NSForegroundColorAttributeName,
@@ -62,6 +63,12 @@
                                                          forKey:NSFontAttributeName];
   [self.favorSegmentedControl setTitleTextAttributes:attributes
                                   forState:UIControlStateNormal];
+  
+  [self.radiusButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                      [UIFont fontWithName:@"ProximaNovaSoft-Bold" size:20], NSFontAttributeName,
+                                      [UIColor whiteColor], NSForegroundColorAttributeName,
+                                      nil] 
+                            forState:UIControlStateNormal];
 
   
 //  self.navigationController.tit
@@ -219,27 +226,33 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   FavorCell *cell = [self.favorTableView dequeueReusableCellWithIdentifier:@"CellID" forIndexPath:indexPath];
+  
+  cell.selectionStyle = UITableViewCellSelectionStyleNone;
                      
   Favor *favorAtIndexPath = self.arrayOfFavors[indexPath.row];
   
+  //name of favor poster
   cell.posterName.text = favorAtIndexPath.posterName;
-  
   cell.posterName.font = self.proximaNovaBold;
   
-  cell.timePassedSinceFavorWasPosted.text = favorAtIndexPath.timePosted;
-  
-  cell.timePassedSinceFavorWasPosted.font = self.proximaNovaRegular;
-  
+   //actual text in the favor
   cell.favorText.text = favorAtIndexPath.text;
-  
   cell.favorText.font = self.proximaNovaRegular;
+  cell.favorText.textColor = [ColorPalette getGreyTextColor];
   
+  //time since favor has passed
+  cell.timePassedSinceFavorWasPosted.text = favorAtIndexPath.timePosted;
+  cell.timePassedSinceFavorWasPosted.font = self.proximaNovaRegular;
+  cell.timePassedSinceFavorWasPosted.textColor = [ColorPalette getGreyTextLessOpaqueColor];
   
   //need to calculate distance from currentUser
+  //distance from actual favor to persons
+  cell.distanceFromPoster.text = favorAtIndexPath.distanceAwayFromCL;
   cell.distanceFromPoster.font = self.proximaNovaRegular;
+  cell.distanceFromPoster.textColor = [ColorPalette getGreyTextLessOpaqueColor];
+  
   
   NSNumber *numOfResponses = favorAtIndexPath.numberOfResponses;
-  
   NSNumber *hasResponseBeenAccepeted = favorAtIndexPath.currentState;
   
   //checks responses first
@@ -259,8 +272,8 @@
     {
       UIImage *profImage = [UIImage imageWithData:result];
       cell.profilePictureImageView.image = profImage;
-      
-      cell.profilePictureImageView.layer.cornerRadius = cell.profilePictureImageView.image.size.width/2;
+                                                      //make sure this is frame.size and not image.size
+      cell.profilePictureImageView.layer.cornerRadius = cell.profilePictureImageView.frame.size.width/2;
       cell.profilePictureImageView.layer.masksToBounds = YES;
 
     }

@@ -24,6 +24,8 @@
 
 @dynamic uniqueID;
 
+@dynamic distanceAwayFromCL;
+
 + (void)load
 {
     [self registerSubclass];

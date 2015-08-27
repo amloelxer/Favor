@@ -41,6 +41,8 @@ typedef NS_ENUM(NSInteger, FavorType) {
 
 @property NSNumber *currentState;
 
+@property NSString *distanceAwayFromCL;
+
 
 
 + (NSString *)parseClassName;

@@ -33,10 +33,30 @@
 + (UIColor *)getFavorGreenColor
 {
   UIColor *favorGreenColor = [UIColor colorWithRed:86.0f/255.0f
-                                              green:209.0f/255.0f
+                                              green:215.0f/255.0f
                                                blue:142.0f/255.0f
                                               alpha:1.0f];
   return favorGreenColor;
+}
+
++ (UIColor *)getGreyTextColor
+{
+  UIColor *greyTextColor = [UIColor colorWithRed:30.0f/255.0f
+                                             green:30.0f/255.0f
+                                              blue:30.0f/255.0f
+                                             alpha:1.0f];
+  return greyTextColor;
+
+}
+
++ (UIColor *)getGreyTextLessOpaqueColor
+{
+  UIColor *greyTextColor = [UIColor colorWithRed:30.0f/255.0f
+                                           green:30.0f/255.0f
+                                            blue:30.0f/255.0f
+                                           alpha:0.5f];
+  return greyTextColor;
+  
 }
 
 
