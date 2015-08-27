@@ -130,6 +130,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		191D092E1B8FC81700ED56E2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				197514FB1B8ECFFF005F152D /* OriginalFavorView.h */,
+				197514FC1B8ECFFF005F152D /* OriginalFavorView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		192D9CE71B891EAE00399A65 /* Parse Objects */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,8 +224,6 @@
 				192D9CE81B891EBD00399A65 /* Color/Animation */,
 				19EF06ED1B8BB3B70035D7A9 /* ResponseLabelOnFavor.h */,
 				19EF06EE1B8BB3B70035D7A9 /* ResponseLabelOnFavor.m */,
-				197514FB1B8ECFFF005F152D /* OriginalFavorView.h */,
-				197514FC1B8ECFFF005F152D /* OriginalFavorView.m */,
 				19EF06F21B8BCFE70035D7A9 /* LocationManager.h */,
 				19EF06F31B8BCFE70035D7A9 /* LocationManager.m */,
 			);
@@ -246,9 +253,10 @@
 		19AC32B51B825E4E00F38A47 /* Favor */ = {
 			isa = PBXGroup;
 			children = (
-				197514F41B8E368F005F152D /* Fonts */,
 				19AC32BA1B825E4E00F38A47 /* AppDelegate.h */,
 				19AC32BB1B825E4E00F38A47 /* AppDelegate.m */,
+				191D092E1B8FC81700ED56E2 /* Views */,
+				197514F41B8E368F005F152D /* Fonts */,
 				19A035DB1B8282030062251C /* Model */,
 				19A035D71B826C5A0062251C /* Controllers */,
 				19AC32C01B825E4E00F38A47 /* Main.storyboard */,
