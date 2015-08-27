@@ -316,6 +316,9 @@
   vc.passedFavorID = favorAtIndexPath.uniqueID;
 
   vc.passedFavorState = favorAtIndexPath.currentState;
+  
+  vc.passedDistanceFromCurrentLocation = favorAtIndexPath.distanceAwayFromCL;
+  
 }
 
 

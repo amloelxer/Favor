@@ -228,7 +228,7 @@
 }
 
 -(float)indicatorCircleScaleFactorFor:(float)radius {
-    NSLog(@"%f", radius / (self.indicatorCircle.frame.size.width / 2));
+//    NSLog(@"%f", radius / (self.indicatorCircle.frame.size.width / 2));
     return radius / (self.indicatorCircle.frame.size.width / 2);
 }
 
@@ -245,8 +245,8 @@
 #pragma mark - User Input
 
 - (IBAction)pull:(UIPanGestureRecognizer *)recognizer {
-    NSLog(@"Scale Radius: %f", self.scaleRadius);
-    
+//    NSLog(@"Scale Radius: %f", self.scaleRadius);
+  
     switch (recognizer.state) {
 
         case UIGestureRecognizerStateBegan:
@@ -427,7 +427,8 @@
     colorAnimation.springBounciness = 10;
     colorAnimation.toValue = (__bridge id)([self greenColor].CGColor);
     [self.radiusLabel pop_addAnimation:colorAnimation forKey:@"colorAnimation"];
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+//    NSLog(@"%@", NSStringFromSelector(_cmd));
+  
 }
 
 

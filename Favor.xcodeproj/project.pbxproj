@@ -18,6 +18,7 @@
 		197514F61B8E36B4005F152D /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 197514F11B8E3681005F152D /* ProximaNova-Bold.otf */; };
 		197514F71B8E36B7005F152D /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 197514F31B8E3681005F152D /* ProximaNova-Regular.otf */; };
 		197514FA1B8E95CE005F152D /* RadiusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 197514F91B8E95CE005F152D /* RadiusViewController.m */; };
+		197514FD1B8ECFFF005F152D /* OriginalFavorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 197514FC1B8ECFFF005F152D /* OriginalFavorView.m */; };
 		19A035DA1B8281FC0062251C /* Favor.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A035D91B8281FC0062251C /* Favor.m */; };
 		19A035DE1B8284020062251C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A035DD1B8284020062251C /* User.m */; };
 		19AC32B91B825E4E00F38A47 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC32B81B825E4E00F38A47 /* main.m */; };
@@ -68,6 +69,8 @@
 		197514F31B8E3681005F152D /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
 		197514F81B8E95CE005F152D /* RadiusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadiusViewController.h; sourceTree = "<group>"; };
 		197514F91B8E95CE005F152D /* RadiusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadiusViewController.m; sourceTree = "<group>"; };
+		197514FB1B8ECFFF005F152D /* OriginalFavorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OriginalFavorView.h; sourceTree = "<group>"; };
+		197514FC1B8ECFFF005F152D /* OriginalFavorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalFavorView.m; sourceTree = "<group>"; };
 		19A035D81B8281FC0062251C /* Favor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favor.h; sourceTree = "<group>"; };
 		19A035D91B8281FC0062251C /* Favor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favor.m; sourceTree = "<group>"; };
 		19A035DC1B8284020062251C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -212,6 +215,8 @@
 				192D9CE81B891EBD00399A65 /* Color/Animation */,
 				19EF06ED1B8BB3B70035D7A9 /* ResponseLabelOnFavor.h */,
 				19EF06EE1B8BB3B70035D7A9 /* ResponseLabelOnFavor.m */,
+				197514FB1B8ECFFF005F152D /* OriginalFavorView.h */,
+				197514FC1B8ECFFF005F152D /* OriginalFavorView.m */,
 				19EF06F21B8BCFE70035D7A9 /* LocationManager.h */,
 				19EF06F31B8BCFE70035D7A9 /* LocationManager.m */,
 			);
@@ -492,6 +497,7 @@
 				19EF06F41B8BCFE70035D7A9 /* LocationManager.m in Sources */,
 				19AC32BF1B825E4E00F38A47 /* FavorFeedViewController.m in Sources */,
 				C33E19BC1B85153C00546523 /* UIImageEffects.m in Sources */,
+				197514FD1B8ECFFF005F152D /* OriginalFavorView.m in Sources */,
 				19AC32BC1B825E4E00F38A47 /* AppDelegate.m in Sources */,
 				19F59BA71B82B0770057BC6D /* LoginViewController.m in Sources */,
 				19AC32B91B825E4E00F38A47 /* main.m in Sources */,

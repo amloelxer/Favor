@@ -9,10 +9,10 @@
 #import "FavorDetailViewController.h"
 #import "FavorCell.h"
 #import "DatabaseManager.h"
+#import "OriginalFavorView.h"
 
 @interface FavorDetailViewController ()  <DatabaseManagerDelegate, ResponseCellDelegate>
 
-@property (weak, nonatomic) IBOutlet UILabel *favorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *selectedFavorTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timePassedTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *passedSelectedFavorPosterNameLabel;
@@ -22,6 +22,13 @@
 @property (weak, nonatomic) IBOutlet UIButton *addCommentButton;
 @property BOOL favorHasBeenChosen;
 @property DatabaseManager *parseManager;
+@property (weak, nonatomic) IBOutlet OriginalFavorView *originalFavorPosterView;
+@property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
+
+@property UIFont* proximaNovaRegular;
+@property UIFont* proximaNovaBold;
+@property UIFont* proximaNovaSoftBold;
+
 @end
 
 @implementation FavorDetailViewController
@@ -30,8 +37,18 @@
 {
   [super viewDidLoad];
   
-    self.favorHasBeenChosen = NO;
+  self.proximaNovaRegular = [UIFont fontWithName:@"ProximaNova-Regular" size:16];
+  self.proximaNovaBold = [UIFont fontWithName:@"ProximaNova-Bold" size:16];
+  self.proximaNovaSoftBold = [UIFont fontWithName:@"ProximaNovaSoft-Bold" size:16];
   
+  self.originalFavorPosterView.backgroundColor = [ColorPalette getFavorRedColor];
+  
+  [self.navigationController.navigationBar setBarTintColor:[ColorPalette getFavorRedColor]];
+  self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+  [self.navigationController.navigationBar setTranslucent:NO];
+  
+  self.favorHasBeenChosen = NO;
+
   if([self.passedFavorState intValue] == FavorStateClosed)
   {
     self.addCommentButton.hidden = YES;
@@ -44,7 +61,6 @@
   
   self.parseManager.delegate = self;
   
-  self.favorLabel.backgroundColor = [ColorPalette getFavorRedColor];
   
   self.profileImageView.image = self.profImage;
   
@@ -53,8 +69,20 @@
   self.profileImageView.layer.masksToBounds = YES;
   
   self.selectedFavorTextLabel.text = self.passedFavorText;
+  self.selectedFavorTextLabel.font = self.proximaNovaRegular;
+  
   self.passedSelectedFavorPosterNameLabel.text = self.passedSelectedFavorPosterName;
+  self.passedSelectedFavorPosterNameLabel.font = self.proximaNovaSoftBold;
+  
   self.timePassedTextLabel.text = self.passedTimeText;
+  self.timePassedTextLabel.font = self.proximaNovaRegular;
+  
+  self.distanceLabel.text = self.passedDistanceFromCurrentLocation;
+  self.distanceLabel.font = self.proximaNovaRegular;
+  
+  
+  self.responseTableView.estimatedRowHeight = 109.0;
+  self.responseTableView.rowHeight = UITableViewAutomaticDimension;
   
   if([self.passedUserThatMadeTheFavor isEqual:[User currentUser]])
   {
@@ -155,6 +183,8 @@
   
   cell.delegate = self;
   
+  cell.selectionStyle = UITableViewCellSelectionStyleNone;
+  
   if([self.passedUserThatMadeTheFavor isEqual:[User currentUser]])
   {
     //enable what needs to be done on setup to change screens
@@ -181,8 +211,10 @@
 
 
   cell.responderName.text = responseForCell.responseCreatorName;
+  cell.responderName.font = self.proximaNovaSoftBold;
   
   cell.responderText.text = responseForCell.responseText;
+  cell.responderText.font = self.proximaNovaRegular;
   
   //make sure the cell image loads for the right cell by comparing index Paths
   if([[self.responseTableView indexPathForCell:cell] isEqual:indexPath])
@@ -216,7 +248,8 @@
 //just a temp to test before we have cassidy's view
 - (IBAction)makeResponseButtonPressed:(UIButton *)sender
 {
-  [self.parseManager saveResponse:@"Some Default Response" passedFavorID:self.passedFavorID];
+  NSString *longString = @"This is a giant string which should take up a lot of room and hopefully the cell will have the space and everything will be fine";
+  [self.parseManager saveResponse:longString passedFavorID:self.passedFavorID];
 }
 
 

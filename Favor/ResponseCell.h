@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Favor.h"
 #import "User.h"
+#import "ColorPalette.h"
 
 @class ResponseCell;
 @protocol ResponseCellDelegate <NSObject>

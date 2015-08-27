@@ -28,6 +28,7 @@ typedef NS_ENUM(NSInteger, FavorStates) {
 @property User *passedUserThatMadeTheFavor;
 @property NSString *passedFavorID;
 @property NSNumber *passedFavorState;
+@property NSString *passedDistanceFromCurrentLocation;
 
 @property UIImage *profImage;
 @end

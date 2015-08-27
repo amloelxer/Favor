@@ -12,6 +12,15 @@
 
 - (void)awakeFromNib {
     // Initialization code
+  self.chosenButton.backgroundColor = [ColorPalette getFavorGreenColor];
+  self.chosenButton.titleLabel.text = @" Choose ";
+  self.chosenButton.tintColor = [UIColor whiteColor];
+  self.chosenButton.layer.cornerRadius = 2.0;
+  self.chosenButton.layer.masksToBounds = YES;
+  
+  [self.chosenButton.titleLabel setFont:[UIFont fontWithName:@"ProximaNova-Regular" size:16]];
+
+ 
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
