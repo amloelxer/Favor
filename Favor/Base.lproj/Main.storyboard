@@ -19,6 +19,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_screen_logo" translatesAutoresizingMaskIntoConstraints="NO" id="W2G-aU-geN">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="80" y="103" width="240" height="128"/>
+                                </variation>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dk2-HE-oAa">
                                 <rect key="frame" x="154" y="285" width="293" height="30"/>
                                 <constraints>
@@ -26,6 +32,7 @@
                                     <constraint firstAttribute="height" constant="30" id="cak-bW-Co0"/>
                                 </constraints>
                                 <state key="normal" title="Please Sign Up Or Login With Facebook">
+                                    <color key="titleColor" red="1" green="0.87058823529411766" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -35,12 +42,35 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="Dk2-HE-oAa" secondAttribute="centerY" id="Zrx-Vy-J1b"/>
+                            <constraint firstItem="W2G-aU-geN" firstAttribute="centerY" secondItem="Myv-yl-1SI" secondAttribute="centerY" id="Py2-HD-pSN"/>
+                            <constraint firstAttribute="centerY" secondItem="Dk2-HE-oAa" secondAttribute="centerY" id="Zrx-Vy-J1b">
+                                <variation key="widthClass=compact" constant="-143"/>
+                            </constraint>
+                            <constraint firstItem="W2G-aU-geN" firstAttribute="centerX" secondItem="Myv-yl-1SI" secondAttribute="centerX" id="yqT-rM-xpd"/>
                             <constraint firstAttribute="centerX" secondItem="Dk2-HE-oAa" secondAttribute="centerX" constant="-0.5" id="yri-qe-gRm"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="W2G-aU-geN"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Py2-HD-pSN"/>
+                                <exclude reference="yqT-rM-xpd"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="W2G-aU-geN"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Py2-HD-pSN"/>
+                                <include reference="yqT-rM-xpd"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="0la-0o-Mx9"/>
                     <connections>
+                        <outlet property="facebookLoginButton" destination="Dk2-HE-oAa" id="Pro-2B-I0t"/>
                         <segue destination="3HM-Rn-nFs" kind="show" identifier="loginSuccessful" id="XGn-wB-8mf"/>
                     </connections>
                 </viewController>
@@ -638,7 +668,8 @@
                                                             <exclude reference="Ype-qi-PuH"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="158" y="18" width="68" height="30"/>
                                                         <mask key="constraints">
                                                             <include reference="TN6-DK-FI7"/>
                                                             <include reference="Ype-qi-PuH"/>
@@ -1049,6 +1080,7 @@
     </scenes>
     <resources>
         <image name="createNewPost" width="30" height="30"/>
+        <image name="launch_screen_logo" width="158" height="136"/>
     </resources>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

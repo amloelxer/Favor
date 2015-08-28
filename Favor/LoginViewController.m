@@ -9,11 +9,13 @@
 #import "LoginViewController.h"
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 #import "FacebookLoginManager.h"
+#import "ColorPalette.h"
 
 
 @interface LoginViewController () <FacebookLoginDelegate>
 @property FacebookLoginManager *facebookLoginOperations;
 @property User *currentUser;
+@property (weak, nonatomic) IBOutlet UIButton *facebookLoginButton;
 
 
 @end
@@ -30,6 +32,11 @@
     self.facebookLoginOperations.delegate = self;
   
     self.currentUser = [User currentUser];
+  
+    self.view.backgroundColor = [ColorPalette getFavorPinkRedColor];
+  
+  self.facebookLoginButton.titleLabel.font = [UIFont fontWithName:@"ProximaNova-Bold" size:16];
+
   
   
 }
