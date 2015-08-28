@@ -53,28 +53,20 @@
     
     [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
     
-    
-    
-    //
     // If you are using Facebook, uncomment and add your FacebookAppID to your bundle's plist as
     // described here: https://developers.facebook.com/docs/getting-started/facebook-sdk-for-ios/
     // [PFFacebookUtils initializeFacebook];
     // ****************************************************************************
-    
-    [PFUser enableAutomaticUser];
-    
+//    [PFUser enableAutomaticUser];
+  
     PFACL *defaultACL = [PFACL ACL];
     
     // If you would like all objects to be private by default, remove this line.
     [defaultACL setPublicReadAccess:YES];
-    
+    [defaultACL setPublicWriteAccess:YES];
+
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
-    
-    // Override point for customization after application launch.
-    
-//    self.window.rootViewController = self.viewController;
-//    [self.window makeKeyAndVisible];
-    
+  
     if (application.applicationState != UIApplicationStateBackground) {
         // Track an app open here if we launch with a push, unless
         // "content_available" was used to trigger a background push (introduced in iOS 7).

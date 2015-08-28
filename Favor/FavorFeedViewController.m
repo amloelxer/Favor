@@ -198,19 +198,8 @@
 {
   NSLog(@"Inital Location has been recieved");
   //within a default raidus let's say 10 miles
-  [self.parseDataManager getAllFavorsFromParse:self.radius];
-}
-
-- (IBAction)addFavorPressed:(UIBarButtonItem *)sender
-{
-//    NSLog(@"%@", NSStringFromSelector(_cmd));
-    ModalViewController *vc = [[ModalViewController alloc] initWithBackgroundViewController:self];
-    [vc setModalPresentationStyle:UIModalPresentationOverCurrentContext];
-    [self presentViewController:vc animated:NO completion:nil];
-}
-
-- (void)reloadOnPullDown
-{
+//  [self.parseDataManager getAllFavorsFromParse:self.radius];
+  
   PFQuery *query = [PFQuery queryWithClassName:@"Favor"];
   [query fromLocalDatastore];
   
@@ -224,7 +213,24 @@
     }];
     
   }];
+  
 
+}
+
+- (IBAction)addFavorPressed:(UIBarButtonItem *)sender
+{
+//    NSLog(@"%@", NSStringFromSelector(_cmd));
+    ModalViewController *vc = [[ModalViewController alloc] initWithBackgroundViewController:self];
+    [vc setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+    [self presentViewController:vc animated:NO completion:nil];
+}
+
+- (void)reloadOnPullDown
+{
+  LocationManager *locManager = [LocationManager sharedManager];
+  
+  [locManager updateLocation];
+  
   
 }
 
