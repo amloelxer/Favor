@@ -245,6 +245,17 @@
   return self.arrayOfResponses.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView
+estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  return 150;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView
+heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  return 150;
+}
+
+
 //just a temp to test before we have cassidy's view
 - (IBAction)makeResponseButtonPressed:(UIButton *)sender
 {

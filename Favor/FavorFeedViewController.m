@@ -44,7 +44,7 @@
 {
   [super viewDidLoad];
   
-  self.favorTableView.estimatedRowHeight = 155.0;
+  self.favorTableView.estimatedRowHeight = 230.0;
   self.favorTableView.rowHeight = UITableViewAutomaticDimension;
   
   self.proximaNovaRegular = [UIFont fontWithName:@"ProximaNova-Regular" size:16];
@@ -115,6 +115,13 @@
   
   self.parseDataManager.delegate = self;
   
+  [self.favorTableView reloadData];
+  
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+  [self.favorTableView reloadData];
 }
 
 - (IBAction)onRadiusButtonPressed:(UIBarButtonItem *)sender
@@ -322,6 +329,16 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   return self.arrayOfFavors.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView
+estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  return 150;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView
+heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  return 150;
 }
 
 #pragma mark - Prepare for Segue
