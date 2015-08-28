@@ -27,6 +27,7 @@
 @property UIFont* proximaNovaBold;
 @property UIFont* proximaNovaSoftBold;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *radiusButton;
+@property UIRefreshControl *refreshControl;
 
 
 @end
@@ -51,6 +52,14 @@
   self.proximaNovaBold = [UIFont fontWithName:@"ProximaNova-Bold" size:16];
   
   self.proximaNovaSoftBold = [UIFont fontWithName:@"ProximaNovaSoft-Bold" size:16];
+  
+  self.refreshControl = [[UIRefreshControl alloc] init];
+  [self.favorTableView addSubview:self.refreshControl];
+  self.refreshControl.backgroundColor = [ColorPalette getFavorPinkRedColor];
+  self.refreshControl.tintColor = [UIColor whiteColor];
+  [self.refreshControl addTarget:self
+                          action:@selector(reloadOnPullDown)
+                forControlEvents:UIControlEventValueChanged];
   
   
   [[UINavigationBar appearance] setTitleTextAttributes:
@@ -80,7 +89,7 @@
   someLocationManger.delegate = self;
   
   //code for making the cells pop to the top of the table view on laod
-  self.automaticallyAdjustsScrollViewInsets = NO;
+//  self.automaticallyAdjustsScrollViewInsets = NO;
   
   [self.navigationController.navigationBar setBarTintColor:[ColorPalette getFavorPinkRedColor]];
   self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
@@ -175,6 +184,7 @@
 - (void)reloadTableWithQueryResults:(NSArray *)queryResults
 {
   [self getCachedFavorsWithSegmentFilterApplied];
+  [self.refreshControl endRefreshing];
 }
 
 - (void) reloadTableWithCachedQueryResults: (NSArray *) queryResults
@@ -199,7 +209,24 @@
     [self presentViewController:vc animated:NO completion:nil];
 }
 
+- (void)reloadOnPullDown
+{
+  PFQuery *query = [PFQuery queryWithClassName:@"Favor"];
+  [query fromLocalDatastore];
+  
+  [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    
+    //when you're saving to the cache make sure to unpin (work around for now)
+    [PFObject unpinAllInBackground:objects block:^(BOOL succeeded, NSError *error) {
+      
+      [self.parseDataManager getAllFavorsFromParse:self.radius];
+      
+    }];
+    
+  }];
 
+  
+}
 
 - (void)getCachedFavorsWithSegmentFilterApplied
 {
