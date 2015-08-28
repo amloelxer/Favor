@@ -119,11 +119,6 @@
   
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
-  [self.favorTableView reloadData];
-}
-
 - (IBAction)onRadiusButtonPressed:(UIBarButtonItem *)sender
 {
   NSNumber *radius = [NSNumber numberWithDouble:self.radius];

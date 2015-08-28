@@ -24,6 +24,7 @@
 @property DatabaseManager *parseManager;
 @property (weak, nonatomic) IBOutlet OriginalFavorView *originalFavorPosterView;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
+@property UIRefreshControl *refreshControl;
 
 @property UIFont* proximaNovaRegular;
 @property UIFont* proximaNovaBold;
@@ -48,6 +49,15 @@
   [self.navigationController.navigationBar setTranslucent:NO];
   
   self.favorHasBeenChosen = NO;
+  
+  
+  self.refreshControl = [[UIRefreshControl alloc] init];
+  [self.responseTableView addSubview:self.refreshControl];
+  self.refreshControl.backgroundColor = [ColorPalette getFavorPinkRedColor];
+  self.refreshControl.tintColor = [UIColor whiteColor];
+  [self.refreshControl addTarget:self
+                          action:@selector(reloadOnPullDown)
+                forControlEvents:UIControlEventValueChanged];
 
   if([self.passedFavorState intValue] == FavorStateClosed)
   {
@@ -69,10 +79,10 @@
   self.profileImageView.layer.masksToBounds = YES;
   
   self.selectedFavorTextLabel.text = self.passedFavorText;
-  self.selectedFavorTextLabel.font = self.proximaNovaRegular;
+  self.selectedFavorTextLabel.font = [UIFont fontWithName:@"ProximaNova-Regular" size:20];
   
   self.passedSelectedFavorPosterNameLabel.text = self.passedSelectedFavorPosterName;
-  self.passedSelectedFavorPosterNameLabel.font = self.proximaNovaSoftBold;
+  self.passedSelectedFavorPosterNameLabel.font = [UIFont fontWithName:@"ProximaNova-Bold" size:20];
   
   self.timePassedTextLabel.text = self.passedTimeText;
   self.timePassedTextLabel.font = self.proximaNovaRegular;
@@ -99,9 +109,13 @@
   self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
   [self.navigationController.navigationBar setTranslucent:NO];
   
+  
+  [self.parseManager getResponseForSelectedFavor:self.passedFavorID];
+  
 }
 
--(void)viewDidAppear:(BOOL)animated
+
+-(void)reloadOnPullDown
 {
   [self.parseManager getResponseForSelectedFavor:self.passedFavorID];
 }
@@ -157,10 +171,11 @@
 #pragma DatabaseManager Delegate responses
 - (void) reloadTableWithResponses: (NSArray *) queryResults;
 {
-  NSLog(@"delegate method in reload table with responses is being called");
-  
+//  NSLog(@"delegate method in reload table with responses is being called");
+//  
   self.arrayOfResponses = [queryResults mutableCopy];
   [self.responseTableView reloadData];
+  [self.refreshControl endRefreshing];
   
 }
 
@@ -231,7 +246,7 @@
          UIImage *profImage = [UIImage imageWithData:result];
          cell.responseProfilePictureView.image = profImage;
          
-         cell.responseProfilePictureView.layer.cornerRadius = cell.responseProfilePictureView.image.size.width/2;
+         cell.responseProfilePictureView.layer.cornerRadius = cell.responseProfilePictureView.frame.size.width/2;
          cell.responseProfilePictureView.layer.masksToBounds = YES;
        }
        
