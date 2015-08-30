@@ -10,6 +10,7 @@
 #import "FavorCell.h"
 #import "DatabaseManager.h"
 #import "OriginalFavorView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface FavorDetailViewController ()  <DatabaseManagerDelegate, ResponseCellDelegate>
 
@@ -29,6 +30,7 @@
 @property UIFont* proximaNovaRegular;
 @property UIFont* proximaNovaBold;
 @property UIFont* proximaNovaSoftBold;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 
 @end
 
@@ -38,11 +40,17 @@
 {
   [super viewDidLoad];
   
+
+  
   self.proximaNovaRegular = [UIFont fontWithName:@"ProximaNova-Regular" size:16];
   self.proximaNovaBold = [UIFont fontWithName:@"ProximaNova-Bold" size:16];
   self.proximaNovaSoftBold = [UIFont fontWithName:@"ProximaNovaSoft-Bold" size:16];
   
   self.originalFavorPosterView.backgroundColor = [ColorPalette getFavorPinkRedColor];
+  
+  self.view.backgroundColor = [ColorPalette getFavorPinkRedColor];
+  
+  
   
   [self.navigationController.navigationBar setBarTintColor:[ColorPalette getFavorPinkRedColor]];
   self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
@@ -74,8 +82,20 @@
   
   self.profileImageView.image = self.profImage;
   
-  //code to make it circular 
-  self.profileImageView.layer.cornerRadius = self.profileImageView.image.size.width / 2;
+  
+//  self.numberInputImageView.image = profImage;
+  //make sure this is frame.size and not image.size
+  
+  
+  
+  /*
+   self.profileImageView is giving you the wrong frame for some reason
+   this is a temp fix for now. It's corner radius should be half the height
+   to make it rounded. It's current value is obvs 50x50
+  */
+  
+  self.profileImageView.layer.cornerRadius = 25;
+
   self.profileImageView.layer.masksToBounds = YES;
   
   self.selectedFavorTextLabel.text = self.passedFavorText;
@@ -105,10 +125,9 @@
     self.phoneNumberLabel.hidden = YES;
   }
   
-//  [self.navigationController.navigationBar setBarTintColor:[ColorPalette getFavorPinkRedColor]];
-//  self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-//  [self.navigationController.navigationBar setTranslucent:NO];
   
+  //code to make it circular
+
   
   [self.parseManager getResponseForSelectedFavor:self.passedFavorID];
   
@@ -260,20 +279,6 @@
   return self.arrayOfResponses.count;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//  return 154;
-//}
-
-//- (CGFloat)tableView:(UITableView *)tableView
-//estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//  return 150;
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView
-//heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//  return 150;
-//}
 
 
 //just a temp to test before we have cassidy's view

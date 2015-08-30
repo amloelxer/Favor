@@ -46,7 +46,7 @@
                      //convert the image into data
                      NSData *profilePictureData = UIImagePNGRepresentation(userImage);
  
-                     PFFile *imageFile = [PFFile fileWithName:@"placeholder.png" data:profilePictureData];
+                     PFFile *imageFile = [PFFile fileWithName:@"profilepicture.png" data:profilePictureData];
 
                      //set the profile picture Column in parse to the data
                      user[@"ProfilePicture"] = imageFile;
