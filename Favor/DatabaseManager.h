@@ -38,6 +38,8 @@ typedef NS_ENUM(NSInteger, AskOrOfferFavor) {
   AskFavor,
 };
 
+-(void)getDataForCurrentUser:(User *)currentUser;
+
 - (void)getAllFavorsFromLocalParseStore:(NSInteger)selectedSegment user:(User *)currentUser;
 
 -(void)getAllFavorsFromParse:(double)withSelectedRadius;

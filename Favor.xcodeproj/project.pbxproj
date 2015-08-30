@@ -10,6 +10,7 @@
 		191C21651B84FE8A00780221 /* ColorPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 191C21641B84FE8A00780221 /* ColorPalette.m */; };
 		192D9CE31B87F64D00399A65 /* ResponseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 192D9CE21B87F64D00399A65 /* ResponseCell.m */; };
 		192D9CE61B891E9B00399A65 /* Response.m in Sources */ = {isa = PBXBuildFile; fileRef = 192D9CE51B891E9B00399A65 /* Response.m */; };
+		1940E6A21B9296A100C63378 /* NumberInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1940E6A11B9296A100C63378 /* NumberInputViewController.m */; };
 		19653BCD1B840661009DF2C2 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19653BCC1B840661009DF2C2 /* DatabaseManager.m */; };
 		19653BD01B840CD2009DF2C2 /* FavorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19653BCF1B840CD2009DF2C2 /* FavorCell.m */; };
 		19653BD41B840E1B009DF2C2 /* FavorDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19653BD31B840E1B009DF2C2 /* FavorDetailViewController.m */; };
@@ -56,6 +57,8 @@
 		192D9CE21B87F64D00399A65 /* ResponseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseCell.m; sourceTree = "<group>"; };
 		192D9CE41B891E9B00399A65 /* Response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Response.h; sourceTree = "<group>"; };
 		192D9CE51B891E9B00399A65 /* Response.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Response.m; sourceTree = "<group>"; };
+		1940E6A01B9296A100C63378 /* NumberInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberInputViewController.h; sourceTree = "<group>"; };
+		1940E6A11B9296A100C63378 /* NumberInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberInputViewController.m; sourceTree = "<group>"; };
 		19653BCB1B840661009DF2C2 /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
 		19653BCC1B840661009DF2C2 /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
 		19653BCE1B840CD2009DF2C2 /* FavorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavorCell.h; sourceTree = "<group>"; };
@@ -206,6 +209,8 @@
 				C33E19BA1B85153C00546523 /* UIImageEffects.m */,
 				19AC32BD1B825E4E00F38A47 /* FavorFeedViewController.h */,
 				19AC32BE1B825E4E00F38A47 /* FavorFeedViewController.m */,
+				1940E6A01B9296A100C63378 /* NumberInputViewController.h */,
+				1940E6A11B9296A100C63378 /* NumberInputViewController.m */,
 				19F59BA51B82B0770057BC6D /* LoginViewController.h */,
 				19F59BA61B82B0770057BC6D /* LoginViewController.m */,
 				19653BD21B840E1B009DF2C2 /* FavorDetailViewController.h */,
@@ -504,6 +509,7 @@
 				192D9CE31B87F64D00399A65 /* ResponseCell.m in Sources */,
 				19EF06F41B8BCFE70035D7A9 /* LocationManager.m in Sources */,
 				19AC32BF1B825E4E00F38A47 /* FavorFeedViewController.m in Sources */,
+				1940E6A21B9296A100C63378 /* NumberInputViewController.m in Sources */,
 				C33E19BC1B85153C00546523 /* UIImageEffects.m in Sources */,
 				197514FD1B8ECFFF005F152D /* OriginalFavorView.m in Sources */,
 				19AC32BC1B825E4E00F38A47 /* AppDelegate.m in Sources */,

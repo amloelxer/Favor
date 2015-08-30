@@ -42,6 +42,20 @@
   
 }
 
+
+-(void)getDataForCurrentUser:(User *)currentUser
+{
+  PFQuery *query = [PFQuery queryWithClassName:@"User"];
+  [query whereKey:@"playerName" equalTo:@"Dan Stemkoski"];
+  
+  [query getObjectInBackgroundWithId:currentUser.objectId block:^(PFObject *results, NSError *error) {
+    
+    
+    
+  }];
+  
+}
+
 /*This method sorts all the cached Favors based on the segment
  controller value in FavorFeedView and calls the delegate method
  reloadTableWithCachedQueryResults with the sorted array of comments */
@@ -155,9 +169,6 @@
     
   }];
 
-  
-  
-  
   
 }
 

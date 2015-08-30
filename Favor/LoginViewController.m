@@ -63,6 +63,12 @@
     [self performSegueWithIdentifier:@"loginSuccessful" sender:self];
 }
 
+- (void) hasLoggedInSucessFullyAndIsNewUser: (FacebookLoginManager *) sender
+{
+  [self performSegueWithIdentifier:@"isNewUserSegue" sender:self];
+  
+}
+
 -(void) logInFailedWithError:(FacebookLoginManager *)sender
 {
   UIAlertView *alertView = [[UIAlertView alloc]

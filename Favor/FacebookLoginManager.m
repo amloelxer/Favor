@@ -65,9 +65,8 @@
                      }
                      
                    }];
-                     //login succesfully
-//                    [self performSegueWithIdentifier:@"loginSuccessful" sender:self];
-                     [self.delegate hasLoggedInSuccessFully:self];
+
+                     [self.delegate hasLoggedInSucessFullyAndIsNewUser:self];
                  }
                  
              }];

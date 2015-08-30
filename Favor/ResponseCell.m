@@ -19,6 +19,7 @@
   self.chosenButton.layer.masksToBounds = YES;
   
   [self.chosenButton.titleLabel setFont:[UIFont fontWithName:@"ProximaNova-Regular" size:16]];
+  
 
  
 }

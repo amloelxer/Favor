@@ -43,8 +43,11 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+
+//  self.favorTableView.estimatedRowHeight = 400.0;
+//  self.favorTableView.rowHeight = 154;
   
-  self.favorTableView.estimatedRowHeight = 230.0;
+  [self.favorTableView layoutIfNeeded];
   self.favorTableView.rowHeight = UITableViewAutomaticDimension;
   
   self.proximaNovaRegular = [UIFont fontWithName:@"ProximaNova-Regular" size:16];
@@ -89,7 +92,7 @@
   someLocationManger.delegate = self;
   
   //code for making the cells pop to the top of the table view on laod
-//  self.automaticallyAdjustsScrollViewInsets = NO;
+  self.automaticallyAdjustsScrollViewInsets = NO;
   
   [self.navigationController.navigationBar setBarTintColor:[ColorPalette getFavorPinkRedColor]];
   self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
@@ -115,7 +118,11 @@
   
   self.parseDataManager.delegate = self;
   
-  [self.favorTableView reloadData];
+  LocationManager *locManager = [LocationManager sharedManager];
+  
+  [locManager updateLocation];
+    
+  
   
 }
 
@@ -192,6 +199,8 @@
 - (void) reloadTableWithCachedQueryResults: (NSArray *) queryResults
 {
   self.arrayOfFavors = queryResults;
+  [self.favorTableView setNeedsLayout];
+  [self.favorTableView layoutIfNeeded];
   [self.favorTableView reloadData];
 }
 
@@ -317,6 +326,9 @@
   }];
   
   
+  [cell setNeedsLayout];
+  [cell layoutIfNeeded];
+  
   return cell;
   
 }
@@ -326,15 +338,21 @@
   return self.arrayOfFavors.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView
-estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  return 150;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//  return 155;
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView
-heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  return 150;
+estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  return 155;
 }
+
+
+//- (CGFloat)tableView:(UITableView *)tableView
+//heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//  return 155;
+//}
 
 #pragma mark - Prepare for Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -345,7 +363,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
   
   FavorDetailViewController *vc = segue.destinationViewController;
   
-  FavorCell *cell = [self.favorTableView cellForRowAtIndexPath:path];
+  FavorCell *cell = (FavorCell*)[self.favorTableView cellForRowAtIndexPath:path];
   
   UIImage *profImage = cell.profilePictureImageView.image;
   

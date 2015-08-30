@@ -17,6 +17,7 @@
 @protocol FacebookLoginDelegate <NSObject>
 - (void) hasLoggedInSuccessFully: (FacebookLoginManager *) sender;
 - (void) logInFailedWithError: (FacebookLoginManager *) sender;
+- (void) hasLoggedInSucessFullyAndIsNewUser: (FacebookLoginManager *) sender;
 @end
 
 

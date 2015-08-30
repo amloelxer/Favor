@@ -105,9 +105,9 @@
     self.phoneNumberLabel.hidden = YES;
   }
   
-  [self.navigationController.navigationBar setBarTintColor:[ColorPalette getFavorPinkRedColor]];
-  self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-  [self.navigationController.navigationBar setTranslucent:NO];
+//  [self.navigationController.navigationBar setBarTintColor:[ColorPalette getFavorPinkRedColor]];
+//  self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+//  [self.navigationController.navigationBar setTranslucent:NO];
   
   
   [self.parseManager getResponseForSelectedFavor:self.passedFavorID];
@@ -260,15 +260,20 @@
   return self.arrayOfResponses.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView
-estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  return 150;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//  return 154;
+//}
 
-- (CGFloat)tableView:(UITableView *)tableView
-heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  return 150;
-}
+//- (CGFloat)tableView:(UITableView *)tableView
+//estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//  return 150;
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView
+//heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//  return 150;
+//}
 
 
 //just a temp to test before we have cassidy's view
