@@ -1093,17 +1093,68 @@
                                     <segue destination="3HM-Rn-nFs" kind="show" id="dyo-4Y-iPf"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3L-gc-Jhc">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="210" id="9bM-4Y-0tk"/>
+                                    <constraint firstAttribute="height" constant="21" id="RjI-CZ-ycW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="9bM-4Y-0tk"/>
+                                        <exclude reference="RjI-CZ-ycW"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="9bM-4Y-0tk"/>
+                                        <include reference="RjI-CZ-ycW"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IbT-h2-EA3">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="di6-jF-SMw"/>
+                                    <constraint firstAttribute="width" constant="100" id="k6b-yL-8zZ"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="di6-jF-SMw"/>
+                                        <exclude reference="k6b-yL-8zZ"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="di6-jF-SMw"/>
+                                        <include reference="k6b-yL-8zZ"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="H3L-gc-Jhc" firstAttribute="top" secondItem="IbT-h2-EA3" secondAttribute="bottom" constant="39" id="7ay-7E-gmj"/>
+                            <constraint firstAttribute="centerX" secondItem="IbT-h2-EA3" secondAttribute="centerX" id="9yl-eY-Ekv"/>
                             <constraint firstAttribute="centerX" secondItem="amg-UF-kCG" secondAttribute="centerX" id="CEQ-cd-O0G"/>
+                            <constraint firstItem="IbT-h2-EA3" firstAttribute="top" secondItem="R6r-Ny-aEH" secondAttribute="bottom" constant="74" id="LiU-cS-eT8"/>
                             <constraint firstAttribute="centerY" secondItem="amg-UF-kCG" secondAttribute="centerY" id="MYc-Pe-kRT"/>
+                            <constraint firstAttribute="centerX" secondItem="H3L-gc-Jhc" secondAttribute="centerX" constant="5" id="ac2-jX-uMo"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="amg-UF-kCG"/>
+                                <exclude reference="H3L-gc-Jhc"/>
+                                <exclude reference="IbT-h2-EA3"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="9yl-eY-Ekv"/>
+                                <exclude reference="LiU-cS-eT8"/>
+                                <exclude reference="7ay-7E-gmj"/>
+                                <exclude reference="ac2-jX-uMo"/>
                                 <exclude reference="CEQ-cd-O0G"/>
                                 <exclude reference="MYc-Pe-kRT"/>
                             </mask>
@@ -1111,13 +1162,23 @@
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="amg-UF-kCG"/>
+                                <include reference="H3L-gc-Jhc"/>
+                                <include reference="IbT-h2-EA3"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="9yl-eY-Ekv"/>
+                                <include reference="LiU-cS-eT8"/>
+                                <include reference="7ay-7E-gmj"/>
+                                <include reference="ac2-jX-uMo"/>
                                 <include reference="CEQ-cd-O0G"/>
                                 <include reference="MYc-Pe-kRT"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="numberInputImageView" destination="IbT-h2-EA3" id="sZk-sw-t3C"/>
+                        <outlet property="numberInputNameLabel" destination="H3L-gc-Jhc" id="SXI-4R-oCq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="of4-L5-wmy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

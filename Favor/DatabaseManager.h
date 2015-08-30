@@ -26,6 +26,7 @@
 - (void) reloadTableWithResponses: (NSArray *) queryResults;
 - (void) isDoneWithSavingFavor;
 - (void)isDoneSavingResponse;
+-(void)isDoneConvertingPFFileToData:(NSData *)imageData;
 //- (void) logInFailedWithError: (ParseManager *) sender;
 @end
 
@@ -38,7 +39,7 @@ typedef NS_ENUM(NSInteger, AskOrOfferFavor) {
   AskFavor,
 };
 
--(void)getDataForCurrentUser:(User *)currentUser;
+-(void)getDataForFile:(PFFile *)profilePictureFile;
 
 - (void)getAllFavorsFromLocalParseStore:(NSInteger)selectedSegment user:(User *)currentUser;
 

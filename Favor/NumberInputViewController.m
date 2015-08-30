@@ -13,6 +13,10 @@
 
 @interface NumberInputViewController () <DatabaseManagerDelegate>
 @property DatabaseManager *parseDataManager;
+@property User *currentUser;
+@property (weak, nonatomic) IBOutlet UIImageView *numberInputImageView;
+@property (weak, nonatomic) IBOutlet UILabel *numberInputNameLabel;
+
 
 @end
 
@@ -26,17 +30,27 @@
   self.parseDataManager = [[DatabaseManager alloc]init];
   
   self.parseDataManager.delegate = self;
-
-  [self.parseDataManager getDataForCurrentUser:[User currentUser]];
+  
+  self.currentUser = [User currentUser];
+  
+  [self.parseDataManager getDataForFile:self.currentUser[@"ProfilePicture"]];
+  
+  
+//  NSLog(@"The current User's name is: %@", currentUser[@"name"]);
   
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)isDoneConvertingPFFileToData:(NSData *)imageData
+{
+
+  UIImage *profImage = [UIImage imageWithData:imageData];
+  self.numberInputImageView.image = profImage;
+  //make sure this is frame.size and not image.size
+  self.numberInputImageView.layer.cornerRadius = self.numberInputImageView.frame.size.width/2;
+  self.numberInputImageView.layer.masksToBounds = YES;
+  self.numberInputNameLabel.text = self.currentUser[@"name"];
+
 }
-
-
 
 
 

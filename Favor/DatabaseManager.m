@@ -43,17 +43,19 @@
 }
 
 
--(void)getDataForCurrentUser:(User *)currentUser
+-(void)getDataForFile:(PFFile *)profilePictureFile
 {
-  PFQuery *query = [PFQuery queryWithClassName:@"User"];
-  [query whereKey:@"playerName" equalTo:@"Dan Stemkoski"];
-  
-  [query getObjectInBackgroundWithId:currentUser.objectId block:^(PFObject *results, NSError *error) {
+  [profilePictureFile getDataInBackgroundWithBlock:^(NSData *result, NSError *error) {
     
+    if(!error)
+    {
+      [self.delegate isDoneConvertingPFFileToData:result];
+    }
     
     
   }];
   
+
 }
 
 /*This method sorts all the cached Favors based on the segment
