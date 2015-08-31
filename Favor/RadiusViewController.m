@@ -32,6 +32,7 @@
 
 @property (nonatomic, strong) UICountingLabel *radiusLabel;
 
+@property (nonatomic) BOOL userInterceptCloseOfModal;
 
 @property (nonatomic) float scaleRadius;
 @property (nonatomic) float scaleFactor;
@@ -60,7 +61,24 @@
 
 -(void)viewDidLoad {
     [self setupModalView];
+    [self setupBackgroundTapDismiss];
     [self addObserver:self forKeyPath:@"scaleFactor" options:NSKeyValueObservingOptionNew context:NULL];
+}
+
+-(void)setupBackgroundTapDismiss {
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backgroundTapped:)];
+    [self.view addGestureRecognizer:tap];
+}
+
+-(void)backgroundTapped:(UITapGestureRecognizer *)gesture {
+    BOOL hitTest = NO;
+    CGPoint point = [gesture locationInView:self.backgroundBlurView];
+    CGPoint point2 = [self.modalView convertPoint:point fromView:self.backgroundBlurView];
+    hitTest = [self.modalView hitTest:point2 withEvent:nil];
+    
+    if (!hitTest) {
+        [self hideCoordinator];
+    }
 }
 
 #pragma mark - Show & Hide View Controller
@@ -76,16 +94,16 @@
 }
 
 -(void)hideCoordinator {
-  
-  [self removeObserver:self forKeyPath:@"scaleFactor"];
-  
-    [self moveModalViewTo:self.modalViewOffscreenCenter];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self hideBackgroundBlurImage];
-    });
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self destroySelf];
-    });
+    if (!self.userInterceptCloseOfModal) {
+        [self removeObserver:self forKeyPath:@"scaleFactor"];
+        [self moveModalViewTo:self.modalViewOffscreenCenter];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self hideBackgroundBlurImage];
+        });
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self destroySelf];
+        });
+    }
 }
 
 -(void)destroySelf {
@@ -245,12 +263,14 @@
 #pragma mark - User Input
 
 - (IBAction)pull:(UIPanGestureRecognizer *)recognizer {
-//    NSLog(@"Scale Radius: %f", self.scaleRadius);
-  
+    
     switch (recognizer.state) {
 
         case UIGestureRecognizerStateBegan:
+            self.userInterceptCloseOfModal = YES;
+            NSLog(@"userIntercept = YES!");
         case UIGestureRecognizerStateChanged: {
+            
             CGPoint translation = [recognizer translationInView:self.view];
             CGPoint center = self.pullView.center;
 
@@ -292,6 +312,9 @@
         }
             
         case UIGestureRecognizerStateEnded: {
+            
+            self.userInterceptCloseOfModal = NO;
+            NSLog(@"Intercept = NO");
             
             POPDecayAnimation *anim = [POPDecayAnimation animationWithPropertyNamed:kPOPLayerPosition];
             anim.deceleration = .3;

@@ -15,11 +15,13 @@
 		19653BCD1B840661009DF2C2 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19653BCC1B840661009DF2C2 /* DatabaseManager.m */; };
 		19653BD01B840CD2009DF2C2 /* FavorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19653BCF1B840CD2009DF2C2 /* FavorCell.m */; };
 		19653BD41B840E1B009DF2C2 /* FavorDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19653BD31B840E1B009DF2C2 /* FavorDetailViewController.m */; };
+		19653BD81B842EBC009DF2C2 /* ProfileImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19653BD71B842EBC009DF2C2 /* ProfileImageView.m */; };
 		197514F51B8E36B0005F152D /* ProximaNovaSoft-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 197514F21B8E3681005F152D /* ProximaNovaSoft-Bold.otf */; };
 		197514F61B8E36B4005F152D /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 197514F11B8E3681005F152D /* ProximaNova-Bold.otf */; };
 		197514F71B8E36B7005F152D /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 197514F31B8E3681005F152D /* ProximaNova-Regular.otf */; };
 		197514FA1B8E95CE005F152D /* RadiusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 197514F91B8E95CE005F152D /* RadiusViewController.m */; };
 		1998105F1B92D375003513D8 /* OriginalFavorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1998105E1B92D375003513D8 /* OriginalFavorView.m */; };
+		197514FD1B8ECFFF005F152D /* OriginalFavorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 197514FC1B8ECFFF005F152D /* OriginalFavorView.m */; };
 		19A035DA1B8281FC0062251C /* Favor.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A035D91B8281FC0062251C /* Favor.m */; };
 		19A035DE1B8284020062251C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A035DD1B8284020062251C /* User.m */; };
 		19AC32B91B825E4E00F38A47 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC32B81B825E4E00F38A47 /* main.m */; };
@@ -37,6 +39,9 @@
 		4A00F09B0C304F259232D8A9 /* libPods-Favor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD6DEF3AFC654F6D7EFE8C4 /* libPods-Favor.a */; };
 		C33E19BB1B85153C00546523 /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33E19B81B85153C00546523 /* ModalViewController.m */; };
 		C33E19BC1B85153C00546523 /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = C33E19BA1B85153C00546523 /* UIImageEffects.m */; };
+		C33E952F1B912A9E00345BD7 /* KeyboardBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C33E952E1B912A9E00345BD7 /* KeyboardBar.m */; };
+		C33E95321B9133AF00345BD7 /* KeyboardCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = C33E95311B9133AF00345BD7 /* KeyboardCustomView.m */; };
+		C33E95341B913C6600345BD7 /* keyboardAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C33E95331B913C6600345BD7 /* keyboardAccessoryView.xib */; };
 		DBC3B31956D2BED7A8284DCE /* libPods-FavorTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D09AF03509A7622B685A85AB /* libPods-FavorTests.a */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +72,8 @@
 		19653BCF1B840CD2009DF2C2 /* FavorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavorCell.m; sourceTree = "<group>"; };
 		19653BD21B840E1B009DF2C2 /* FavorDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavorDetailViewController.h; sourceTree = "<group>"; };
 		19653BD31B840E1B009DF2C2 /* FavorDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavorDetailViewController.m; sourceTree = "<group>"; };
+		19653BD61B842EBC009DF2C2 /* ProfileImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileImageView.h; sourceTree = "<group>"; };
+		19653BD71B842EBC009DF2C2 /* ProfileImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileImageView.m; sourceTree = "<group>"; };
 		197514F11B8E3681005F152D /* ProximaNova-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold.otf"; sourceTree = "<group>"; };
 		197514F21B8E3681005F152D /* ProximaNovaSoft-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNovaSoft-Bold.otf"; sourceTree = "<group>"; };
 		197514F31B8E3681005F152D /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
@@ -107,6 +114,11 @@
 		C33E19B81B85153C00546523 /* ModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalViewController.m; sourceTree = "<group>"; };
 		C33E19B91B85153C00546523 /* UIImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageEffects.h; sourceTree = "<group>"; };
 		C33E19BA1B85153C00546523 /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
+		C33E952D1B912A9E00345BD7 /* KeyboardBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardBar.h; sourceTree = "<group>"; };
+		C33E952E1B912A9E00345BD7 /* KeyboardBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardBar.m; sourceTree = "<group>"; };
+		C33E95301B9133AF00345BD7 /* KeyboardCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardCustomView.h; sourceTree = "<group>"; };
+		C33E95311B9133AF00345BD7 /* KeyboardCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardCustomView.m; sourceTree = "<group>"; };
+		C33E95331B913C6600345BD7 /* keyboardAccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = keyboardAccessoryView.xib; sourceTree = "<group>"; };
 		CD5FFA3CDD1D9EA184C5C345 /* Pods-Favor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Favor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Favor/Pods-Favor.release.xcconfig"; sourceTree = "<group>"; };
 		D09AF03509A7622B685A85AB /* libPods-FavorTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FavorTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2AAE06BCAEEC91959B683A5 /* Pods-Favor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Favor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Favor/Pods-Favor.debug.xcconfig"; sourceTree = "<group>"; };
@@ -215,6 +227,7 @@
 				19F59BA61B82B0770057BC6D /* LoginViewController.m */,
 				19653BD21B840E1B009DF2C2 /* FavorDetailViewController.h */,
 				19653BD31B840E1B009DF2C2 /* FavorDetailViewController.m */,
+				C33E95331B913C6600345BD7 /* keyboardAccessoryView.xib */,
 				19AC32C31B825E4E00F38A47 /* Images.xcassets */,
 			);
 			name = Controllers;
@@ -223,6 +236,10 @@
 		19A035DB1B8282030062251C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C33E95301B9133AF00345BD7 /* KeyboardCustomView.h */,
+				C33E95311B9133AF00345BD7 /* KeyboardCustomView.m */,
+				C33E952D1B912A9E00345BD7 /* KeyboardBar.h */,
+				C33E952E1B912A9E00345BD7 /* KeyboardBar.m */,
 				19653BD11B840CD8009DF2C2 /* Custom Cells */,
 				19653BD51B841334009DF2C2 /* DataManagers */,
 				192D9CE71B891EAE00399A65 /* Parse Objects */,
@@ -414,6 +431,7 @@
 				19AC32C41B825E4E00F38A47 /* Images.xcassets in Resources */,
 				197514F61B8E36B4005F152D /* ProximaNova-Bold.otf in Resources */,
 				197514F71B8E36B7005F152D /* ProximaNova-Regular.otf in Resources */,
+				C33E95341B913C6600345BD7 /* keyboardAccessoryView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,11 +525,13 @@
 				19653BD01B840CD2009DF2C2 /* FavorCell.m in Sources */,
 				C33E19BB1B85153C00546523 /* ModalViewController.m in Sources */,
 				192D9CE31B87F64D00399A65 /* ResponseCell.m in Sources */,
+				C33E95321B9133AF00345BD7 /* KeyboardCustomView.m in Sources */,
 				19EF06F41B8BCFE70035D7A9 /* LocationManager.m in Sources */,
 				19AC32BF1B825E4E00F38A47 /* FavorFeedViewController.m in Sources */,
 				1940E6A21B9296A100C63378 /* NumberInputViewController.m in Sources */,
 				C33E19BC1B85153C00546523 /* UIImageEffects.m in Sources */,
-				1998105F1B92D375003513D8 /* OriginalFavorView.m in Sources */,
+				C33E952F1B912A9E00345BD7 /* KeyboardBar.m in Sources */,
+				197514FD1B8ECFFF005F152D /* OriginalFavorView.m in Sources */,
 				19AC32BC1B825E4E00F38A47 /* AppDelegate.m in Sources */,
 				19F59BA71B82B0770057BC6D /* LoginViewController.m in Sources */,
 				19AC32B91B825E4E00F38A47 /* main.m in Sources */,

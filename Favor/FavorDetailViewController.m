@@ -33,6 +33,8 @@
 @property UIFont* proximaNovaSoftBold;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 
+//@property (nonatomic, readwrite, retain) UIView *inputAccessoryView;
+
 @end
 
 @implementation FavorDetailViewController
@@ -134,10 +136,44 @@
   
   [self.parseManager getResponseForSelectedFavor:self.passedFavorID];
   
+  [self.navigationController.navigationBar setBarTintColor:[ColorPalette getFavorPinkRedColor]];
+  self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+  [self.navigationController.navigationBar setTranslucent:NO];
+
+    
+    
+    
+  // KEYBOARD
+    // Use your CustomView instead of the UIView that is normally attached with [super loadView][UIScreen mainScreen].bounds]
+    KeyboardCustomView *keyboardView = [[KeyboardCustomView alloc]initWithFrame:CGRectMake(100, 100, 50, 300)];
+    [keyboardView becomeFirstResponder];
+    
+    // Add a TapGestureRecognizer to dismiss the keyboard when the view is tapped
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTouchView)];
+    [keyboardView addGestureRecognizer:recognizer];
+    [self.view addSubview:keyboardView];
+
 }
 
+// Dissmiss the keyboard on view touches by making
+// the view the first responder
+- (void)didTouchView {
+    [self.view becomeFirstResponder];
+}
 
--(void)reloadOnPullDown
+//- (BOOL)canBecomeFirstResponder{
+//    return YES;
+//}
+//
+//- (UIView *)inputAccessoryView{
+//    UIView *view = [[[NSBundle mainBundle] loadNibNamed:@"keyboardAccessoryView" owner:self options:nil] firstObject];
+////    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width - 16, 50)];
+////    [view addSubview:textView];
+////    view.backgroundColor = [UIColor yellowColor];
+//    return view;
+//}
+
+-(void)viewDidAppear:(BOOL)animated
 {
   [self.parseManager getResponseForSelectedFavor:self.passedFavorID];
 }
@@ -207,6 +243,8 @@
 {
 //  NSLog(@"delegate method in reload table with responses is being called");
 //  
+  NSLog(@"delegate method in reload table with responses is being called");
+  
   self.arrayOfResponses = [queryResults mutableCopy];
   [self.responseTableView reloadData];
   [self.refreshControl endRefreshing];
@@ -317,9 +355,6 @@
   
   [self.parseManager saveResponse:longString passedFavorID:self.passedFavorID];
 }
-
-
-
 
 
 @end

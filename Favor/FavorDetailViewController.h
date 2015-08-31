@@ -13,14 +13,17 @@
 #import "Favor.h"
 #import "User.h"
 #import "ResponseCell.h"
+#import "KeyboardCustomView.h"
+#import "KeyboardBar.h"
 
 typedef NS_ENUM(NSInteger, FavorStates) {
   FavorStateOpen =0,
   FavorStateClosed,
 };
 
-
 @interface FavorDetailViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property NSString *passedFavorText;
 @property NSString *passedTimeText;
 @property NSString *passedSelectedFavorPosterName;
