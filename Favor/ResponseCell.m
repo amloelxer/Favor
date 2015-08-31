@@ -19,7 +19,7 @@
   self.chosenButton.layer.masksToBounds = YES;
   
   [self.chosenButton.titleLabel setFont:[UIFont fontWithName:@"ProximaNova-Regular" size:16]];
-  
+  self.phoneNumberLabel.hidden = YES;
 
  
 }
@@ -34,6 +34,7 @@
   
   NSLog(@"Button Was Chosen");
   [self.delegate chosenButtonOnCellWasPressed:self];
+  
   
 }
 

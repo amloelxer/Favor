@@ -60,12 +60,23 @@
 - (void) hasLoggedInSuccessFully:(FacebookLoginManager *)sender
 {
     NSLog(@"Logged in sucessfully. Aka this delegate method should be called");
-    [self performSegueWithIdentifier:@"loginSuccessful" sender:self];
+    User *currentUser = [User currentUser];
+    NSNumber *trueInNSNumberForm = [NSNumber numberWithInt:1];
+    if([currentUser[@"hasEnteredPhoneNumber"] isEqual:trueInNSNumberForm])
+    {
+      [self performSegueWithIdentifier:@"loginSuccessful" sender:self];
+    }
+  
+    else
+    {
+      [self performSegueWithIdentifier:@"hasNotEnteredNumberSegue" sender:self];
+    }
+  
 }
 
 - (void) hasLoggedInSucessFullyAndIsNewUser: (FacebookLoginManager *) sender
 {
-  [self performSegueWithIdentifier:@"isNewUserSegue" sender:self];
+  [self performSegueWithIdentifier:@"hasNotEnteredNumberSegue" sender:self];
   
 }
 

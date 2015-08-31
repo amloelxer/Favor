@@ -387,6 +387,34 @@
 }
 
 
+#pragma mark - Saving on User methods
+-(void)savePhoneNumberForCurrentUser:(NSString *)phoneNumber
+{
+  User *currentUser = [User currentUser];
+
+  currentUser[@"phoneNumber"] = phoneNumber;
+  
+  NSNumber *userHasEnteredPhoneNumberSuccessfully = [NSNumber numberWithInt:1];
+  
+  currentUser[@"hasEnteredPhoneNumber"] = userHasEnteredPhoneNumberSuccessfully;
+  
+  [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    
+    if (succeeded)
+    {
+      [self.delegate isDoneSavingPhoneNumber];
+    }
+    
+    else
+    {
+      NSLog(@"The error is %@",error);
+    }
+  }];
+  
+  
+}
+
+
 
 
 @end

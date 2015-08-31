@@ -26,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet OriginalFavorView *originalFavorPosterView;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 @property UIRefreshControl *refreshControl;
-
+@property NSString *responsePhoneNumber;
 @property UIFont* proximaNovaRegular;
 @property UIFont* proximaNovaBold;
 @property UIFont* proximaNovaSoftBold;
@@ -150,6 +150,8 @@
   self.addCommentButton.hidden = YES;
   self.addCommentButton.enabled = NO;
   
+   chosenResponseCell.hidden = NO;
+  
   NSIndexPath *indexPath = [self.responseTableView indexPathForCell:chosenResponseCell];
   
   Response *responseForCell = self.arrayOfResponses[indexPath.row];
@@ -158,6 +160,16 @@
   //waiting to set up for cassidy's code
   User* userWhoseResponseWasSelected = [responseForCell objectForKey:@"userWhoMadeThisResponse"];
   
+  self.responsePhoneNumber = userWhoseResponseWasSelected[@"phoneNumber"];
+  
+  chosenResponseCell.phoneNumberLabel.hidden = NO;
+  chosenResponseCell.phoneNumberLabel.enabled = YES;
+
+  chosenResponseCell.phoneNumberLabel.text = self.responsePhoneNumber;
+  
+  chosenResponseCell.chosenButton.hidden = YES;
+  chosenResponseCell.chosenButton.enabled = NO;
+
   Favor *favorWhichResponseIsOn = [responseForCell objectForKey:@"favorThisResponseIsOn"];
   
   NSNumber *responseHasBeenSelectedForFavor = [NSNumber numberWithInt:FavorStateClosed];
@@ -241,9 +253,7 @@
     cell.chosenButton.hidden = YES;
     cell.chosenButton.enabled = NO;
   }
-
-
-
+    
   cell.responderName.text = responseForCell.responseCreatorName;
   cell.responderName.font = self.proximaNovaSoftBold;
   

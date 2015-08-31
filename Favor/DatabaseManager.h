@@ -26,7 +26,8 @@
 - (void) reloadTableWithResponses: (NSArray *) queryResults;
 - (void) isDoneWithSavingFavor;
 - (void)isDoneSavingResponse;
--(void)isDoneConvertingPFFileToData:(NSData *)imageData;
+- (void)isDoneSavingPhoneNumber;
+- (void)isDoneConvertingPFFileToData:(NSData *)imageData;
 //- (void) logInFailedWithError: (ParseManager *) sender;
 @end
 
@@ -52,6 +53,8 @@ typedef NS_ENUM(NSInteger, AskOrOfferFavor) {
 -(void)saveResponse:(NSString *)responseText passedFavorID:(NSString*)passedFavorID;
 
 + (NSString *)dateConverter:(NSDate *)passedDate;
+
+-(void)savePhoneNumberForCurrentUser:(NSString *)phoneNumber;
 
 
 
