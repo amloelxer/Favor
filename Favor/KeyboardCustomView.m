@@ -6,17 +6,17 @@
 //  Copyright (c) 2014 iOSExamples. All rights reserved.
 //
 
-#import "CustomView.h"
+#import "KeyboardCustomView.h"
 #import "KeyboardBar.h"
 
-@interface CustomView()
+@interface KeyboardCustomView()
 
 // Override inputAccessoryView to readWrite
 @property (nonatomic, readwrite, retain) UIView *inputAccessoryView;
     
 @end
 
-@implementation CustomView
+@implementation KeyboardCustomView
 
 // Override canBecomeFirstResponder
 // to allow this view to be a responder

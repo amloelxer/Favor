@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "KeyboardBar.h"
 
-@interface CustomView : UIView
+@interface KeyboardCustomView : UIView
 
 @property (weak, nonatomic) id<KeyboardBarDelegate> keyboardBarDelegate;
 

@@ -10,7 +10,7 @@
 
 @class KeyboardBar;
 
-@protocol KeyboardBarDelegate <NSObject>
+@protocol KeyboardBarDelegate <NSObject, UITextViewDelegate>
 
 - (void)keyboardBar:(KeyboardBar *)keyboardBar sendText:(NSString *)text;
 
@@ -21,7 +21,9 @@
 - (id)initWithDelegate:(id<KeyboardBarDelegate>)delegate;
 
 @property (strong, nonatomic) UITextView *textView;
-@property (strong, nonatomic) UIButton *actionButton;
+@property (strong, nonatomic) UIButton *postButton;
+@property (strong, nonatomic) NSString *placeholderText;
+@property (strong, nonatomic) UIActivityIndicatorView *indicator;
 @property (weak, nonatomic) id<KeyboardBarDelegate> delegate;
 
 @end
