@@ -22,6 +22,7 @@
 @property NSMutableArray *arrayOfResponses;
 @property (weak, nonatomic) IBOutlet UIButton *addCommentButton;
 @property BOOL favorHasBeenChosen;
+@property BOOL isFavorMine;
 @property DatabaseManager *parseManager;
 @property (weak, nonatomic) IBOutlet OriginalFavorView *originalFavorPosterView;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
@@ -57,6 +58,7 @@
   [self.navigationController.navigationBar setTranslucent:NO];
   
   self.favorHasBeenChosen = NO;
+  self.isFavorMine = NO;
   
   
   self.refreshControl = [[UIRefreshControl alloc] init];
@@ -117,9 +119,10 @@
   if([self.passedUserThatMadeTheFavor isEqual:[User currentUser]])
   {
     NSLog(@"This is a post of mine");
-    //enable what needs to be done on setup to change screens
+    self.isFavorMine = YES;
+    
   }
-  //if this is not my favor
+  
   else
   {
     self.phoneNumberLabel.hidden = YES;
@@ -246,6 +249,22 @@
   if ([responseForCell.wasChosen intValue] == FavorStateClosed)
   {
     cell.backgroundColor = [ColorPalette getFavorGreenColor];
+    
+    if(self.isFavorMine)
+    {
+      
+      User *userOnSelectedResponse = responseForCell.userWhoMadeThisResponse;
+      
+      [userOnSelectedResponse fetchInBackground];
+      
+      NSString *responderNumber = userOnSelectedResponse[@"phoneNumber"];
+      
+      cell.phoneNumberLabel.text = responderNumber;
+      
+      cell.phoneNumberLabel.hidden = NO;
+      
+    }
+    
   }
   
   if(self.favorHasBeenChosen == YES)
