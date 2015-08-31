@@ -28,7 +28,7 @@
 @property UIFont* proximaNovaSoftBold;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *radiusButton;
 @property UIRefreshControl *refreshControl;
-
+@property FavorCell *resizingCell;
 
 @end
 
@@ -43,11 +43,7 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-
-//  self.favorTableView.estimatedRowHeight = 400.0;
-//  self.favorTableView.rowHeight = 154;
   
-  [self.favorTableView layoutIfNeeded];
   self.favorTableView.rowHeight = UITableViewAutomaticDimension;
   
   self.proximaNovaRegular = [UIFont fontWithName:@"ProximaNova-Regular" size:16];
@@ -110,6 +106,9 @@
     
   }];
   
+  
+  self.resizingCell = [self.favorTableView dequeueReusableCellWithIdentifier:@"CellID"];
+  
   self.currentUser = [User currentUser];
   
   self.arrayOfFavors = [NSArray new];
@@ -121,7 +120,6 @@
   LocationManager *locManager = [LocationManager sharedManager];
   
   [locManager updateLocation];
-    
   
   
 }
@@ -199,6 +197,7 @@
 - (void) reloadTableWithCachedQueryResults: (NSArray *) queryResults
 {
   self.arrayOfFavors = queryResults;
+  
   [self.favorTableView setNeedsLayout];
   [self.favorTableView layoutIfNeeded];
   [self.favorTableView reloadData];
@@ -267,22 +266,23 @@
   [self getCachedFavorsWithSegmentFilterApplied];
 }
 
+
 #pragma mark - Table View Delegate Methods
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)configurCell:(FavorCell *)cell indexPath:(NSIndexPath *)indexPath
 {
-  FavorCell *cell = [self.favorTableView dequeueReusableCellWithIdentifier:@"CellID" forIndexPath:indexPath];
-  
   cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                     
+  
   Favor *favorAtIndexPath = self.arrayOfFavors[indexPath.row];
   
   //name of favor poster
   cell.posterName.text = favorAtIndexPath.posterName;
   cell.posterName.font = self.proximaNovaBold;
   
-   //actual text in the favor
+  //actual text in the favor
   cell.favorText.text = favorAtIndexPath.text;
-  cell.favorText.font = self.proximaNovaRegular;
+//  cell.favorText.preferredMaxLayoutWidth = CGRectGetWidth(cell.favorText.frame);
+  
+//  cell.favorText.font = self.proximaNovaRegular;
   cell.favorText.textColor = [ColorPalette getGreyTextColor];
   
   //time since favor has passed
@@ -307,7 +307,7 @@
   [cell.responseLabelOnFavor checkIfFavorHasBeenAcceped:hasResponseBeenAccepeted];
   
   UIFont *proximaNovaRegSmaller = [UIFont fontWithName:@"ProximaNova-Regular" size:16];
-
+  
   cell.responseLabelOnFavor.font = proximaNovaRegSmaller;
   
   [favorAtIndexPath.imageFile getDataInBackgroundWithBlock:^(NSData *result, NSError *error) {
@@ -317,17 +317,26 @@
     {
       UIImage *profImage = [UIImage imageWithData:result];
       cell.profilePictureImageView.image = profImage;
-                                                      //make sure this is frame.size and not image.size
+      //make sure this is frame.size and not image.size
       cell.profilePictureImageView.layer.cornerRadius = cell.profilePictureImageView.frame.size.width/2;
       cell.profilePictureImageView.layer.masksToBounds = YES;
-
+      
     }
     
   }];
   
+
   
-  [cell setNeedsLayout];
-  [cell layoutIfNeeded];
+    [cell setNeedsLayout];
+    [cell layoutIfNeeded];
+  
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  FavorCell *cell = [self.favorTableView dequeueReusableCellWithIdentifier:@"CellID" forIndexPath:indexPath];
+  
+   [self configurCell:cell indexPath:indexPath];
   
   return cell;
   
@@ -338,21 +347,25 @@
   return self.arrayOfFavors.count;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//  return 155;
-//}
 
 - (CGFloat)tableView:(UITableView *)tableView
-estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  return 155;
+estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  return UITableViewAutomaticDimension;
 }
 
 
-//- (CGFloat)tableView:(UITableView *)tableView
-//heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//  return 155;
-//}
+- (CGFloat)tableView:(UITableView *)tableView
+heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  
+  [self configurCell:self.resizingCell indexPath:indexPath];
+  
+  
+  CGFloat height = [self.resizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+  NSLog(@" %@ ", NSStringFromCGSize(self.resizingCell.favorText.intrinsicContentSize));
+  
+  return height;
+}
 
 #pragma mark - Prepare for Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
