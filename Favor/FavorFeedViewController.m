@@ -329,7 +329,7 @@
   
     [cell setNeedsLayout];
     [cell layoutIfNeeded];
-  
+    
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -363,6 +363,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
   
   CGFloat height = [self.resizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
   NSLog(@" %@ ", NSStringFromCGSize(self.resizingCell.favorText.intrinsicContentSize));
+  
   
   return height;
 }

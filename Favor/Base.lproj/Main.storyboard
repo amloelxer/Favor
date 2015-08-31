@@ -164,7 +164,7 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" ambiguous="YES" misplaced="YES" text="Sick label and it does things okay" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVG-6k-ZDh">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" ambiguous="YES" misplaced="YES" text="Sick label and it does things okay" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVG-6k-ZDh" customClass="SizingLabel">
                                                     <rect key="frame" x="134" y="71" width="412" height="33"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -257,7 +257,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="distanceFromPoster" destination="pP2-c4-9hc" id="P5j-gn-7uk"/>
-                                            <outlet property="favorText" destination="eVG-6k-ZDh" id="dHe-pf-IId"/>
+                                            <outlet property="favorText" destination="eVG-6k-ZDh" id="rK6-Cd-zau"/>
                                             <outlet property="posterName" destination="eee-kd-rzS" id="uKL-6M-a1W"/>
                                             <outlet property="profilePictureImageView" destination="Pnj-wD-kYY" id="eKY-cT-ggZ"/>
                                             <outlet property="responseLabelOnFavor" destination="LeH-TY-LHp" id="5Ex-io-0Ow"/>
