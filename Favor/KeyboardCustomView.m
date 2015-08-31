@@ -9,7 +9,7 @@
 #import "KeyboardCustomView.h"
 #import "KeyboardBar.h"
 
-@interface KeyboardCustomView()
+@interface KeyboardCustomView() <KeyboardBarDelegate>
 
 // Override inputAccessoryView to readWrite
 @property (nonatomic, readwrite, retain) UIView *inputAccessoryView;
@@ -28,9 +28,15 @@
 // an instance of KeyboardBar
 - (UIView *)inputAccessoryView {
     if(!_inputAccessoryView) {
-        _inputAccessoryView = [[KeyboardBar alloc] initWithDelegate:self.keyboardBarDelegate];
+        _inputAccessoryView = [[KeyboardBar alloc] initWithDelegate:self];
     }
     return _inputAccessoryView;
+}
+
+-(void)keyboardBar:(KeyboardBar *)keyboardBar sendText:(NSString *)text
+{
+  NSLog(@"Being sent from Keyboard Custom View");
+  [self.delegate sendTextToRootController:text];
 }
 
 @end

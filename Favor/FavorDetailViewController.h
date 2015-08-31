@@ -23,7 +23,6 @@ typedef NS_ENUM(NSInteger, FavorStates) {
 
 @interface FavorDetailViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property NSString *passedFavorText;
 @property NSString *passedTimeText;
 @property NSString *passedSelectedFavorPosterName;

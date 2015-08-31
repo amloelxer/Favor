@@ -115,6 +115,10 @@
     [self animateColorChangeForButton:self.postButton toColor:[UIColor colorWithRed:253.0/255 green:196.0/255 blue:60.0/255 alpha:1.0]];
     self.postButton.enabled = NO;
     [self.postButton setTitle:@"" forState:UIControlStateDisabled];
+
+    [self.delegate keyboardBar:self sendText:self.textView.text];
+    NSLog(@"Being sent from KeyboardBar View");
+  
 }
 
 -(void)animateColorChangeForButton:(UIButton *)button toColor:(UIColor *)newColor {
@@ -140,6 +144,7 @@
         textView.textColor = [UIColor lightGrayColor]; //optional
     }
     [textView resignFirstResponder];
+  
 }
 
 @end

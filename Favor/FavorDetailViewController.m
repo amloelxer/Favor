@@ -12,7 +12,8 @@
 #import "OriginalFavorView.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface FavorDetailViewController ()  <DatabaseManagerDelegate, ResponseCellDelegate>
+
+@interface FavorDetailViewController ()  <DatabaseManagerDelegate, ResponseCellDelegate, KeyboardCustomViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *selectedFavorTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timePassedTextLabel;
@@ -31,7 +32,8 @@
 @property UIFont* proximaNovaRegular;
 @property UIFont* proximaNovaBold;
 @property UIFont* proximaNovaSoftBold;
-@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property KeyboardCustomView *keyboardView;
+@property (weak, nonatomic) IBOutlet UIImageView *favorProfileView;
 
 //@property (nonatomic, readwrite, retain) UIView *inputAccessoryView;
 
@@ -42,8 +44,6 @@
 -(void)viewDidLoad
 {
   [super viewDidLoad];
-  
-
   
   self.proximaNovaRegular = [UIFont fontWithName:@"ProximaNova-Regular" size:16];
   self.proximaNovaBold = [UIFont fontWithName:@"ProximaNova-Bold" size:16];
@@ -84,9 +84,8 @@
   self.parseManager.delegate = self;
   
   
-  self.profileImageView.image = self.profImage;
-  
-  
+  self.favorProfileView.image = self.profImage;
+
 //  self.numberInputImageView.image = profImage;
   //make sure this is frame.size and not image.size
   
@@ -98,9 +97,9 @@
    to make it rounded. It's current value is obvs 50x50
   */
   
-  self.profileImageView.layer.cornerRadius = 25;
+  self.favorProfileView.layer.cornerRadius = 25;
 
-  self.profileImageView.layer.masksToBounds = YES;
+  self.favorProfileView.layer.masksToBounds = YES;
   
   self.selectedFavorTextLabel.text = self.passedFavorText;
   self.selectedFavorTextLabel.font = [UIFont fontWithName:@"ProximaNova-Regular" size:20];
@@ -145,13 +144,15 @@
     
   // KEYBOARD
     // Use your CustomView instead of the UIView that is normally attached with [super loadView][UIScreen mainScreen].bounds]
-    KeyboardCustomView *keyboardView = [[KeyboardCustomView alloc]initWithFrame:CGRectMake(100, 100, 50, 300)];
-    [keyboardView becomeFirstResponder];
-    
+    self.keyboardView = [[KeyboardCustomView alloc]initWithFrame:CGRectMake(100, 100, 50, 300)];
+    [self.keyboardView becomeFirstResponder];
+  
+    self.keyboardView.delegate = self;
+  
     // Add a TapGestureRecognizer to dismiss the keyboard when the view is tapped
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTouchView)];
-    [keyboardView addGestureRecognizer:recognizer];
-    [self.view addSubview:keyboardView];
+    [self.keyboardView addGestureRecognizer:recognizer];
+    [self.view addSubview:self.keyboardView];
 
 }
 
@@ -161,19 +162,12 @@
     [self.view becomeFirstResponder];
 }
 
-//- (BOOL)canBecomeFirstResponder{
-//    return YES;
-//}
-//
-//- (UIView *)inputAccessoryView{
-//    UIView *view = [[[NSBundle mainBundle] loadNibNamed:@"keyboardAccessoryView" owner:self options:nil] firstObject];
-////    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width - 16, 50)];
-////    [view addSubview:textView];
-////    view.backgroundColor = [UIColor yellowColor];
-//    return view;
-//}
-
 -(void)viewDidAppear:(BOOL)animated
+{
+  [self.parseManager getResponseForSelectedFavor:self.passedFavorID];
+}
+
+-(void)reloadOnPullDown
 {
   [self.parseManager getResponseForSelectedFavor:self.passedFavorID];
 }
@@ -257,6 +251,7 @@
 {
   NSLog(@"Is done saving the response");
   [self.parseManager getResponseForSelectedFavor:self.passedFavorID];
+  [self.keyboardView resignFirstResponder];
 }
 
 
@@ -341,19 +336,14 @@
   return cell;
 }
 
+-(void)sendTextToRootController:(NSString *)text
+{
+  [self.parseManager saveResponse:text passedFavorID:self.passedFavorID];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   return self.arrayOfResponses.count;
-}
-
-
-
-//just a temp to test before we have cassidy's view
-- (IBAction)makeResponseButtonPressed:(UIButton *)sender
-{
-  NSString *longString = @"This is a giant string which should take up a lot of room and hopefully the cell will have the space and everything will be fine";
-  
-  [self.parseManager saveResponse:longString passedFavorID:self.passedFavorID];
 }
 
 
