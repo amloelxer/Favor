@@ -275,7 +275,14 @@
   Favor *favorAtIndexPath = self.arrayOfFavors[indexPath.row];
   
   //name of favor poster
-  cell.posterName.text = favorAtIndexPath.posterName;
+  
+  NSString *initalName = favorAtIndexPath.posterName;
+  
+  NSArray *arrayOfFirstAndLastName = [initalName componentsSeparatedByString:@" "];
+  
+  NSString *firstName = [arrayOfFirstAndLastName firstObject];
+  
+  cell.posterName.text = firstName;
   cell.posterName.font = self.proximaNovaBold;
   
   //actual text in the favor

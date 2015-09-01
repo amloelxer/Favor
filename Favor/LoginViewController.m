@@ -65,11 +65,21 @@
     if([currentUser[@"hasEnteredPhoneNumber"] isEqual:trueInNSNumberForm])
     {
       [self performSegueWithIdentifier:@"loginSuccessful" sender:self];
+      
+      PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+      currentInstallation[@"user"] = [User currentUser];
+      [currentInstallation saveInBackground];
+
     }
   
     else
     {
       [self performSegueWithIdentifier:@"hasNotEnteredNumberSegue" sender:self];
+      
+//      PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+//      currentInstallation[@"user"] = [User currentUser];
+//      [currentInstallation saveInBackground];
+
     }
   
 }

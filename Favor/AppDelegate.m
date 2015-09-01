@@ -13,6 +13,7 @@
 //#import <PFFacebookUtils.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 #import "ColorPalette.h"
+
 @interface AppDelegate ()
 
 @end
@@ -113,8 +114,8 @@
   // Store the deviceToken in the current installation and save it to Parse.
   PFInstallation *currentInstallation = [PFInstallation currentInstallation];
   [currentInstallation setDeviceTokenFromData:deviceToken];
-  currentInstallation.channels = @[ @"global" ];
   [currentInstallation saveInBackground];
+  
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
@@ -146,5 +147,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 
 @end

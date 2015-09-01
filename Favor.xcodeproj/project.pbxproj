@@ -15,13 +15,11 @@
 		19653BCD1B840661009DF2C2 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19653BCC1B840661009DF2C2 /* DatabaseManager.m */; };
 		19653BD01B840CD2009DF2C2 /* FavorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19653BCF1B840CD2009DF2C2 /* FavorCell.m */; };
 		19653BD41B840E1B009DF2C2 /* FavorDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19653BD31B840E1B009DF2C2 /* FavorDetailViewController.m */; };
-		19653BD81B842EBC009DF2C2 /* ProfileImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19653BD71B842EBC009DF2C2 /* ProfileImageView.m */; };
 		197514F51B8E36B0005F152D /* ProximaNovaSoft-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 197514F21B8E3681005F152D /* ProximaNovaSoft-Bold.otf */; };
 		197514F61B8E36B4005F152D /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 197514F11B8E3681005F152D /* ProximaNova-Bold.otf */; };
 		197514F71B8E36B7005F152D /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 197514F31B8E3681005F152D /* ProximaNova-Regular.otf */; };
 		197514FA1B8E95CE005F152D /* RadiusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 197514F91B8E95CE005F152D /* RadiusViewController.m */; };
-		1998105F1B92D375003513D8 /* OriginalFavorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1998105E1B92D375003513D8 /* OriginalFavorView.m */; };
-		197514FD1B8ECFFF005F152D /* OriginalFavorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 197514FC1B8ECFFF005F152D /* OriginalFavorView.m */; };
+		197514FD1B8ECFFF005F152D /* (null) in Sources */ = {isa = PBXBuildFile; };
 		19A035DA1B8281FC0062251C /* Favor.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A035D91B8281FC0062251C /* Favor.m */; };
 		19A035DE1B8284020062251C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A035DD1B8284020062251C /* User.m */; };
 		19AC32B91B825E4E00F38A47 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC32B81B825E4E00F38A47 /* main.m */; };
@@ -31,6 +29,7 @@
 		19AC32C41B825E4E00F38A47 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19AC32C31B825E4E00F38A47 /* Images.xcassets */; };
 		19AC32C71B825E4E00F38A47 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19AC32C51B825E4E00F38A47 /* LaunchScreen.xib */; };
 		19AC32D31B825E4F00F38A47 /* FavorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC32D21B825E4F00F38A47 /* FavorTests.m */; };
+		19E88A261B9538A80094ED29 /* StringModifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E88A251B9538A80094ED29 /* StringModifier.m */; settings = {ASSET_TAGS = (); }; };
 		19EDFE8A1B8396230076AB19 /* FacebookLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EDFE891B8396230076AB19 /* FacebookLoginManager.m */; };
 		19EF06EF1B8BB3B70035D7A9 /* ResponseLabelOnFavor.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EF06EE1B8BB3B70035D7A9 /* ResponseLabelOnFavor.m */; };
 		19EF06F11B8BC7B20035D7A9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EF06F01B8BC7B20035D7A9 /* CoreLocation.framework */; };
@@ -72,8 +71,6 @@
 		19653BCF1B840CD2009DF2C2 /* FavorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavorCell.m; sourceTree = "<group>"; };
 		19653BD21B840E1B009DF2C2 /* FavorDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavorDetailViewController.h; sourceTree = "<group>"; };
 		19653BD31B840E1B009DF2C2 /* FavorDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavorDetailViewController.m; sourceTree = "<group>"; };
-		19653BD61B842EBC009DF2C2 /* ProfileImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileImageView.h; sourceTree = "<group>"; };
-		19653BD71B842EBC009DF2C2 /* ProfileImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileImageView.m; sourceTree = "<group>"; };
 		197514F11B8E3681005F152D /* ProximaNova-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold.otf"; sourceTree = "<group>"; };
 		197514F21B8E3681005F152D /* ProximaNovaSoft-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNovaSoft-Bold.otf"; sourceTree = "<group>"; };
 		197514F31B8E3681005F152D /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
@@ -98,6 +95,8 @@
 		19AC32CC1B825E4F00F38A47 /* FavorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FavorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19AC32D11B825E4F00F38A47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19AC32D21B825E4F00F38A47 /* FavorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavorTests.m; sourceTree = "<group>"; };
+		19E88A241B9538A80094ED29 /* StringModifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringModifier.h; sourceTree = "<group>"; };
+		19E88A251B9538A80094ED29 /* StringModifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringModifier.m; sourceTree = "<group>"; };
 		19EDFE881B8396220076AB19 /* FacebookLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookLoginManager.h; sourceTree = "<group>"; };
 		19EDFE891B8396230076AB19 /* FacebookLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookLoginManager.m; sourceTree = "<group>"; };
 		19EF06ED1B8BB3B70035D7A9 /* ResponseLabelOnFavor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseLabelOnFavor.h; sourceTree = "<group>"; };
@@ -248,6 +247,8 @@
 				19EF06EE1B8BB3B70035D7A9 /* ResponseLabelOnFavor.m */,
 				19EF06F21B8BCFE70035D7A9 /* LocationManager.h */,
 				19EF06F31B8BCFE70035D7A9 /* LocationManager.m */,
+				19E88A241B9538A80094ED29 /* StringModifier.h */,
+				19E88A251B9538A80094ED29 /* StringModifier.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -391,7 +392,7 @@
 						DevelopmentTeam = 5FQ9C6KXWU;
 						SystemCapabilities = {
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -529,9 +530,10 @@
 				19EF06F41B8BCFE70035D7A9 /* LocationManager.m in Sources */,
 				19AC32BF1B825E4E00F38A47 /* FavorFeedViewController.m in Sources */,
 				1940E6A21B9296A100C63378 /* NumberInputViewController.m in Sources */,
+				19E88A261B9538A80094ED29 /* StringModifier.m in Sources */,
 				C33E19BC1B85153C00546523 /* UIImageEffects.m in Sources */,
 				C33E952F1B912A9E00345BD7 /* KeyboardBar.m in Sources */,
-				197514FD1B8ECFFF005F152D /* OriginalFavorView.m in Sources */,
+				197514FD1B8ECFFF005F152D /* (null) in Sources */,
 				19AC32BC1B825E4E00F38A47 /* AppDelegate.m in Sources */,
 				19F59BA71B82B0770057BC6D /* LoginViewController.m in Sources */,
 				19AC32B91B825E4E00F38A47 /* main.m in Sources */,

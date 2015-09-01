@@ -11,6 +11,7 @@
 #import "DatabaseManager.h"
 #import "OriginalFavorView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "StringModifier.h"
 
 
 @interface FavorDetailViewController ()  <DatabaseManagerDelegate, ResponseCellDelegate, KeyboardCustomViewDelegate>
@@ -305,7 +306,7 @@
     cell.chosenButton.hidden = YES;
     cell.chosenButton.enabled = NO;
   }
-    
+  
   cell.responderName.text = responseForCell.responseCreatorName;
   cell.responderName.font = self.proximaNovaSoftBold;
   
@@ -339,6 +340,30 @@
 -(void)sendTextToRootController:(NSString *)text
 {
   [self.parseManager saveResponse:text passedFavorID:self.passedFavorID];
+  
+    PFQuery *query = [PFInstallation query];
+    [query whereKey:@"user" equalTo:self.passedUserThatMadeTheFavor];
+  
+  User *currentUser = [User currentUser];
+  NSString *fullName = currentUser[@"name"];
+  
+  NSDictionary *dict = @{
+                         @"alert" : [NSString stringWithFormat:@"%@ commented on your favor!", [StringModifier getFirstNameFromFullName:fullName]],
+                          @"badge" : @"Increment"
+                         
+                          };
+  
+  PFPush *push = [PFPush new];
+  
+  [push setData:dict];
+  
+  [push setQuery:query];
+  
+  [push sendPushInBackgroundWithBlock:^(BOOL succededPush, NSError *error)
+   {
+     
+   }];
+  
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
