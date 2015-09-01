@@ -114,6 +114,7 @@
   // Store the deviceToken in the current installation and save it to Parse.
   PFInstallation *currentInstallation = [PFInstallation currentInstallation];
   [currentInstallation setDeviceTokenFromData:deviceToken];
+  currentInstallation[@"badge"] = [NSNumber numberWithInt:0];
   [currentInstallation saveInBackground];
   
 }

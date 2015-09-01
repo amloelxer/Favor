@@ -123,6 +123,10 @@
     NSLog(@"This is a post of mine");
     self.isFavorMine = YES;
     
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    currentInstallation[@"badge"] = [NSNumber numberWithInt:0];
+    [currentInstallation saveInBackground];
+    
   }
   
   else

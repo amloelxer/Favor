@@ -76,9 +76,9 @@
     {
       [self performSegueWithIdentifier:@"hasNotEnteredNumberSegue" sender:self];
       
-//      PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-//      currentInstallation[@"user"] = [User currentUser];
-//      [currentInstallation saveInBackground];
+      PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+      currentInstallation[@"user"] = [User currentUser];
+      [currentInstallation saveInBackground];
 
     }
   

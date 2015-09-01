@@ -21,6 +21,8 @@
         {
             NSLog(@"Uh oh. The user cancelled the Facebook login.");
             [self.delegate logInFailedWithError:self];
+          
+          //////
 
         }
         
