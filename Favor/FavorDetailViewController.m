@@ -12,9 +12,11 @@
 #import "OriginalFavorView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "StringModifier.h"
+#import <MessageUI/MessageUI.h>
 
 
-@interface FavorDetailViewController ()  <DatabaseManagerDelegate, ResponseCellDelegate, KeyboardCustomViewDelegate>
+@interface FavorDetailViewController ()  <DatabaseManagerDelegate, ResponseCellDelegate, KeyboardCustomViewDelegate,
+MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *selectedFavorTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timePassedTextLabel;
@@ -392,5 +394,32 @@
   return self.arrayOfResponses.count;
 }
 
+- (IBAction)reportButtonTapped:(UIBarButtonItem *)sender {
+    NSString *emailTitle = [NSString stringWithFormat: @"Report Favor ID:%@", self.passedFavorID];
+    // Email Content
+    NSString *messageBody = @"Thanks for reporting questionable content. We'll investigate this favor and its responses. Please add any additional concerns."; //
+    NSArray *toRecipents = [NSArray arrayWithObject:@"favordevteam@gmail.com"];
+    
+    MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+    mc.mailComposeDelegate = self;
+    [mc setSubject:emailTitle];
+    [mc setMessageBody:messageBody isHTML:YES];
+    [mc setToRecipients:toRecipents];
+    
+    // Present mail view controller on screen
+    [self presentViewController:mc animated:YES completion:NULL];
+}
 
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    if (result == MFMailComposeResultSent)
+    {
+        NSLog(@"\n\n Email Sent");
+    }
+    if([self respondsToSelector:@selector(dismissViewControllerAnimated:completion:)])
+        [self dismissViewControllerAnimated:YES completion:nil];
+    else
+        [self dismissModalViewControllerAnimated:YES];
+    //    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end

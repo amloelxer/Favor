@@ -40,6 +40,7 @@
 		C33E952F1B912A9E00345BD7 /* KeyboardBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C33E952E1B912A9E00345BD7 /* KeyboardBar.m */; };
 		C33E95321B9133AF00345BD7 /* KeyboardCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = C33E95311B9133AF00345BD7 /* KeyboardCustomView.m */; };
 		C33E95341B913C6600345BD7 /* keyboardAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C33E95331B913C6600345BD7 /* keyboardAccessoryView.xib */; };
+		C3C530221B966EB60008B713 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3C530211B966EB60008B713 /* MessageUI.framework */; };
 		DBC3B31956D2BED7A8284DCE /* libPods-FavorTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D09AF03509A7622B685A85AB /* libPods-FavorTests.a */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +116,7 @@
 		C33E95301B9133AF00345BD7 /* KeyboardCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardCustomView.h; sourceTree = "<group>"; };
 		C33E95311B9133AF00345BD7 /* KeyboardCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardCustomView.m; sourceTree = "<group>"; };
 		C33E95331B913C6600345BD7 /* keyboardAccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = keyboardAccessoryView.xib; sourceTree = "<group>"; };
+		C3C530211B966EB60008B713 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		CD5FFA3CDD1D9EA184C5C345 /* Pods-Favor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Favor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Favor/Pods-Favor.release.xcconfig"; sourceTree = "<group>"; };
 		D09AF03509A7622B685A85AB /* libPods-FavorTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FavorTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2AAE06BCAEEC91959B683A5 /* Pods-Favor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Favor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Favor/Pods-Favor.debug.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3C530221B966EB60008B713 /* MessageUI.framework in Frameworks */,
 				19EF06F11B8BC7B20035D7A9 /* CoreLocation.framework in Frameworks */,
 				4A00F09B0C304F259232D8A9 /* libPods-Favor.a in Frameworks */,
 			);
@@ -324,6 +327,7 @@
 		C237CBE8237D489AC76603CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C3C530211B966EB60008B713 /* MessageUI.framework */,
 				19EF06F01B8BC7B20035D7A9 /* CoreLocation.framework */,
 				BAD6DEF3AFC654F6D7EFE8C4 /* libPods-Favor.a */,
 				D09AF03509A7622B685A85AB /* libPods-FavorTests.a */,
