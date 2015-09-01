@@ -19,7 +19,6 @@
 @property UIFont* proximaNovaRegular;
 @property UIFont* proximaNovaBold;
 @property UIFont* proximaNovaSoftBold;
-@property (weak, nonatomic) IBOutlet UILabel *favorUsesNumbersToConnectPeople;
 @property (weak, nonatomic) IBOutlet UILabel *pleaseEnterYourNumberBelowToGetStarted;
 @property (weak, nonatomic) IBOutlet UIButton *goButton;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
@@ -118,7 +117,7 @@
   UIImage *profImage = [UIImage imageWithData:imageData];
   self.numberInputImageView.image = profImage;
   //make sure this is frame.size and not image.size
-  self.numberInputImageView.layer.cornerRadius = self.numberInputImageView.frame.size.width/2;
+  self.numberInputImageView.layer.cornerRadius = 100;
   self.numberInputImageView.layer.masksToBounds = YES;
   
   
@@ -129,19 +128,22 @@
   
   NSString *firstName = [arrayOfFirstAndLastName firstObject];
   
-  NSString *fullGreetingWithNameString = [NSString stringWithFormat:@"Hi %@ !",firstName];
-  
-  self.favorUsesNumbersToConnectPeople.font = self.proximaNovaBold;
-  self.favorUsesNumbersToConnectPeople.textColor = [ColorPalette getFavorYellowColor];
-  
-  self.pleaseEnterYourNumberBelowToGetStarted.font = self.proximaNovaBold;
+  NSString *fullGreetingWithNameString = [NSString stringWithFormat:@"Hi %@!",firstName];
+    
+  self.pleaseEnterYourNumberBelowToGetStarted.font = [self.proximaNovaRegular fontWithSize:22];
   self.pleaseEnterYourNumberBelowToGetStarted.textColor = [ColorPalette getFavorYellowColor];
+    [self.pleaseEnterYourNumberBelowToGetStarted setTextAlignment:UITextAlignmentCenter];
+    
   
   self.goButton.titleLabel.font = self.proximaNovaSoftBold;
   
   self.numberInputNameLabel.text = fullGreetingWithNameString;
   self.numberInputNameLabel.textColor = [ColorPalette getFavorYellowColor];
-  self.numberInputNameLabel.font = [UIFont fontWithName:@"ProximaNova-Bold" size:18];
+  self.numberInputNameLabel.font = [UIFont fontWithName:@"ProximaNova-Bold" size:26];
+    [self.phoneNumberTextField becomeFirstResponder];
+    
+    self.goButton.layer.cornerRadius = 3;
+    [self.goButton setFont:[UIFont fontWithName:@"ProximaNova-Bold" size:24]];
   
 }
 
