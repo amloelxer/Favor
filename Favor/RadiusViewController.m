@@ -94,8 +94,15 @@
 }
 
 -(void)hideCoordinator {
+    
     if (!self.userInterceptCloseOfModal) {
-        [self removeObserver:self forKeyPath:@"scaleFactor"];
+        NSLog(@"%@", NSStringFromSelector(_cmd));
+        @try {
+            [self removeObserver:self forKeyPath:@"scaleFactor"];
+        } @catch(id anException){
+            NSLog(@"%@", anException);
+        }
+        
         [self moveModalViewTo:self.modalViewOffscreenCenter];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self hideBackgroundBlurImage];
