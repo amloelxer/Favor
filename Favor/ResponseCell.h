@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *chosenButton;
 @property (weak, nonatomic) IBOutlet UILabel *responderText;
 @property (weak, nonatomic) IBOutlet UILabel *phoneNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeAgoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *distanceFromCurrentLocationLabel;
 
 @property (nonatomic, weak) id <ResponseCellDelegate> delegate;
 @end

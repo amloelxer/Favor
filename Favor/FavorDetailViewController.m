@@ -35,7 +35,7 @@
 @property UIFont* proximaNovaSoftBold;
 @property KeyboardCustomView *keyboardView;
 @property (weak, nonatomic) IBOutlet UIImageView *favorProfileView;
-
+@property BOOL detailViewHasCachedReloadedForFirstTime;
 //@property (nonatomic, readwrite, retain) UIView *inputAccessoryView;
 
 @end
@@ -45,6 +45,8 @@
 -(void)viewDidLoad
 {
   [super viewDidLoad];
+  
+  self.detailViewHasCachedReloadedForFirstTime = NO;
   
   self.proximaNovaRegular = [UIFont fontWithName:@"ProximaNova-Regular" size:16];
   self.proximaNovaBold = [UIFont fontWithName:@"ProximaNova-Bold" size:16];
@@ -158,6 +160,8 @@
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTouchView)];
     [self.keyboardView addGestureRecognizer:recognizer];
     [self.view addSubview:self.keyboardView];
+  
+//    [self.parseManager getResponseForSelectedFavor:self.passedFavorID];
 
 }
 
@@ -169,7 +173,7 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-  [self.parseManager getResponseForSelectedFavor:self.passedFavorID];
+//  [self.parseManager getResponseForSelectedFavor:self.passedFavorID];
 }
 
 -(void)reloadOnPullDown
@@ -246,6 +250,11 @@
   
   self.arrayOfResponses = [queryResults mutableCopy];
   [self.responseTableView reloadData];
+  if(self.detailViewHasCachedReloadedForFirstTime == NO)
+  {
+    [self.responseTableView performSelector:@selector(reloadData) withObject:nil afterDelay:0.001];
+    self.detailViewHasCachedReloadedForFirstTime = YES;
+  }
   [self.refreshControl endRefreshing];
   
 }
@@ -317,6 +326,9 @@
   cell.responderText.text = responseForCell.responseText;
   cell.responderText.font = self.proximaNovaRegular;
   
+  cell.timeAgoLabel.text = responseForCell.timeAgo;
+  cell.responderText.font = self.proximaNovaRegular;
+  
   //make sure the cell image loads for the right cell by comparing index Paths
   if([[self.responseTableView indexPathForCell:cell] isEqual:indexPath])
   {
@@ -343,6 +355,7 @@
 
 -(void)sendTextToRootController:(NSString *)text
 {
+  self.detailViewHasCachedReloadedForFirstTime = NO;
   [self.parseManager saveResponse:text passedFavorID:self.passedFavorID];
   
     PFQuery *query = [PFInstallation query];

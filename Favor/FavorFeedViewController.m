@@ -29,7 +29,8 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *radiusButton;
 @property UIRefreshControl *refreshControl;
 @property FavorCell *resizingCell;
-
+@property BOOL hasDoneFirstCachedLoad;
+@property BOOL hasAppearedForTheFirstTime;
 @end
 
 @implementation FavorFeedViewController
@@ -43,13 +44,16 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  
+  self.hasDoneFirstCachedLoad = NO;
+  self.hasAppearedForTheFirstTime = NO;
   PFInstallation *currentInstallation = [PFInstallation currentInstallation];
   currentInstallation[@"user"] = [User currentUser];
   [currentInstallation saveInBackground];
   
   self.favorTableView.rowHeight = UITableViewAutomaticDimension;
+  self.favorTableView.estimatedRowHeight = 150;
   
+  [self.favorTableView reloadData];
   self.proximaNovaRegular = [UIFont fontWithName:@"ProximaNova-Regular" size:16];
   
   self.proximaNovaBold = [UIFont fontWithName:@"ProximaNova-Bold" size:16];
@@ -122,9 +126,6 @@
   self.parseDataManager.delegate = self;
   
   LocationManager *locManager = [LocationManager sharedManager];
-  
-  [locManager updateLocation];
-  
   
 }
 
@@ -202,9 +203,14 @@
 {
   self.arrayOfFavors = queryResults;
   
-  [self.favorTableView setNeedsLayout];
-  [self.favorTableView layoutIfNeeded];
   [self.favorTableView reloadData];
+  
+  if(self.hasDoneFirstCachedLoad == NO)
+  {
+    [self.favorTableView performSelector:@selector(reloadData) withObject:nil afterDelay:0.001];
+    self.hasDoneFirstCachedLoad = YES;
+  }
+  
 }
 
 #pragma mark - LocationManager Delegate Methods
@@ -289,8 +295,10 @@
   cell.posterName.text = firstName;
   cell.posterName.font = self.proximaNovaBold;
   
+  
   //actual text in the favor
   cell.favorText.text = favorAtIndexPath.text;
+//  cell.favorText.text = @"This should be a solidly logng string that takes up a fair amount of space on our cell that we are using for testing";
 //  cell.favorText.preferredMaxLayoutWidth = CGRectGetWidth(cell.favorText.frame);
   
 //  cell.favorText.font = self.proximaNovaRegular;
@@ -321,6 +329,7 @@
   
   cell.responseLabelOnFavor.font = proximaNovaRegSmaller;
   
+  
   [favorAtIndexPath.imageFile getDataInBackgroundWithBlock:^(NSData *result, NSError *error) {
     
     //make sure the cell image loads for the right cell by comparing index Paths
@@ -340,7 +349,7 @@
   
     [cell setNeedsLayout];
     [cell layoutIfNeeded];
-    
+  
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -358,28 +367,6 @@
   return self.arrayOfFavors.count;
 }
 
-
-- (CGFloat)tableView:(UITableView *)tableView
-estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  return UITableViewAutomaticDimension;
-}
-
-
-- (CGFloat)tableView:(UITableView *)tableView
-heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  
-  [self configurCell:self.resizingCell indexPath:indexPath];
-  
-  
-  CGFloat height = [self.resizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-  NSLog(@" %@ ", NSStringFromCGSize(self.resizingCell.favorText.intrinsicContentSize));
-  
-  
-  return height;
-}
-
-#pragma mark - Prepare for Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
   NSIndexPath *path = [self.favorTableView indexPathForSelectedRow];

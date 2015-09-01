@@ -326,6 +326,10 @@
   
   [query getObjectInBackgroundWithId:selectedFavorID block:^(PFObject *someFavor, NSError *error) {
     
+    LocationManager *singletonManager = [LocationManager sharedManager];
+    
+//    [postQueryForUser addDescendingOrder:@"updatedAt"];
+//    PFGeoPoint *currentGeoPoint = [PFGeoPoint geoPointWithLocation:singletonManager.currentLocation];
     [responseQueryForFavor whereKey:@"favorWhichResponseIsOn" equalTo:(Favor *)someFavor];
     
     [responseQueryForFavor findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -338,6 +342,13 @@
           
           Response *responseToBeAdded = [Response new];
           responseToBeAdded.responseText = someResponse.responseText;
+          
+          NSDate *responseTimeUpdatedAt = [someResponse objectForKey:@"updatedAt"];
+          
+          NSString *stringResponseWasPosted = [DatabaseManager dateConverter:responseTimeUpdatedAt];
+          
+          responseToBeAdded.timeAgo = stringResponseWasPosted;
+          
           User *responseCreator = [someResponse objectForKey:@"userWhoMadeTheResponse"];
           responseToBeAdded.responseCreatorName = [responseCreator objectForKey:@"name"];
           responseToBeAdded.userWhoMadeThisResponse = [someResponse objectForKey:@"userWhoMadeTheResponse"];
