@@ -282,6 +282,12 @@
   NSNumber *defaultWasChosenIsNo = [NSNumber numberWithInt:0];
   [newResponse setObject:defaultWasChosenIsNo forKey:@"wasChosen"];
   
+  LocationManager *currentLocationManager = [LocationManager sharedManager];
+  
+  PFGeoPoint *currentLocation = [PFGeoPoint geoPointWithLocation:currentLocationManager.currentLocation];
+  
+  newResponse[@"locationOfResponse"] = currentLocation;
+  
   PFQuery *query = [PFQuery queryWithClassName:@"Favor"];
   [query getObjectInBackgroundWithId:passedFavorID block:^(PFObject *someFavor, NSError *error) {
     
@@ -324,12 +330,17 @@
   
   PFQuery *query = [PFQuery queryWithClassName:@"Favor"];
   
+ 
+  
   [query getObjectInBackgroundWithId:selectedFavorID block:^(PFObject *someFavor, NSError *error) {
     
     LocationManager *singletonManager = [LocationManager sharedManager];
+    PFGeoPoint *currentGeoPoint = [PFGeoPoint geoPointWithLocation:singletonManager.currentLocation];
+//    PFGeoPoint *favorGeoPoint = someFavor[@"locationOfFavor"];
     
-//    [postQueryForUser addDescendingOrder:@"updatedAt"];
-//    PFGeoPoint *currentGeoPoint = [PFGeoPoint geoPointWithLocation:singletonManager.currentLocation];
+    [responseQueryForFavor includeKey:@"createdAt"];
+    [responseQueryForFavor addDescendingOrder:@"createdAt"];
+//    [responseQueryForFavor includeKey:@"locationOfResponse"];
     [responseQueryForFavor whereKey:@"favorWhichResponseIsOn" equalTo:(Favor *)someFavor];
     
     [responseQueryForFavor findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -343,7 +354,17 @@
           Response *responseToBeAdded = [Response new];
           responseToBeAdded.responseText = someResponse.responseText;
           
-          NSDate *responseTimeUpdatedAt = [someResponse objectForKey:@"updatedAt"];
+          PFGeoPoint *responseGeoPoint = someResponse[@"locationOfResponse"];
+          double distanceInMilesFromCurrentLocation = [responseGeoPoint distanceInMilesTo:currentGeoPoint];
+          
+          NSInteger distanceInMilesWithNoDecimals = (NSInteger)distanceInMilesFromCurrentLocation;
+          
+          NSString *distanceAwayFromCurrentLocation = [NSString stringWithFormat:@"%ld miles away", (long)distanceInMilesWithNoDecimals];
+          
+          responseToBeAdded.distanceAway = distanceAwayFromCurrentLocation;
+          
+          
+          NSDate *responseTimeUpdatedAt = someResponse.createdAt;
           
           NSString *stringResponseWasPosted = [DatabaseManager dateConverter:responseTimeUpdatedAt];
           
