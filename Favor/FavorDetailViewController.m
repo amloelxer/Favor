@@ -292,7 +292,8 @@
     cell.chosenButton.enabled = NO;
   }
   
-  ;
+
+  
   if ([responseForCell.wasChosen intValue] == FavorStateClosed)
   {
     cell.backgroundColor = [ColorPalette getFavorGreenColor];
@@ -327,6 +328,9 @@
   cell.responderText.font = self.proximaNovaRegular;
   
   cell.timeAgoLabel.text = responseForCell.timeAgo;
+  cell.responderText.font = self.proximaNovaRegular;
+  
+  cell.distanceFromCurrentLocationLabel.text = responseForCell.distanceAway;
   cell.responderText.font = self.proximaNovaRegular;
   
   //make sure the cell image loads for the right cell by comparing index Paths

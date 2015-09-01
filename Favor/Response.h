@@ -22,6 +22,7 @@
 @property User *userWhoMadeThisResponse;
 @property Favor *favorThisResponseIsOn;
 @property NSString *uniqueID;
+@property NSString *distanceAway;
 
 @property NSNumber *wasChosen;
 

@@ -19,7 +19,7 @@
 @dynamic userWhoMadeThisResponse;
 @dynamic favorThisResponseIsOn;
 @dynamic wasChosen;
-
+@dynamic distanceAway;
 
 + (NSString *)parseClassName
 {
