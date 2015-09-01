@@ -44,6 +44,10 @@
 {
   [super viewDidLoad];
   
+  PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+  currentInstallation[@"user"] = [User currentUser];
+  [currentInstallation saveInBackground];
+  
   self.favorTableView.rowHeight = UITableViewAutomaticDimension;
   
   self.proximaNovaRegular = [UIFont fontWithName:@"ProximaNova-Regular" size:16];
