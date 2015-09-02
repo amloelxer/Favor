@@ -367,6 +367,33 @@
   return self.arrayOfFavors.count;
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+  NSInteger numOfSections = 0;
+  if (self.arrayOfFavors.count > 0)
+  {
+    self.favorTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    numOfSections = 1;
+    self.favorTableView.backgroundView = nil;
+  }
+  
+  else
+  {
+    UILabel *noDataLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.favorTableView.bounds.size.width, self.favorTableView.bounds.size.height)];
+    noDataLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    noDataLabel.numberOfLines = 0;
+    noDataLabel.text = @"No Favors Near You\nTry Expanding Your Search Radius";
+    noDataLabel.textColor = [ColorPalette getFavorPinkRedColor];
+    noDataLabel.font = [UIFont fontWithName:@"ProximaNovaSoft-Bold" size:18];
+    noDataLabel.textAlignment = NSTextAlignmentCenter;
+    self.favorTableView.backgroundView = noDataLabel;
+    self.favorTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+  }
+  
+  return numOfSections;
+}
+
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
   NSIndexPath *path = [self.favorTableView indexPathForSelectedRow];

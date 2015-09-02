@@ -388,6 +388,39 @@ MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
   return cell;
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+  NSInteger numOfSections = 0;
+  if (self.arrayOfResponses.count > 0)
+  {
+    self.responseTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    numOfSections = 1;
+    //    self.favorTableView.backgroundColor = [UIColor whiteColor];
+    self.responseTableView.backgroundView = nil;
+  }
+  else
+  {
+    UILabel *noDataLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.responseTableView.bounds.size.width, self.responseTableView.bounds.size.height)];
+    
+    noDataLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    noDataLabel.numberOfLines = 0;
+    noDataLabel.text = @"Currently there are no responses\nAdd a response!";
+    noDataLabel.textColor = [ColorPalette getFavorPinkRedColor];
+    noDataLabel.font = [UIFont fontWithName:@"ProximaNovaSoft-Bold" size:18];
+    noDataLabel.textAlignment = NSTextAlignmentCenter;
+    self.responseTableView.backgroundView = noDataLabel;
+    //    self.favorTableView.backgroundColor = [ColorPalette getFavorPinkRedColor];
+    self.responseTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+  }
+  
+  return numOfSections;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+  return self.arrayOfResponses.count;
+}
+
 -(void)sendTextToRootController:(NSString *)text
 {
   self.detailViewHasCachedReloadedForFirstTime = NO;
@@ -418,10 +451,7 @@ MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
   
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-  return self.arrayOfResponses.count;
-}
+
 
 - (IBAction)reportButtonTapped:(UIBarButtonItem *)sender {
     NSString *emailTitle = [NSString stringWithFormat: @"Report Favor ID:%@", self.passedFavorID];

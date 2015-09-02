@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fgB-iG-LAb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E26a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fgB-iG-LAb">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -255,6 +255,11 @@
                                     <segment title="My Favors"/>
                                 </segments>
                                 <color key="tintColor" red="0.98431372549019602" green="0.2627450980392157" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="IUI-u1-3tM"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="segmentChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="KVI-Xk-C2D"/>
                                 </connections>
@@ -262,11 +267,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="fIG-Tu-yn9" secondAttribute="trailing" constant="4" id="0iU-by-YLr"/>
                             <constraint firstAttribute="centerX" secondItem="fIG-Tu-yn9" secondAttribute="centerX" constant="-7.5" id="6qU-BX-m89">
                                 <variation key="widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="6Mg-hi-9hS" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Fn2-ct-l5O"/>
                             <constraint firstAttribute="trailing" secondItem="6Mg-hi-9hS" secondAttribute="trailing" id="Gdo-1C-DIe"/>
+                            <constraint firstItem="fIG-Tu-yn9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="4" id="HxU-4a-M5X"/>
                             <constraint firstItem="fIG-Tu-yn9" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="33" id="M5o-cT-OrN">
                                 <variation key="widthClass=compact" constant="18"/>
                             </constraint>
@@ -275,6 +282,18 @@
                                 <variation key="widthClass=compact" constant="54"/>
                             </constraint>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="0iU-by-YLr"/>
+                                <exclude reference="HxU-4a-M5X"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="0iU-by-YLr"/>
+                                <include reference="HxU-4a-M5X"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Favors" id="Ld8-Fg-Oy7">
                         <barButtonItem key="leftBarButtonItem" title="10 miles" id="2w8-8i-huE">
