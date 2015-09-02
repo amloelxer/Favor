@@ -373,7 +373,7 @@
           
           User *responseCreator = [someResponse objectForKey:@"userWhoMadeTheResponse"];
           
-          [responseCreator fetchIfNeeded];
+          [responseCreator fetchIfNeededInBackground];
           
           responseToBeAdded.responseCreatorName = [responseCreator objectForKey:@"name"];
           

@@ -271,14 +271,9 @@ MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
 //  NSLog(@"delegate method in reload table with responses is being called");
 //  
   NSLog(@"delegate method in reload table with responses is being called");
-  
   self.arrayOfResponses = [queryResults mutableCopy];
   [self.responseTableView reloadData];
-  if(self.detailViewHasCachedReloadedForFirstTime == NO)
-  {
-    [self.responseTableView performSelector:@selector(reloadData) withObject:nil afterDelay:0.001];
-    self.detailViewHasCachedReloadedForFirstTime = YES;
-  }
+  [self.responseTableView performSelector:@selector(reloadData) withObject:nil afterDelay:0.001];
   [self.refreshControl endRefreshing];
   
 }

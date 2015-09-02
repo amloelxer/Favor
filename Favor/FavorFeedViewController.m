@@ -202,15 +202,9 @@
 - (void) reloadTableWithCachedQueryResults: (NSArray *) queryResults
 {
   self.arrayOfFavors = queryResults;
-  
   [self.favorTableView reloadData];
-  
-  if(self.hasDoneFirstCachedLoad == NO)
-  {
-    [self.favorTableView performSelector:@selector(reloadData) withObject:nil afterDelay:0.001];
-    self.hasDoneFirstCachedLoad = YES;
-  }
-  
+  [self.favorTableView performSelector:@selector(reloadData) withObject:nil afterDelay:0.001];
+
 }
 
 #pragma mark - LocationManager Delegate Methods
