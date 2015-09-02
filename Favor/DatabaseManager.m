@@ -370,16 +370,27 @@
           
           responseToBeAdded.timeAgo = stringResponseWasPosted;
           
+          
           User *responseCreator = [someResponse objectForKey:@"userWhoMadeTheResponse"];
+          
+          [responseCreator fetchIfNeeded];
+          
           responseToBeAdded.responseCreatorName = [responseCreator objectForKey:@"name"];
+          
           responseToBeAdded.userWhoMadeThisResponse = [someResponse objectForKey:@"userWhoMadeTheResponse"];
+          
           responseToBeAdded.favorThisResponseIsOn = [someResponse objectForKey:@"favorWhichResponseIsOn"];
+          
           responseToBeAdded.uniqueID = someResponse.objectId;
+          
           responseToBeAdded.wasChosen = [someResponse objectForKey:@"wasChosen"];
+          
           PFFile *imageFile = [responseCreator objectForKey:@"ProfilePicture"];
+          
           responseToBeAdded.profPicFile = imageFile;
           
           [queryResults addObject:responseToBeAdded];
+          
           
         }
         

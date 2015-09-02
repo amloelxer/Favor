@@ -122,13 +122,14 @@
   
   if([self.passedUserThatMadeTheFavor isEqual:[User currentUser]])
   {
-    NSLog(@"This is a post of mine");
+//    NSLog(@"This is a post of mine");
     self.isFavorMine = YES;
     
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     currentInstallation[@"badge"] = [NSNumber numberWithInt:0];
     [currentInstallation saveInBackground];
     
+
   }
   
   else
@@ -138,9 +139,6 @@
   
   
   //code to make it circular
-
-  
-  [self.parseManager getResponseForSelectedFavor:self.passedFavorID];
   
   [self.navigationController.navigationBar setBarTintColor:[ColorPalette getFavorPinkRedColor]];
   self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
@@ -161,7 +159,7 @@
     [self.keyboardView addGestureRecognizer:recognizer];
     [self.view addSubview:self.keyboardView];
   
-//    [self.parseManager getResponseForSelectedFavor:self.passedFavorID];
+   [self.parseManager getResponseForSelectedFavor:self.passedFavorID];
 
 }
 
@@ -199,13 +197,37 @@
   Response *responseForCell = self.arrayOfResponses[indexPath.row];
   
   //now send push notifications to that badboy
-  //waiting to set up for cassidy's code
   User* userWhoseResponseWasSelected = [responseForCell objectForKey:@"userWhoMadeThisResponse"];
   
   self.responsePhoneNumber = userWhoseResponseWasSelected[@"phoneNumber"];
   
+  PFQuery *queryForUser = [PFInstallation query];
+  [queryForUser whereKey:@"user" equalTo:userWhoseResponseWasSelected];
+  
+  //sends push to person whose response was accepted
+  User *currentUser = [User currentUser];
+  NSString *fullName = currentUser[@"name"];
+  
+  NSDictionary *dict = @{
+                         @"alert" : [NSString stringWithFormat:@"%@ has accepted your response!", [StringModifier getFirstNameFromFullName:fullName]]
+                         
+                         };
+  
+  PFPush *push = [PFPush new];
+  
+  [push setData:dict];
+  
+  [push setQuery:queryForUser];
+  
+  [push sendPushInBackgroundWithBlock:^(BOOL succededPush, NSError *error)
+   {
+     
+   }];
+
+  
   chosenResponseCell.phoneNumberLabel.hidden = NO;
   chosenResponseCell.phoneNumberLabel.enabled = YES;
+  chosenResponseCell.phoneNumberLabel.textColor = [UIColor whiteColor];
 
   chosenResponseCell.phoneNumberLabel.text = self.responsePhoneNumber;
   
@@ -319,6 +341,13 @@
   {
     cell.chosenButton.hidden = YES;
     cell.chosenButton.enabled = NO;
+    
+    cell.responderName.textColor = [UIColor whiteColor];
+    cell.responderText.textColor= [UIColor whiteColor];
+    cell.timeAgoLabel.textColor = [UIColor whiteColor];
+    cell.distanceFromCurrentLocationLabel.textColor = [UIColor whiteColor];
+    cell.phoneNumberLabel.textColor = [UIColor whiteColor];
+    
   }
   
   cell.responderName.text = responseForCell.responseCreatorName;
@@ -331,7 +360,7 @@
   cell.responderText.font = self.proximaNovaRegular;
   
   cell.distanceFromCurrentLocationLabel.text = responseForCell.distanceAway;
-  cell.responderText.font = self.proximaNovaRegular;
+  cell.distanceFromCurrentLocationLabel.font = self.proximaNovaRegular;
   
   //make sure the cell image loads for the right cell by comparing index Paths
   if([[self.responseTableView indexPathForCell:cell] isEqual:indexPath])
