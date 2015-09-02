@@ -139,16 +139,10 @@ MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
     self.phoneNumberLabel.hidden = YES;
   }
   
-  
-  //code to make it circular
-  
   [self.navigationController.navigationBar setBarTintColor:[ColorPalette getFavorPinkRedColor]];
   self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
   [self.navigationController.navigationBar setTranslucent:NO];
 
-    
-    
-    
   // KEYBOARD
     // Use your CustomView instead of the UIView that is normally attached with [super loadView][UIScreen mainScreen].bounds]
     self.keyboardView = [[KeyboardCustomView alloc]initWithFrame:CGRectMake(100, 100, 50, 300)];
@@ -169,11 +163,6 @@ MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
 // the view the first responder
 - (void)didTouchView {
     [self.view becomeFirstResponder];
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
-//  [self.parseManager getResponseForSelectedFavor:self.passedFavorID];
 }
 
 -(void)reloadOnPullDown
@@ -273,6 +262,7 @@ MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
   NSLog(@"delegate method in reload table with responses is being called");
   self.arrayOfResponses = [queryResults mutableCopy];
   [self.responseTableView reloadData];
+    //hot fix for broken lines on iOS 8 it needs to be reloaded twice
   [self.responseTableView performSelector:@selector(reloadData) withObject:nil afterDelay:0.001];
   [self.refreshControl endRefreshing];
   

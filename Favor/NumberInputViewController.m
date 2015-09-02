@@ -143,7 +143,7 @@
     [self.phoneNumberTextField becomeFirstResponder];
     
     self.goButton.layer.cornerRadius = 3;
-    [self.goButton setFont:[UIFont fontWithName:@"ProximaNova-Bold" size:24]];
+    self.goButton.titleLabel.font = [UIFont fontWithName:@"ProximaNova-Bold" size:24];
   
 }
 

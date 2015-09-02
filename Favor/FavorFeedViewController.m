@@ -203,6 +203,7 @@
 {
   self.arrayOfFavors = queryResults;
   [self.favorTableView reloadData];
+  //hot fix for broken lines on iOS / needs to reload twice to fix 
   [self.favorTableView performSelector:@selector(reloadData) withObject:nil afterDelay:0.001];
 
 }
