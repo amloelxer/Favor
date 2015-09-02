@@ -117,7 +117,7 @@
   UIImage *profImage = [UIImage imageWithData:imageData];
   self.numberInputImageView.image = profImage;
   //make sure this is frame.size and not image.size
-  self.numberInputImageView.layer.cornerRadius = 100;
+  self.numberInputImageView.layer.cornerRadius = 75;
   self.numberInputImageView.layer.masksToBounds = YES;
   
   
