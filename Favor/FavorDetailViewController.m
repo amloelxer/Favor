@@ -259,7 +259,7 @@ MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
 {
 //  NSLog(@"delegate method in reload table with responses is being called");
 //  
-  NSLog(@"delegate method in reload table with responses is being called");
+//  NSLog(@"delegate method in reload table with responses is being called");
   self.arrayOfResponses = [queryResults mutableCopy];
   [self.responseTableView reloadData];
     //hot fix for broken lines on iOS 8 it needs to be reloaded twice
