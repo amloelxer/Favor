@@ -7,13 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		191C21651B84FE8A00780221 /* ColorPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 191C21641B84FE8A00780221 /* ColorPalette.m */; };
+		192D9CE31B87F64D00399A65 /* ResponseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 192D9CE21B87F64D00399A65 /* ResponseCell.m */; };
+		192D9CE61B891E9B00399A65 /* Response.m in Sources */ = {isa = PBXBuildFile; fileRef = 192D9CE51B891E9B00399A65 /* Response.m */; };
+		1940E6A21B9296A100C63378 /* NumberInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1940E6A11B9296A100C63378 /* NumberInputViewController.m */; };
+		19653BCD1B840661009DF2C2 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19653BCC1B840661009DF2C2 /* DatabaseManager.m */; };
+		19653BD01B840CD2009DF2C2 /* FavorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19653BCF1B840CD2009DF2C2 /* FavorCell.m */; };
+		19653BD41B840E1B009DF2C2 /* FavorDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19653BD31B840E1B009DF2C2 /* FavorDetailViewController.m */; };
+		197514F51B8E36B0005F152D /* ProximaNovaSoft-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 197514F21B8E3681005F152D /* ProximaNovaSoft-Bold.otf */; };
+		197514F61B8E36B4005F152D /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 197514F11B8E3681005F152D /* ProximaNova-Bold.otf */; };
+		197514F71B8E36B7005F152D /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 197514F31B8E3681005F152D /* ProximaNova-Regular.otf */; };
+		197514FA1B8E95CE005F152D /* RadiusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 197514F91B8E95CE005F152D /* RadiusViewController.m */; };
+		197514FD1B8ECFFF005F152D /* (null) in Sources */ = {isa = PBXBuildFile; };
+		19A035DA1B8281FC0062251C /* Favor.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A035D91B8281FC0062251C /* Favor.m */; };
+		19A035DE1B8284020062251C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A035DD1B8284020062251C /* User.m */; };
 		19AC32B91B825E4E00F38A47 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC32B81B825E4E00F38A47 /* main.m */; };
 		19AC32BC1B825E4E00F38A47 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC32BB1B825E4E00F38A47 /* AppDelegate.m */; };
-		19AC32BF1B825E4E00F38A47 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC32BE1B825E4E00F38A47 /* ViewController.m */; };
+		19AC32BF1B825E4E00F38A47 /* FavorFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC32BE1B825E4E00F38A47 /* FavorFeedViewController.m */; };
 		19AC32C21B825E4E00F38A47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19AC32C01B825E4E00F38A47 /* Main.storyboard */; };
 		19AC32C41B825E4E00F38A47 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19AC32C31B825E4E00F38A47 /* Images.xcassets */; };
 		19AC32C71B825E4E00F38A47 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19AC32C51B825E4E00F38A47 /* LaunchScreen.xib */; };
 		19AC32D31B825E4F00F38A47 /* FavorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AC32D21B825E4F00F38A47 /* FavorTests.m */; };
+		19E88A261B9538A80094ED29 /* StringModifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E88A251B9538A80094ED29 /* StringModifier.m */; };
+		19EDFE8A1B8396230076AB19 /* FacebookLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EDFE891B8396230076AB19 /* FacebookLoginManager.m */; };
+		19EF06EF1B8BB3B70035D7A9 /* ResponseLabelOnFavor.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EF06EE1B8BB3B70035D7A9 /* ResponseLabelOnFavor.m */; };
+		19EF06F11B8BC7B20035D7A9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EF06F01B8BC7B20035D7A9 /* CoreLocation.framework */; };
+		19EF06F41B8BCFE70035D7A9 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EF06F31B8BCFE70035D7A9 /* LocationManager.m */; };
+		19F59BA71B82B0770057BC6D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F59BA61B82B0770057BC6D /* LoginViewController.m */; };
+		4A00F09B0C304F259232D8A9 /* libPods-Favor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD6DEF3AFC654F6D7EFE8C4 /* libPods-Favor.a */; };
+		C33E19BB1B85153C00546523 /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33E19B81B85153C00546523 /* ModalViewController.m */; };
+		C33E19BC1B85153C00546523 /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = C33E19BA1B85153C00546523 /* UIImageEffects.m */; };
+		C33E952F1B912A9E00345BD7 /* KeyboardBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C33E952E1B912A9E00345BD7 /* KeyboardBar.m */; };
+		C33E95321B9133AF00345BD7 /* KeyboardCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = C33E95311B9133AF00345BD7 /* KeyboardCustomView.m */; };
+		C33E95341B913C6600345BD7 /* keyboardAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C33E95331B913C6600345BD7 /* keyboardAccessoryView.xib */; };
+		C3C530221B966EB60008B713 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3C530211B966EB60008B713 /* MessageUI.framework */; };
+		DBC3B31956D2BED7A8284DCE /* libPods-FavorTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D09AF03509A7622B685A85AB /* libPods-FavorTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,19 +55,71 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		191C21631B84FE8A00780221 /* ColorPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPalette.h; sourceTree = "<group>"; };
+		191C21641B84FE8A00780221 /* ColorPalette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPalette.m; sourceTree = "<group>"; };
+		192D9CE11B87F64D00399A65 /* ResponseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseCell.h; sourceTree = "<group>"; };
+		192D9CE21B87F64D00399A65 /* ResponseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseCell.m; sourceTree = "<group>"; };
+		192D9CE41B891E9B00399A65 /* Response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Response.h; sourceTree = "<group>"; };
+		192D9CE51B891E9B00399A65 /* Response.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Response.m; sourceTree = "<group>"; };
+		1940E6A01B9296A100C63378 /* NumberInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberInputViewController.h; sourceTree = "<group>"; };
+		1940E6A11B9296A100C63378 /* NumberInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberInputViewController.m; sourceTree = "<group>"; };
+		19653BCB1B840661009DF2C2 /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
+		19653BCC1B840661009DF2C2 /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
+		19653BCE1B840CD2009DF2C2 /* FavorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavorCell.h; sourceTree = "<group>"; };
+		19653BCF1B840CD2009DF2C2 /* FavorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavorCell.m; sourceTree = "<group>"; };
+		19653BD21B840E1B009DF2C2 /* FavorDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavorDetailViewController.h; sourceTree = "<group>"; };
+		19653BD31B840E1B009DF2C2 /* FavorDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavorDetailViewController.m; sourceTree = "<group>"; };
+		197514F11B8E3681005F152D /* ProximaNova-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold.otf"; sourceTree = "<group>"; };
+		197514F21B8E3681005F152D /* ProximaNovaSoft-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNovaSoft-Bold.otf"; sourceTree = "<group>"; };
+		197514F31B8E3681005F152D /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
+		197514F81B8E95CE005F152D /* RadiusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadiusViewController.h; sourceTree = "<group>"; };
+		197514F91B8E95CE005F152D /* RadiusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadiusViewController.m; sourceTree = "<group>"; };
+		1998105D1B92D375003513D8 /* OriginalFavorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OriginalFavorView.h; sourceTree = "<group>"; };
+		1998105E1B92D375003513D8 /* OriginalFavorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalFavorView.m; sourceTree = "<group>"; };
+		19A035D81B8281FC0062251C /* Favor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favor.h; sourceTree = "<group>"; };
+		19A035D91B8281FC0062251C /* Favor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favor.m; sourceTree = "<group>"; };
+		19A035DC1B8284020062251C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		19A035DD1B8284020062251C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		19AC32B31B825E4E00F38A47 /* Favor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Favor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19AC32B71B825E4E00F38A47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19AC32B81B825E4E00F38A47 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		19AC32BA1B825E4E00F38A47 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		19AC32BB1B825E4E00F38A47 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		19AC32BD1B825E4E00F38A47 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		19AC32BE1B825E4E00F38A47 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		19AC32BD1B825E4E00F38A47 /* FavorFeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavorFeedViewController.h; sourceTree = "<group>"; };
+		19AC32BE1B825E4E00F38A47 /* FavorFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavorFeedViewController.m; sourceTree = "<group>"; };
 		19AC32C11B825E4E00F38A47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		19AC32C31B825E4E00F38A47 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		19AC32C61B825E4E00F38A47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		19AC32CC1B825E4F00F38A47 /* FavorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FavorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19AC32D11B825E4F00F38A47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19AC32D21B825E4F00F38A47 /* FavorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavorTests.m; sourceTree = "<group>"; };
+		19E88A241B9538A80094ED29 /* StringModifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringModifier.h; sourceTree = "<group>"; };
+		19E88A251B9538A80094ED29 /* StringModifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringModifier.m; sourceTree = "<group>"; };
+		19EDFE881B8396220076AB19 /* FacebookLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookLoginManager.h; sourceTree = "<group>"; };
+		19EDFE891B8396230076AB19 /* FacebookLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookLoginManager.m; sourceTree = "<group>"; };
+		19EF06ED1B8BB3B70035D7A9 /* ResponseLabelOnFavor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseLabelOnFavor.h; sourceTree = "<group>"; };
+		19EF06EE1B8BB3B70035D7A9 /* ResponseLabelOnFavor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseLabelOnFavor.m; sourceTree = "<group>"; };
+		19EF06F01B8BC7B20035D7A9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		19EF06F21B8BCFE70035D7A9 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		19EF06F31B8BCFE70035D7A9 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		19F59BA51B82B0770057BC6D /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		19F59BA61B82B0770057BC6D /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		29005DB7C27826C790BDC074 /* Pods-FavorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FavorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FavorTests/Pods-FavorTests.release.xcconfig"; sourceTree = "<group>"; };
+		8BF7A1A9F96E8BF44B91BAFA /* Pods-FavorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FavorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FavorTests/Pods-FavorTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BAD6DEF3AFC654F6D7EFE8C4 /* libPods-Favor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Favor.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C33E19B71B85153C00546523 /* ModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalViewController.h; sourceTree = "<group>"; };
+		C33E19B81B85153C00546523 /* ModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalViewController.m; sourceTree = "<group>"; };
+		C33E19B91B85153C00546523 /* UIImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageEffects.h; sourceTree = "<group>"; };
+		C33E19BA1B85153C00546523 /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
+		C33E952D1B912A9E00345BD7 /* KeyboardBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardBar.h; sourceTree = "<group>"; };
+		C33E952E1B912A9E00345BD7 /* KeyboardBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardBar.m; sourceTree = "<group>"; };
+		C33E95301B9133AF00345BD7 /* KeyboardCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardCustomView.h; sourceTree = "<group>"; };
+		C33E95311B9133AF00345BD7 /* KeyboardCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardCustomView.m; sourceTree = "<group>"; };
+		C33E95331B913C6600345BD7 /* keyboardAccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = keyboardAccessoryView.xib; sourceTree = "<group>"; };
+		C3C530211B966EB60008B713 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		CD5FFA3CDD1D9EA184C5C345 /* Pods-Favor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Favor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Favor/Pods-Favor.release.xcconfig"; sourceTree = "<group>"; };
+		D09AF03509A7622B685A85AB /* libPods-FavorTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FavorTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2AAE06BCAEEC91959B683A5 /* Pods-Favor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Favor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Favor/Pods-Favor.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +127,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3C530221B966EB60008B713 /* MessageUI.framework in Frameworks */,
+				19EF06F11B8BC7B20035D7A9 /* CoreLocation.framework in Frameworks */,
+				4A00F09B0C304F259232D8A9 /* libPods-Favor.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,18 +137,128 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBC3B31956D2BED7A8284DCE /* libPods-FavorTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		191D092E1B8FC81700ED56E2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1998105D1B92D375003513D8 /* OriginalFavorView.h */,
+				1998105E1B92D375003513D8 /* OriginalFavorView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		192D9CE71B891EAE00399A65 /* Parse Objects */ = {
+			isa = PBXGroup;
+			children = (
+				19A035D81B8281FC0062251C /* Favor.h */,
+				19A035D91B8281FC0062251C /* Favor.m */,
+				19A035DC1B8284020062251C /* User.h */,
+				19A035DD1B8284020062251C /* User.m */,
+				192D9CE41B891E9B00399A65 /* Response.h */,
+				192D9CE51B891E9B00399A65 /* Response.m */,
+			);
+			name = "Parse Objects";
+			sourceTree = "<group>";
+		};
+		192D9CE81B891EBD00399A65 /* Color/Animation */ = {
+			isa = PBXGroup;
+			children = (
+				191C21631B84FE8A00780221 /* ColorPalette.h */,
+				191C21641B84FE8A00780221 /* ColorPalette.m */,
+			);
+			name = Color/Animation;
+			sourceTree = "<group>";
+		};
+		19653BD11B840CD8009DF2C2 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				19653BCE1B840CD2009DF2C2 /* FavorCell.h */,
+				19653BCF1B840CD2009DF2C2 /* FavorCell.m */,
+				192D9CE11B87F64D00399A65 /* ResponseCell.h */,
+				192D9CE21B87F64D00399A65 /* ResponseCell.m */,
+			);
+			name = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		19653BD51B841334009DF2C2 /* DataManagers */ = {
+			isa = PBXGroup;
+			children = (
+				19653BCB1B840661009DF2C2 /* DatabaseManager.h */,
+				19653BCC1B840661009DF2C2 /* DatabaseManager.m */,
+				19EDFE881B8396220076AB19 /* FacebookLoginManager.h */,
+				19EDFE891B8396230076AB19 /* FacebookLoginManager.m */,
+			);
+			name = DataManagers;
+			sourceTree = "<group>";
+		};
+		197514F41B8E368F005F152D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				197514F11B8E3681005F152D /* ProximaNova-Bold.otf */,
+				197514F21B8E3681005F152D /* ProximaNovaSoft-Bold.otf */,
+				197514F31B8E3681005F152D /* ProximaNova-Regular.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		19A035D71B826C5A0062251C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				197514F81B8E95CE005F152D /* RadiusViewController.h */,
+				197514F91B8E95CE005F152D /* RadiusViewController.m */,
+				C33E19B71B85153C00546523 /* ModalViewController.h */,
+				C33E19B81B85153C00546523 /* ModalViewController.m */,
+				C33E19B91B85153C00546523 /* UIImageEffects.h */,
+				C33E19BA1B85153C00546523 /* UIImageEffects.m */,
+				19AC32BD1B825E4E00F38A47 /* FavorFeedViewController.h */,
+				19AC32BE1B825E4E00F38A47 /* FavorFeedViewController.m */,
+				1940E6A01B9296A100C63378 /* NumberInputViewController.h */,
+				1940E6A11B9296A100C63378 /* NumberInputViewController.m */,
+				19F59BA51B82B0770057BC6D /* LoginViewController.h */,
+				19F59BA61B82B0770057BC6D /* LoginViewController.m */,
+				19653BD21B840E1B009DF2C2 /* FavorDetailViewController.h */,
+				19653BD31B840E1B009DF2C2 /* FavorDetailViewController.m */,
+				C33E95331B913C6600345BD7 /* keyboardAccessoryView.xib */,
+				19AC32C31B825E4E00F38A47 /* Images.xcassets */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		19A035DB1B8282030062251C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C33E95301B9133AF00345BD7 /* KeyboardCustomView.h */,
+				C33E95311B9133AF00345BD7 /* KeyboardCustomView.m */,
+				C33E952D1B912A9E00345BD7 /* KeyboardBar.h */,
+				C33E952E1B912A9E00345BD7 /* KeyboardBar.m */,
+				19653BD11B840CD8009DF2C2 /* Custom Cells */,
+				19653BD51B841334009DF2C2 /* DataManagers */,
+				192D9CE71B891EAE00399A65 /* Parse Objects */,
+				192D9CE81B891EBD00399A65 /* Color/Animation */,
+				19EF06ED1B8BB3B70035D7A9 /* ResponseLabelOnFavor.h */,
+				19EF06EE1B8BB3B70035D7A9 /* ResponseLabelOnFavor.m */,
+				19EF06F21B8BCFE70035D7A9 /* LocationManager.h */,
+				19EF06F31B8BCFE70035D7A9 /* LocationManager.m */,
+				19E88A241B9538A80094ED29 /* StringModifier.h */,
+				19E88A251B9538A80094ED29 /* StringModifier.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		19AC32AA1B825E4E00F38A47 = {
 			isa = PBXGroup;
 			children = (
 				19AC32B51B825E4E00F38A47 /* Favor */,
 				19AC32CF1B825E4F00F38A47 /* FavorTests */,
 				19AC32B41B825E4E00F38A47 /* Products */,
+				97098A8EF2A3F5C5C019A735 /* Pods */,
+				C237CBE8237D489AC76603CE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,10 +276,11 @@
 			children = (
 				19AC32BA1B825E4E00F38A47 /* AppDelegate.h */,
 				19AC32BB1B825E4E00F38A47 /* AppDelegate.m */,
-				19AC32BD1B825E4E00F38A47 /* ViewController.h */,
-				19AC32BE1B825E4E00F38A47 /* ViewController.m */,
+				191D092E1B8FC81700ED56E2 /* Views */,
+				197514F41B8E368F005F152D /* Fonts */,
+				19A035DB1B8282030062251C /* Model */,
+				19A035D71B826C5A0062251C /* Controllers */,
 				19AC32C01B825E4E00F38A47 /* Main.storyboard */,
-				19AC32C31B825E4E00F38A47 /* Images.xcassets */,
 				19AC32C51B825E4E00F38A47 /* LaunchScreen.xib */,
 				19AC32B61B825E4E00F38A47 /* Supporting Files */,
 			);
@@ -119,6 +313,28 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		97098A8EF2A3F5C5C019A735 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E2AAE06BCAEEC91959B683A5 /* Pods-Favor.debug.xcconfig */,
+				CD5FFA3CDD1D9EA184C5C345 /* Pods-Favor.release.xcconfig */,
+				8BF7A1A9F96E8BF44B91BAFA /* Pods-FavorTests.debug.xcconfig */,
+				29005DB7C27826C790BDC074 /* Pods-FavorTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C237CBE8237D489AC76603CE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C3C530211B966EB60008B713 /* MessageUI.framework */,
+				19EF06F01B8BC7B20035D7A9 /* CoreLocation.framework */,
+				BAD6DEF3AFC654F6D7EFE8C4 /* libPods-Favor.a */,
+				D09AF03509A7622B685A85AB /* libPods-FavorTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,9 +342,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 19AC32D61B825E4F00F38A47 /* Build configuration list for PBXNativeTarget "Favor" */;
 			buildPhases = (
+				6BA7F57C837AE3A73EF4AC57 /* Check Pods Manifest.lock */,
 				19AC32AF1B825E4E00F38A47 /* Sources */,
 				19AC32B01B825E4E00F38A47 /* Frameworks */,
 				19AC32B11B825E4E00F38A47 /* Resources */,
+				A2F5BDC2554E6A14EEF61A32 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -143,9 +361,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 19AC32D91B825E4F00F38A47 /* Build configuration list for PBXNativeTarget "FavorTests" */;
 			buildPhases = (
+				D6B7B6FFEC425E6B4D5A0D06 /* Check Pods Manifest.lock */,
 				19AC32C81B825E4F00F38A47 /* Sources */,
 				19AC32C91B825E4F00F38A47 /* Frameworks */,
 				19AC32CA1B825E4F00F38A47 /* Resources */,
+				63A9931229F0442D13B6AF37 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -168,6 +388,12 @@
 				TargetAttributes = {
 					19AC32B21B825E4E00F38A47 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 5FQ9C6KXWU;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					19AC32CB1B825E4F00F38A47 = {
 						CreatedOnToolsVersion = 6.4;
@@ -200,8 +426,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				19AC32C21B825E4E00F38A47 /* Main.storyboard in Resources */,
+				197514F51B8E36B0005F152D /* ProximaNovaSoft-Bold.otf in Resources */,
 				19AC32C71B825E4E00F38A47 /* LaunchScreen.xib in Resources */,
 				19AC32C41B825E4E00F38A47 /* Images.xcassets in Resources */,
+				197514F61B8E36B4005F152D /* ProximaNova-Bold.otf in Resources */,
+				197514F71B8E36B7005F152D /* ProximaNova-Regular.otf in Resources */,
+				C33E95341B913C6600345BD7 /* keyboardAccessoryView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,13 +444,96 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		63A9931229F0442D13B6AF37 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FavorTests/Pods-FavorTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6BA7F57C837AE3A73EF4AC57 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A2F5BDC2554E6A14EEF61A32 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Favor/Pods-Favor-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6B7B6FFEC425E6B4D5A0D06 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		19AC32AF1B825E4E00F38A47 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19AC32BF1B825E4E00F38A47 /* ViewController.m in Sources */,
+				19653BD41B840E1B009DF2C2 /* FavorDetailViewController.m in Sources */,
+				19EF06EF1B8BB3B70035D7A9 /* ResponseLabelOnFavor.m in Sources */,
+				19EDFE8A1B8396230076AB19 /* FacebookLoginManager.m in Sources */,
+				19653BCD1B840661009DF2C2 /* DatabaseManager.m in Sources */,
+				191C21651B84FE8A00780221 /* ColorPalette.m in Sources */,
+				192D9CE61B891E9B00399A65 /* Response.m in Sources */,
+				19A035DE1B8284020062251C /* User.m in Sources */,
+				19A035DA1B8281FC0062251C /* Favor.m in Sources */,
+				197514FA1B8E95CE005F152D /* RadiusViewController.m in Sources */,
+				19653BD01B840CD2009DF2C2 /* FavorCell.m in Sources */,
+				C33E19BB1B85153C00546523 /* ModalViewController.m in Sources */,
+				192D9CE31B87F64D00399A65 /* ResponseCell.m in Sources */,
+				C33E95321B9133AF00345BD7 /* KeyboardCustomView.m in Sources */,
+				19EF06F41B8BCFE70035D7A9 /* LocationManager.m in Sources */,
+				19AC32BF1B825E4E00F38A47 /* FavorFeedViewController.m in Sources */,
+				1940E6A21B9296A100C63378 /* NumberInputViewController.m in Sources */,
+				19E88A261B9538A80094ED29 /* StringModifier.m in Sources */,
+				C33E19BC1B85153C00546523 /* UIImageEffects.m in Sources */,
+				C33E952F1B912A9E00345BD7 /* KeyboardBar.m in Sources */,
+				197514FD1B8ECFFF005F152D /* (null) in Sources */,
 				19AC32BC1B825E4E00F38A47 /* AppDelegate.m in Sources */,
+				19F59BA71B82B0770057BC6D /* LoginViewController.m in Sources */,
 				19AC32B91B825E4E00F38A47 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,26 +658,35 @@
 		};
 		19AC32D71B825E4F00F38A47 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2AAE06BCAEEC91959B683A5 /* Pods-Favor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Favor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Alex-Moller";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
 		19AC32D81B825E4F00F38A47 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD5FFA3CDD1D9EA184C5C345 /* Pods-Favor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Favor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Alex-Moller";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
 		19AC32DA1B825E4F00F38A47 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BF7A1A9F96E8BF44B91BAFA /* Pods-FavorTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -384,6 +706,7 @@
 		};
 		19AC32DB1B825E4F00F38A47 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29005DB7C27826C790BDC074 /* Pods-FavorTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -416,6 +739,7 @@
 				19AC32D81B825E4F00F38A47 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		19AC32D91B825E4F00F38A47 /* Build configuration list for PBXNativeTarget "FavorTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +748,7 @@
 				19AC32DB1B825E4F00F38A47 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
