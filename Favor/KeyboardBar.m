@@ -33,7 +33,7 @@
         // Default Values
         int cornerRadius = 3;
         float textViewWidth = (frame.size.width - 24) * 0.75;
-        float buttonWidth = (frame.size.width - 24 ) * 0.25;
+        float buttonWidth = (frame.size.width -24 ) * 0.25;
         
         self.backgroundColor = [ColorPalette getFavorPinkRedColor];
         
@@ -45,7 +45,7 @@
         self.textView.delegate = self;
         self.textView.text = self.placeholderText;
         self.textView.textColor = [UIColor lightGrayColor];
-        
+      
         self.postButton = [UIButton buttonWithType:UIButtonTypeCustom];
         self.postButton.frame = CGRectMake((16 + textViewWidth), 4, buttonWidth, 36);
         

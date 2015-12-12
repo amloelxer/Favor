@@ -229,8 +229,8 @@
 
 -(void)setupPostFavorButton:(UIButton *)button forView:(UIView *)view {
     button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:@"POST FAVOR" forState:UIControlStateNormal];
-    
+    [button setTitle:@"POST" forState:UIControlStateNormal];
+  
     button.backgroundColor = [UIColor colorWithRed:80.0/255 green:211.0/255 blue:161.0/255 alpha:1.0];
     UIFont *buttonFont = [UIFont fontWithName:@"Helvetica-Bold" size:16];
     button.titleLabel.font = buttonFont;

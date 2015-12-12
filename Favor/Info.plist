@@ -82,7 +82,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Favor is a geo based app </string>
+	<string>Favor is a Geo based app which helps connect people by location</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>ProximaNova-Bold.otf</string>
