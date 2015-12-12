@@ -104,7 +104,15 @@
 {
   [self.phoneNumberTextField resignFirstResponder];
   
-    [self.parseDataManager savePhoneNumberForCurrentUser:self.phoneNumber];
+    if(self.phoneNumber == nil)
+    {
+      [self.parseDataManager savePhoneNumberForCurrentUser:@""];
+    }
+    else
+    {
+      [self.parseDataManager savePhoneNumberForCurrentUser:self.phoneNumber];
+    }
+  
     self.phoneNumberInputActivityIndicator.hidden = NO;
   [self.phoneNumberInputActivityIndicator startAnimating];
 }
